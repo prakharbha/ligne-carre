@@ -32,20 +32,20 @@ export function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            <Link href={`/${locale}`} className="flex items-center space-x-4">
+            <Link href={`/${locale}`} className="flex items-center space-x-3 md:space-x-4">
               <Image
                 src="/images/logo_ligne.png"
                 alt="Ligne Carré"
-                width={60}
-                height={60}
-                className="object-contain"
+                width={50}
+                height={50}
+                className="object-contain md:w-[60px] md:h-[60px]"
                 priority
               />
-              <div className="hidden md:block">
-                <div className="font-season-mix text-xl lg:text-2xl text-foreground">
+              <div>
+                <div className="font-season-mix text-base md:text-xl lg:text-2xl text-foreground">
                   Ligne Carré
                 </div>
-                <div className="text-xs lg:text-sm text-gray-600 font-light">
+                <div className="text-[10px] md:text-xs lg:text-sm text-gray-600 font-light leading-tight">
                   {locale === 'en' ? 'Architecture and Project Management' : 'Architecture et Gestion de Projets'}
                 </div>
               </div>
