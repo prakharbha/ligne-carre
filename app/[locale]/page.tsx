@@ -39,7 +39,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-season-mix text-5xl lg:text-7xl xl:text-8xl text-white mb-6"
+            className="font-season-mix text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
           >
             {t('title')}
           </motion.h1>
@@ -47,9 +47,9 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl lg:text-2xl text-white/90 font-light mb-8"
+            className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
           >
-            {t('slogan')}
+            {t('slogan').replace('Ligne Carré: ', '')}
           </motion.p>
         </div>
       </section>
