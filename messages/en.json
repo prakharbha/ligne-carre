@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "careers": "Careers",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Ligne Carré",
+    "subtitle": "Architecture and Project Management",
+    "slogan": "Ligne Carré: where precision begins with every line.",
+    "cta": "View Our Work",
+    "featured": "Featured Projects"
+  },
+  "about": {
+    "title": "About Us",
+    "founder": {
+      "name": "Fadi Abousader",
+      "title": "Architect OAQ - Project Manager MGPA",
+      "bio": "I am a licensed Architect (OAQ) with a B. Arch from Balamand University (Lebanon) and a M.sc. degree in project management from the University of Montreal. I have been practicing for 25+ years in Montreal and the MENA area: Dubai, Qatar, KSA (vision 2030). The work focused mainly on the following activities: Sports, Health, Education and Residential.",
+      "goal": "My goal, as a project manager, is to find challenging and rewarding work that would allow me to expand on my current experience as well as challenge my capabilities."
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "residential": {
+      "title": "Residential",
+      "description": "Custom residential architecture and design services."
+    },
+    "commercial": {
+      "title": "Commercial",
+      "description": "Commercial building design and project management."
+    },
+    "interior": {
+      "title": "Interior Design",
+      "description": "Comprehensive interior design solutions."
+    },
+    "projectManagement": {
+      "title": "Project Management",
+      "description": "Expert project management services for complex architectural projects."
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "filter": {
+      "all": "All",
+      "sports": "Sports",
+      "health": "Health",
+      "education": "Education",
+      "residential": "Residential"
+    },
+    "view": {
+      "grid": "Grid View",
+      "masonry": "Masonry View"
+    }
+  },
+  "news": {
+    "title": "News & Updates"
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "Join Our Team"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright 2025 Ligne Carré Architecture and Design Studio, LLC"
+  }
+}
+

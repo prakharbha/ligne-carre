@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "news": "Actualités",
+    "careers": "Carrières",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Ligne Carré",
+    "subtitle": "Architecture et Gestion de Projets",
+    "slogan": "Ligne Carré : la précision commence par chaque ligne.",
+    "cta": "Voir Nos Projets",
+    "featured": "Projets en Vedette"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "founder": {
+      "name": "Fadi Abousader",
+      "title": "Architecte OAQ - Gestionnaire de Projets MGPA",
+      "bio": "Je suis un architecte agréé (OAQ) avec un B. Arch de l'Université de Balamand (Liban) et une maîtrise en gestion de projets de l'Université de Montréal. J'exerce depuis plus de 25 ans à Montréal et dans la région MENA : Dubaï, Qatar, Arabie Saoudite (vision 2030). Le travail s'est concentré principalement sur les activités suivantes : Sports, Santé, Éducation et Résidentiel.",
+      "goal": "Mon objectif, en tant que gestionnaire de projets, est de trouver un travail stimulant et gratifiant qui me permettrait d'élargir mon expérience actuelle tout en mettant mes capacités au défi."
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "residential": {
+      "title": "Résidentiel",
+      "description": "Services d'architecture et de design résidentiel sur mesure."
+    },
+    "commercial": {
+      "title": "Commercial",
+      "description": "Conception de bâtiments commerciaux et gestion de projets."
+    },
+    "interior": {
+      "title": "Design d'Intérieur",
+      "description": "Solutions complètes de design d'intérieur."
+    },
+    "projectManagement": {
+      "title": "Gestion de Projets",
+      "description": "Services experts de gestion de projets pour des projets architecturaux complexes."
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "filter": {
+      "all": "Tous",
+      "sports": "Sports",
+      "health": "Santé",
+      "education": "Éducation",
+      "residential": "Résidentiel"
+    },
+    "view": {
+      "grid": "Vue Grille",
+      "masonry": "Vue Maçonnerie"
+    }
+  },
+  "news": {
+    "title": "Actualités et Mises à Jour"
+  },
+  "careers": {
+    "title": "Carrières",
+    "subtitle": "Rejoignez Notre Équipe"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "form": {
+      "name": "Nom",
+      "email": "Courriel",
+      "message": "Message",
+      "submit": "Envoyer le Message"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright 2025 Ligne Carré Architecture and Design Studio, LLC"
+  }
+}
+
