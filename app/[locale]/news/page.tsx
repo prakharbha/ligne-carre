@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { PageBanner } from '@/components/PageBanner';
 import { motion } from 'framer-motion';
 
 export default function NewsPage() {
@@ -29,14 +30,11 @@ export default function NewsPage() {
   ];
 
   return (
-    <div className="pt-20 lg:pt-24">
+    <div>
+      <PageBanner title={t('title')} subtitle="Latest Updates & Announcements" />
+      
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <h1 className="font-season-mix text-5xl lg:text-6xl text-foreground mb-16 text-center">
-              {t('title')}
-            </h1>
-          </AnimatedSection>
 
           <div className="space-y-12">
             {newsItems.map((item, index) => (

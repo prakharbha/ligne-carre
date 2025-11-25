@@ -2,20 +2,18 @@
 
 import { useTranslations } from 'next-intl';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { PageBanner } from '@/components/PageBanner';
 import { ContactForm } from '@/components/ContactForm';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
 
   return (
-    <div className="pt-20 lg:pt-24">
+    <div>
+      <PageBanner title={t('title')} subtitle="Let's Discuss Your Project" />
+      
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <h1 className="font-season-mix text-5xl lg:text-6xl text-foreground mb-16 text-center">
-              {t('title')}
-            </h1>
-          </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <AnimatedSection delay={0.1}>
