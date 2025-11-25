@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   description: 'Ligne Carré: where precision begins with every line.',
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/logo_ligne.png', type: 'image/png', sizes: '32x32' },
     ],
     apple: [
-      { url: '/apple-icon.png', type: 'image/png', sizes: '180x180' },
+      { url: '/images/logo_ligne.png', type: 'image/png', sizes: '180x180' },
     ],
-    shortcut: '/favicon.ico',
   },
 };
 
