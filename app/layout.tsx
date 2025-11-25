@@ -5,6 +5,15 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Ligne Carré - Architecture and Project Management',
   description: 'Ligne Carré: where precision begins with every line.',
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png', sizes: '180x180' },
+    ],
+    shortcut: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

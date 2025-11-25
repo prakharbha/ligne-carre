@@ -5,6 +5,7 @@ export const SeasonMix = localFont({
   variable: '--font-season-mix',
   display: 'swap',
   weight: '400',
+  adjustFontFallback: false,
 });
 
 export const SeasonSans = localFont({
@@ -12,5 +13,6 @@ export const SeasonSans = localFont({
   variable: '--font-season-sans',
   display: 'swap',
   weight: '400',
+  adjustFontFallback: false,
 });
 
