@@ -35,7 +35,7 @@ export function Footer({ siteSettings }: FooterProps) {
           <div>
             <Link href="/" className="flex items-center space-x-4 mb-4">
               <Image
-                src="/images/logo_ligne.png"
+                src="/images/logo_ligne-updated.webp"
                 alt="Ligne Carré"
                 width={50}
                 height={50}

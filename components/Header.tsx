@@ -58,7 +58,7 @@ export function Header() {
           <div className="flex items-center justify-between h-20 lg:h-24">
             <Link href="/" className="flex items-center space-x-3 md:space-x-4">
               <Image
-                src="/images/logo_ligne.png"
+                src="/images/logo_ligne-updated.webp"
                 alt="Ligne Carré"
                 width={50}
                 height={50}
