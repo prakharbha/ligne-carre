@@ -27,6 +27,18 @@ const client = createClient({
   token,
 });
 
+// Helper function to add _key properties to Portable Text blocks
+function addKeysToPortableText(blocks: any[], prefix: string = ''): any[] {
+  return blocks.map((block, index) => ({
+    ...block,
+    _key: `${prefix}block-${index}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    children: block.children?.map((child: any, childIndex: number) => ({
+      ...child,
+      _key: `${prefix}span-${index}-${childIndex}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    })) || [],
+  }));
+}
+
 async function seedData() {
   console.log('🌱 Starting Sanity data seeding...');
   console.log(`📦 Project ID: ${projectId}`);
@@ -202,7 +214,7 @@ async function seedData() {
         date: '2024-11-15',
         excerpt_en: 'We are excited to announce our latest sports complex project in the region.',
         excerpt_fr: "Nous sommes ravis d'annoncer notre dernier projet de complexe sportif dans la région.",
-        content_en: [
+        content_en: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -213,8 +225,8 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
-        content_fr: [
+        ], 'news1-en-'),
+        content_fr: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -225,7 +237,7 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
+        ], 'news1-fr-'),
       },
       {
         _type: 'newsArticle',
@@ -236,7 +248,7 @@ async function seedData() {
         date: '2024-10-20',
         excerpt_en: 'Our team has been recognized for excellence in architectural design.',
         excerpt_fr: 'Notre équipe a été reconnue pour son excellence en design architectural.',
-        content_en: [
+        content_en: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -247,8 +259,8 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
-        content_fr: [
+        ], 'news2-en-'),
+        content_fr: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -259,7 +271,7 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
+        ], 'news2-fr-'),
       },
       {
         _type: 'newsArticle',
@@ -270,7 +282,7 @@ async function seedData() {
         date: '2024-09-10',
         excerpt_en: 'We continue to lead in sustainable and eco-friendly building practices.',
         excerpt_fr: 'Nous continuons de mener dans les pratiques de construction durables et écologiques.',
-        content_en: [
+        content_en: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -281,8 +293,8 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
-        content_fr: [
+        ], 'news3-en-'),
+        content_fr: addKeysToPortableText([
           {
             _type: 'block',
             children: [
@@ -293,7 +305,7 @@ async function seedData() {
             ],
             style: 'normal',
           },
-        ],
+        ], 'news3-fr-'),
       },
     ];
 
@@ -318,7 +330,7 @@ async function seedData() {
       title_fr: 'Carrières',
       subtitle_en: 'Join Our Team',
       subtitle_fr: 'Rejoignez Notre Équipe',
-      content_en: [
+      content_en: addKeysToPortableText([
         {
           _type: 'block',
           style: 'h2',
@@ -359,8 +371,8 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
-      content_fr: [
+      ], 'careers-en-'),
+      content_fr: addKeysToPortableText([
         {
           _type: 'block',
           style: 'h2',
@@ -401,7 +413,7 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
+      ], 'careers-fr-'),
     };
     await client.create(careersContent);
     console.log('✅ Created Careers page content');
@@ -419,7 +431,7 @@ async function seedData() {
       title_fr: 'Contactez-nous',
       subtitle_en: "Let's Discuss Your Project",
       subtitle_fr: "Discutons de Votre Projet",
-      content_en: [
+      content_en: addKeysToPortableText([
         {
           _type: 'block',
           style: 'h2',
@@ -440,8 +452,8 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
-      content_fr: [
+      ], 'contact-en-'),
+      content_fr: addKeysToPortableText([
         {
           _type: 'block',
           style: 'h2',
@@ -462,7 +474,7 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
+      ], 'contact-fr-'),
     };
     await client.create(contactContent);
     console.log('✅ Created Contact page content');
@@ -475,7 +487,7 @@ async function seedData() {
       title_fr: 'Politique de Confidentialité',
       subtitle_en: 'Last Updated: November 2024',
       subtitle_fr: 'Dernière Mise à Jour : Novembre 2024',
-      content_en: [
+      content_en: addKeysToPortableText([
         {
           _type: 'block',
           children: [
@@ -486,8 +498,8 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
-      content_fr: [
+      ], 'privacy-en-'),
+      content_fr: addKeysToPortableText([
         {
           _type: 'block',
           children: [
@@ -498,7 +510,7 @@ async function seedData() {
           ],
           style: 'normal',
         },
-      ],
+      ], 'privacy-fr-'),
     };
     await client.create(privacyContent);
     console.log('✅ Created Privacy page content\n');
