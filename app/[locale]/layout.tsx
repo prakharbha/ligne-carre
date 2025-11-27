@@ -3,9 +3,8 @@ import { getMessages } from 'next-intl/server';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FloatingContactButton } from '@/components/FloatingContactButton';
-import { generateMetadata } from './metadata';
 
-export { generateMetadata };
+export { generateMetadata } from './metadata';
 
 export default async function LocaleLayout({
   children,
