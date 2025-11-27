@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server';
-import { routing } from './routing';
+import { routing } from './routing.config';
 
 export const locales = routing.locales;
 export type Locale = (typeof locales)[number];

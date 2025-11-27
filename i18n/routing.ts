@@ -1,43 +1,10 @@
-import { defineRouting } from 'next-intl/routing';
 import { createNavigation } from 'next-intl/navigation';
+import { routing } from './routing.config';
 
-// Define the routing configuration with locale-specific pathnames
-export const routing = defineRouting({
-  locales: ['en', 'fr'],
-  defaultLocale: 'en',
-  pathnames: {
-    '/': '/',
-    '/about': {
-      en: '/about',
-      fr: '/a-propos',
-    },
-    '/services': {
-      en: '/services',
-      fr: '/services',
-    },
-    '/portfolio': {
-      en: '/portfolio',
-      fr: '/portfolio',
-    },
-    '/news': {
-      en: '/news',
-      fr: '/actualites',
-    },
-    '/careers': {
-      en: '/careers',
-      fr: '/carrieres',
-    },
-    '/contact': {
-      en: '/contact',
-      fr: '/nous-contacter',
-    },
-    '/privacy': {
-      en: '/privacy',
-      fr: '/confidentialite',
-    },
-  },
-});
+// Re-export routing for convenience
+export { routing };
 
-// Create navigation helpers
+// Create navigation helpers (client-side only)
+// These should only be imported in client components
 export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);
 
