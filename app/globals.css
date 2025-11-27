@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-roboto: var(--font-roboto);
+  /* Roboto font variable is injected by Next.js */
 }
 
 * {
