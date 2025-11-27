@@ -3,8 +3,13 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { getLocalizedField } from '@/lib/sanity/utils';
 
-export function Footer() {
+interface FooterProps {
+  siteSettings?: any;
+}
+
+export function Footer({ siteSettings }: FooterProps) {
   const t = useTranslations('nav');
   const tFooter = useTranslations('footer');
   const locale = useLocale() as 'en' | 'fr';
@@ -15,6 +20,12 @@ export function Footer() {
     { href: '/portfolio' as const, label: t('portfolio') },
     { href: '/contact' as const, label: t('contact') },
   ];
+
+  const footerContact = siteSettings?.footerContact;
+  const address = footerContact
+    ? getLocalizedField(footerContact, locale, 'address')
+    : 'Montreal, Quebec, Canada';
+  const email = footerContact?.email || 'info@lignecarre.com';
 
   return (
     <footer className="bg-gray-800 border-t border-gray-700">
@@ -65,8 +76,8 @@ export function Footer() {
               {tFooter('contact')}
             </h3>
             <div className="space-y-2 text-sm text-gray-300 font-light">
-              <p>Montreal, Quebec, Canada</p>
-              <p className="text-gray-400">info@lignecarre.com</p>
+              <p>{address}</p>
+              <p className="text-gray-400">{email}</p>
             </div>
           </div>
         </div>

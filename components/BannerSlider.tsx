@@ -3,40 +3,58 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { urlFor } from '@/sanity/lib/image';
 
-const bannerImages = [
-  '/images/ligne-carre-banner-1.webp',
-  '/images/ligne-carre-banner-2.webp',
-  '/images/ligne-carre-banner-3.webp',
-  '/images/ligne-carre-banner-4.webp',
-  '/images/ligne-carre-banner-5.webp',
-];
+interface BannerImage {
+  _id: string;
+  image: any;
+  altText_en: string;
+  altText_fr: string;
+}
 
-export function BannerSlider() {
+interface BannerSliderProps {
+  images: BannerImage[];
+}
+
+export function BannerSlider({ images }: BannerSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = useTranslations('home');
+  const locale = useLocale() as 'en' | 'fr';
+
+  const bannerImages = images || [];
 
   // Auto-play functionality
   useEffect(() => {
+    if (bannerImages.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % bannerImages.length);
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [bannerImages.length]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
   const goToPrevious = () => {
+    if (bannerImages.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + bannerImages.length) % bannerImages.length);
   };
 
   const goToNext = () => {
+    if (bannerImages.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % bannerImages.length);
   };
+
+  if (bannerImages.length === 0) {
+    return null;
+  }
+
+  const currentImage = bannerImages[currentIndex];
+  const altText = locale === 'fr' ? currentImage.altText_fr : currentImage.altText_en;
+  const imageUrl = urlFor(currentImage.image).width(1920).height(1080).url();
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -51,8 +69,8 @@ export function BannerSlider() {
           className="absolute inset-0 z-0"
         >
           <Image
-            src={bannerImages[currentIndex]}
-            alt={`Ligne Carré Architecture ${currentIndex + 1}`}
+            src={imageUrl}
+            alt={altText}
             fill
             priority={currentIndex === 0}
             className="object-cover"

@@ -5,10 +5,10 @@ import { PortfolioItem } from './PortfolioItem';
 
 interface PortfolioMasonryProps {
   items: Array<{
-    id: number;
+    id: string;
     title: string;
     category: string;
-    image: string;
+    image: any;
   }>;
   selectedCategory: string;
 }
