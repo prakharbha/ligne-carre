@@ -36,7 +36,23 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
               <div className="space-y-8">
                 {content && content.length > 0 ? (
                   <div className="prose prose-lg max-w-none mb-8">
-                    <PortableText value={content} />
+                    <PortableText 
+                      value={content}
+                      components={{
+                        block: {
+                          h2: ({ children }) => (
+                            <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                              {children}
+                            </h2>
+                          ),
+                          normal: ({ children }) => (
+                            <p className="text-base text-foreground leading-relaxed font-light mb-4">
+                              {children}
+                            </p>
+                          ),
+                        },
+                      }}
+                    />
                   </div>
                 ) : (
                   <div>

@@ -26,7 +26,23 @@ export default function PrivacyPage({ pageContent, locale }: PrivacyPageProps) {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="prose prose-lg max-w-none">
-              <PortableText value={content} />
+              <PortableText 
+                value={content}
+                components={{
+                  block: {
+                    h2: ({ children }) => (
+                      <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                        {children}
+                      </h2>
+                    ),
+                    normal: ({ children }) => (
+                      <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-4">
+                        {children}
+                      </p>
+                    ),
+                  },
+                }}
+              />
             </div>
           </AnimatedSection>
         </div>

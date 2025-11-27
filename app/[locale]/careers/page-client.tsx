@@ -72,7 +72,23 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
           <AnimatedSection>
             <div className="prose prose-lg max-w-none">
               {content && content.length > 0 ? (
-                <PortableText value={content} />
+                <PortableText 
+                  value={content}
+                  components={{
+                    block: {
+                      h2: ({ children }) => (
+                        <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                          {children}
+                        </h2>
+                      ),
+                      normal: ({ children }) => (
+                        <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-4">
+                          {children}
+                        </p>
+                      ),
+                    },
+                  }}
+                />
               ) : (
                 <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
                   {t('whyJoin.description')}

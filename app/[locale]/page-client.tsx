@@ -194,10 +194,10 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
               {careersDescription}
             </p>
             <Link
-              href="/careers"
+              href="/contact"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
-              {t('careers.viewOpportunities')}
+              {t('careers.letsTalk')}
             </Link>
           </AnimatedSection>
         </div>
