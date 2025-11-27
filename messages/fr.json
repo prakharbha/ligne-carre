@@ -202,6 +202,15 @@
         "content": "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à contact@lignecarre.com ou via notre page de contact."
       }
     }
+  },
+  "newsletter": {
+    "title": "Restez Informé",
+    "description": "Abonnez-vous à notre newsletter pour les derniers projets, perspectives et actualités architecturales.",
+    "placeholder": "Entrez votre adresse e-mail",
+    "subscribe": "S'abonner",
+    "success": "Merci de vous être abonné !",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
   }
 }
 

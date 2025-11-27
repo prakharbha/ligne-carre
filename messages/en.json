@@ -202,6 +202,15 @@
         "content": "If you have questions about this Privacy Policy, please contact us at contact@lignecarre.com or through our contact page."
       }
     }
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to our newsletter for the latest projects, insights, and architectural news.",
+    "placeholder": "Enter your email address",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing!",
+    "error": "Something went wrong. Please try again.",
+    "privacy": "We respect your privacy. Unsubscribe at any time."
   }
 }
 

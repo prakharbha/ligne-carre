@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { AnimatedSection } from './AnimatedSection';
 
 export function NewsletterCTA() {
+  const t = useTranslations('newsletter');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -22,10 +24,10 @@ export function NewsletterCTA() {
         <AnimatedSection>
           <div className="text-center mb-8">
             <h2 className="font-season-mix text-3xl lg:text-4xl mb-4">
-              Stay Updated
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-300 font-light">
-              Subscribe to our newsletter for the latest projects, insights, and architectural news.
+              {t('description')}
             </p>
           </div>
         </AnimatedSection>
@@ -37,7 +39,7 @@ export function NewsletterCTA() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder={t('placeholder')}
                 required
                 className="flex-1 px-6 py-3 bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-white/40 transition-colors"
               />
@@ -45,7 +47,7 @@ export function NewsletterCTA() {
                 type="submit"
                 className="px-8 py-3 bg-white text-gray-900 font-normal uppercase tracking-wide hover:bg-gray-100 transition-colors duration-300"
               >
-                Subscribe
+                {t('subscribe')}
               </button>
             </div>
             
@@ -55,7 +57,7 @@ export function NewsletterCTA() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-4 text-center text-green-400 text-sm"
               >
-                Thank you for subscribing!
+                {t('success')}
               </motion.p>
             )}
             
@@ -65,7 +67,7 @@ export function NewsletterCTA() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-4 text-center text-red-400 text-sm"
               >
-                Something went wrong. Please try again.
+                {t('error')}
               </motion.p>
             )}
           </form>
@@ -73,7 +75,7 @@ export function NewsletterCTA() {
 
         <AnimatedSection delay={0.3}>
           <p className="text-center text-sm text-gray-400 mt-6">
-            We respect your privacy. Unsubscribe at any time.
+            {t('privacy')}
           </p>
         </AnimatedSection>
       </div>
