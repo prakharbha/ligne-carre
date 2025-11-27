@@ -20,6 +20,32 @@ export default function AboutPageClient({ pageContent, locale }: AboutPageProps)
   const subtitle = pageContent ? getLocalizedField(pageContent, locale, 'subtitle') : t('subtitle');
   const content = pageContent ? getLocalizedField(pageContent, locale, 'content') : null;
 
+  // Helper to check if a block is the Team heading
+  const isTeamHeading = (node: any) => {
+    return node.style === 'h2' && 
+           node.children?.some((child: any) => 
+             typeof child.text === 'string' && 
+             (child.text.toLowerCase().includes('team') || child.text.toLowerCase().includes('équipe'))
+           );
+  };
+
+  // Split content into sections: before Team, Team section, after Team
+  const splitContent = (content: any[]) => {
+    if (!content || content.length === 0) return { before: [], team: [], after: [] };
+    
+    const teamIndex = content.findIndex((block: any) => isTeamHeading(block));
+    
+    if (teamIndex === -1) {
+      return { before: content, team: [], after: [] };
+    }
+    
+    return {
+      before: content.slice(0, teamIndex),
+      team: content.slice(teamIndex),
+      after: [],
+    };
+  };
+
   const portableTextComponents = {
     block: {
       h2: ({ children }: any) => (
@@ -46,37 +72,47 @@ export default function AboutPageClient({ pageContent, locale }: AboutPageProps)
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          {content && content.length > 0 ? (
-            <div className="space-y-16">
-              <AnimatedSection delay={0.1}>
-                <div className="prose prose-lg max-w-none">
-                  <PortableText value={content} components={portableTextComponents} />
-                </div>
-              </AnimatedSection>
-              
-              {/* Team Section with Image - Display image alongside team content */}
-              <AnimatedSection delay={0.3}>
-                <div className="pt-12 border-t border-gray-200">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div className="md:col-span-1">
-                      <div className="relative w-full aspect-square max-w-sm mx-auto md:mx-0">
-                        <Image
-                          src="/images/fadi-abou-sader.webp"
-                          alt={t('team.member.name')}
-                          fill
-                          className="object-cover rounded-lg"
-                          sizes="(max-width: 768px) 100vw, 300px"
-                        />
+          {content && content.length > 0 ? (() => {
+            const { before, team } = splitContent(content);
+            return (
+              <div className="space-y-16">
+                {/* Content before Team section */}
+                {before.length > 0 && (
+                  <AnimatedSection delay={0.1}>
+                    <div className="prose prose-lg max-w-none">
+                      <PortableText value={before} components={portableTextComponents} />
+                    </div>
+                  </AnimatedSection>
+                )}
+                
+                {/* Team Section with Image */}
+                {team.length > 0 && (
+                  <AnimatedSection delay={0.3}>
+                    <div className="pt-12 border-t border-gray-200">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                        <div className="md:col-span-1">
+                          <div className="relative w-full aspect-square max-w-sm mx-auto md:mx-0">
+                            <Image
+                              src="/images/fadi-abou-sader.webp"
+                              alt={t('team.member.name')}
+                              fill
+                              className="object-cover rounded-lg"
+                              sizes="(max-width: 768px) 100vw, 300px"
+                            />
+                          </div>
+                        </div>
+                        <div className="md:col-span-2">
+                          <div className="prose prose-lg max-w-none">
+                            <PortableText value={team} components={portableTextComponents} />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="md:col-span-2">
-                      {/* Team content is already in PortableText above, this is just for layout */}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-          ) : (
+                  </AnimatedSection>
+                )}
+              </div>
+            );
+          })() : (
             // Fallback to translations if no Sanity content
             <div className="space-y-16">
               <AnimatedSection delay={0.1}>
