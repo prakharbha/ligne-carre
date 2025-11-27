@@ -39,14 +39,13 @@ export default function HomePage() {
                 {tNav('about')}
               </h2>
               <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
-                Licensed Architect (OAQ) with 25+ years of experience in Montreal and the MENA area. 
-                Specializing in Sports, Health, Education, and Residential projects.
+                {t('home.about.description')}
               </p>
               <Link
                 href="/about"
                 className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
               >
-                Learn More
+                {t('home.about.learnMore')}
               </Link>
             </AnimatedSection>
           </div>
@@ -63,26 +62,29 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['Sports', 'Health', 'Education', 'Residential'].map((service, index) => (
-              <AnimatedSection key={service} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="relative h-48 mb-6 overflow-hidden">
-                    <Image
-                      src="/images/home-banner.jpg"
-                      alt={service}
-                      fill
-                      className="object-cover"
-                    />
+            {['sports', 'health', 'education', 'residential'].map((serviceKey, index) => {
+              const serviceName = t(`home.services.${serviceKey}`);
+              return (
+                <AnimatedSection key={serviceKey} delay={index * 0.1}>
+                  <div className="text-center">
+                    <div className="relative h-48 mb-6 overflow-hidden">
+                      <Image
+                        src="/images/home-banner.jpg"
+                        alt={serviceName}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="font-season-mix text-xl text-foreground mb-2">
+                      {serviceName}
+                    </h3>
+                    <p className="text-sm text-gray-600 font-light">
+                      {t('home.services.description', { service: serviceName })}
+                    </p>
                   </div>
-                  <h3 className="font-season-mix text-xl text-foreground mb-2">
-                    {service}
-                  </h3>
-                  <p className="text-sm text-gray-600 font-light">
-                    Professional {service.toLowerCase()} architecture services
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -114,10 +116,10 @@ export default function HomePage() {
                       />
                     </div>
                     <h3 className="font-season-mix text-xl text-foreground mb-2">
-                      Featured Project {item}
+                      {t('home.portfolio.featuredProject', { number: item })}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      Architectural excellence in modern design
+                      {t('home.portfolio.description')}
                     </p>
                   </motion.div>
                 </Link>
@@ -130,7 +132,7 @@ export default function HomePage() {
               href="/portfolio"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
-              View All Projects
+              {t('home.portfolio.viewAll')}
             </Link>
           </div>
         </div>
@@ -149,18 +151,18 @@ export default function HomePage() {
             {[1, 2, 3].map((item, index) => (
               <AnimatedSection key={item} delay={index * 0.1}>
                 <div className="bg-gray-50 p-6">
-                  <div className="text-sm text-gray-500 mb-2">November 2025</div>
+                  <div className="text-sm text-gray-500 mb-2">{t('home.news.date')}</div>
                   <h3 className="font-season-mix text-xl text-foreground mb-3">
-                    Latest Update {item}
+                    {t('home.news.latestUpdate', { number: item })}
                   </h3>
                   <p className="text-sm text-gray-600 font-light mb-4">
-                    Stay informed about our latest projects and industry insights.
+                    {t('home.news.description')}
                   </p>
                   <Link
                     href="/news"
                     className="text-sm text-foreground hover:text-gray-600 transition-colors"
                   >
-                    Read More →
+                    {t('home.news.readMore')} →
                   </Link>
                 </div>
               </AnimatedSection>
@@ -177,14 +179,13 @@ export default function HomePage() {
               {tNav('careers')}
             </h2>
             <p className="text-lg text-gray-600 font-light mb-8 max-w-2xl mx-auto">
-              Join our team of talented architects and project managers. 
-              We're always looking for passionate individuals to help shape the future.
+              {t('home.careers.description')}
             </p>
             <Link
               href="/careers"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
-              View Opportunities
+              {t('home.careers.viewOpportunities')}
             </Link>
           </AnimatedSection>
         </div>

@@ -14,11 +14,11 @@ export const routing = defineRouting({
     },
     '/services': {
       en: '/services',
-      fr: '/services',
+      fr: '/nos-services',
     },
     '/portfolio': {
       en: '/portfolio',
-      fr: '/portfolio',
+      fr: '/projets',
     },
     '/news': {
       en: '/news',

@@ -14,6 +14,32 @@
     "slogan": "Ligne Carré: Building the Future ONE line at a time.",
     "cta": "View Our Work",
     "featured": "Featured Projects",
+    "about": {
+      "description": "Licensed Architect (OAQ) with 25+ years of experience in Montreal and the MENA area. Specializing in Sports, Health, Education, and Residential projects.",
+      "learnMore": "Learn More"
+    },
+    "services": {
+      "sports": "Sports",
+      "health": "Health",
+      "education": "Education",
+      "residential": "Residential",
+      "description": "Professional {service} architecture services"
+    },
+    "portfolio": {
+      "featuredProject": "Featured Project {number}",
+      "description": "Architectural excellence in modern design",
+      "viewAll": "View All Projects"
+    },
+    "news": {
+      "date": "November 2025",
+      "latestUpdate": "Latest Update {number}",
+      "description": "Stay informed about our latest projects and industry insights.",
+      "readMore": "Read More"
+    },
+    "careers": {
+      "description": "Join our team of talented architects and project managers. We're always looking for passionate individuals to help shape the future.",
+      "viewOpportunities": "View Opportunities"
+    },
     "seo": {
       "title": "Ligne Carré Inc. – Architect in Montreal | Architecture & Project Management",
       "description": "Ligne Carré Inc. provides architectural design, interior design and full project management services in Montreal. Human, precise and accessible expertise for residential, Institutional, commercial and Cultural / Sports projects."

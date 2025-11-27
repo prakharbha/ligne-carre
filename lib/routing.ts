@@ -9,11 +9,11 @@ const pathnames: Record<string, string | { en: string; fr: string }> = {
   },
   '/services': {
     en: '/services',
-    fr: '/services',
+    fr: '/nos-services',
   },
   '/portfolio': {
     en: '/portfolio',
-    fr: '/portfolio',
+    fr: '/projets',
   },
   '/news': {
     en: '/news',

@@ -14,6 +14,32 @@
     "slogan": "Ligne Carré : Construire l'avenir ligne après ligne.",
     "cta": "Voir Nos Projets",
     "featured": "Projets en Vedette",
+    "about": {
+      "description": "Architecte agréé (OAQ) avec plus de 25 ans d'expérience à Montréal et dans la région MENA. Spécialisé dans les projets sportifs, de santé, d'éducation et résidentiels.",
+      "learnMore": "En savoir plus"
+    },
+    "services": {
+      "sports": "Sports",
+      "health": "Santé",
+      "education": "Éducation",
+      "residential": "Résidentiel",
+      "description": "Services d'architecture professionnels pour {service}"
+    },
+    "portfolio": {
+      "featuredProject": "Projet en vedette {number}",
+      "description": "Excellence architecturale en design moderne",
+      "viewAll": "Voir tous les projets"
+    },
+    "news": {
+      "date": "Novembre 2025",
+      "latestUpdate": "Dernière mise à jour {number}",
+      "description": "Restez informé de nos derniers projets et perspectives de l'industrie.",
+      "readMore": "Lire la suite"
+    },
+    "careers": {
+      "description": "Rejoignez notre équipe d'architectes et de gestionnaires de projets talentueux. Nous recherchons toujours des personnes passionnées pour aider à façonner l'avenir.",
+      "viewOpportunities": "Voir les opportunités"
+    },
     "seo": {
       "title": "Ligne Carré Inc. – Architecte à Montréal | Architecture & Gestion de Projet",
       "description": "Ligne Carré Inc. offre des services de conception architecturale, de design intérieur et de gestion complète de projets à Montréal. Une expertise humaine, précise et accessible pour des projets résidentiels, institutionnels, commerciaux ainsi que culturels et sportifs."
