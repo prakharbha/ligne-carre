@@ -345,6 +345,311 @@ async function seedData() {
     // 5. Create Page Content
     console.log('📝 Creating Page Content...');
     
+    // About Page - Delete all existing about documents
+    const existingAboutDocs = await client.fetch('*[_type == "pageContent" && pageType == "about"]');
+    if (existingAboutDocs && existingAboutDocs.length > 0) {
+      console.log(`🗑️  Deleting ${existingAboutDocs.length} existing About document(s)...`);
+      for (const doc of existingAboutDocs) {
+        await client.delete(doc._id);
+      }
+      console.log('✅ Existing About documents deleted\n');
+    }
+    
+    const aboutContent = {
+      _type: 'pageContent',
+      pageType: 'about',
+      title_en: 'ABOUT',
+      title_fr: 'À PROPOS',
+      subtitle_en: 'Our Story, Philosophy & Team',
+      subtitle_fr: 'Notre Histoire, Philosophie & Équipe',
+      content_en: addKeysToPortableText([
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Our History',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Ligne Carré Inc. is an architecture and project management firm offering innovative, customized, and high-quality architectural services for residential, commercial, and institutional projects. With extensive international experience in architectural design and multidisciplinary project coordination, our firm delivers solutions that combine creativity, technical precision, and full compliance with building codes and standards.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Based in Montreal, Ligne Carré Inc. supports clients through every stage of the process, from concept design and architectural drawings to project delivery, with a strong focus on cost optimization, schedule control, and tailored responses to each project's unique needs.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Committed to sustainable development and urban quality, we strive to create architectural projects that enhance the living environment and contribute to long-term community value.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Our Philosophy',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'At Ligne Carré Inc., we position ourselves as your trusted partner for architecture, interior design, and project management in Montreal. Whether your needs involve residential architecture, commercial spaces, sports or institutional facilities, we offer complete, personalized services designed to transform ideas into successful, buildable solutions.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Our approach is based on three pillars:',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Creativity – thoughtful design that improves functionality, aesthetics, and user experience.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Technical Expertise – precise drawings, efficient coordination, and rigorous quality control.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Professionalism, commitment to deadlines, budget management, and transparent communication.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'We invite you to explore our portfolio and discover how Ligne Carré Inc. brings projects to life through innovation, precision, and a human-centered approach.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Team',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          style: 'h3',
+          children: [
+            {
+              _type: 'span',
+              text: 'Fadi Abou-Sader.',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Architect OAQ – Project Manager | MGPA',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Fadi Abou-Sader is a licensed architect and a member of both the Ordre des Architectes du Québec (OAQ) and the Order of Architects of Beirut, with more than 28 years of experience in Quebec, Lebanon, and the MENA region.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "A graduate of the Lebanese Academy of Fine Arts and holder of a master's degree in Project Planning and Management from the University of Montreal, Fadi has directed numerous residential, institutional, sports, and commercial projects, combining architectural innovation, technical expertise, and rigorous project management.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'As the founder of Ligne Carré Inc., he guides clients from the initial idea to final delivery with a human, accessible, and precise approach, where every line matters.',
+            },
+          ],
+          style: 'normal',
+        },
+      ], 'about-en-'),
+      content_fr: addKeysToPortableText([
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Notre Histoire',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Ligne Carré Inc. est une firme spécialisée en architecture et en gestion de projet, offrant des solutions innovantes, fonctionnelles et personnalisées pour les projets résidentiels, institutionnels, sportifs et commerciaux. Forte d'une expertise internationale, notre entreprise met de l'avant une approche qui allie créativité, précision technique, et respect rigoureux des normes en vigueur.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Basée à Montréal, Ligne Carré Inc. accompagne ses clients à chaque étape : de la conception architecturale à la réalisation, tout en assurant l'optimisation des coûts, le respect des échéanciers et l'adaptation aux besoins spécifiques de chaque projet. Nous avons à cœur de contribuer à un développement urbain durable et à l'amélioration de la qualité du cadre bâti.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Notre Philosophie',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Ligne Carré Inc. se positionne comme votre partenaire de confiance en architecture et en gestion de projet au Québec. Nous offrons des services complets, flexibles et sur mesure pour transformer vos idées en projets concrets — qu'il s'agisse de bâtiments résidentiels, commerciaux ou institutionnels.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Notre démarche repose sur une combinaison d'innovation, d'expertise technique, et d'une approche humaine et accessible. Nous mettons tout en œuvre pour garantir le succès de chaque étape : conception, coordination, suivi de chantier et livraison. À Ligne Carré Inc., nous nous engageons à respecter les délais, maîtriser les budgets, et dépasser vos attentes. Découvrez notre portfolio et voyez comment nous donnons vie à des projets qui se distinguent par leur qualité, leur précision et leur impact.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Équipe',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          style: 'h3',
+          children: [
+            {
+              _type: 'span',
+              text: 'Fadi Abou-Sader.',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Architecte OAQ – Gestionnaire de Projets | MGPA',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Fadi Abou-Sader est architecte, membre de l'Ordre des Architectes du Québec (OAQ) et de l'Ordre des Architectes de Beyrouth, cumulant plus de 28 ans d'expérience au Liban, au Québec et dans la région MENA.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Diplômé de l'Académie Libanaise des Beaux-Arts et titulaire d'une maîtrise en montage et gestion de projet de l'Université de Montréal, il a dirigé des projets résidentiels, institutionnels et sportifs, alliant architecture innovante et gestion rigoureuse. Fondateur de Ligne Carré Inc., il accompagne ses clients du premier croquis à la livraison finale, avec une approche humaine, accessible, et orientée vers la précision — parce que chaque ligne compte.",
+            },
+          ],
+          style: 'normal',
+        },
+      ], 'about-fr-'),
+    };
+    await client.create(aboutContent);
+    console.log('✅ Created About page content');
+    
     // Careers Page - Delete all existing careers documents
     const existingCareersDocs = await client.fetch('*[_type == "pageContent" && pageType == "careers"]');
     if (existingCareersDocs && existingCareersDocs.length > 0) {

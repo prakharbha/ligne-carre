@@ -11,6 +11,7 @@ export default defineType({
       type: 'string',
       options: {
         list: [
+          { title: 'About', value: 'about' },
           { title: 'Careers', value: 'careers' },
           { title: 'Contact', value: 'contact' },
           { title: 'Privacy Policy', value: 'privacy' },
