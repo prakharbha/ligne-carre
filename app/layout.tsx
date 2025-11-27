@@ -3,7 +3,11 @@ import { SeasonMix, SeasonSans } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ligne Carré - Architecture and Project Management',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ligne-carre.vercel.app'),
+  title: {
+    default: 'Ligne Carré - Architecture and Project Management',
+    template: '%s | Ligne Carré',
+  },
   description: 'Ligne Carré: where precision begins with every line.',
   icons: {
     icon: [

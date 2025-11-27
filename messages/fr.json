@@ -13,7 +13,11 @@
     "subtitle": "Architecture et Gestion de Projets",
     "slogan": "Ligne Carré : Construire l'avenir ligne après ligne.",
     "cta": "Voir Nos Projets",
-    "featured": "Projets en Vedette"
+    "featured": "Projets en Vedette",
+    "seo": {
+      "title": "Ligne Carré Inc. – Architecte à Montréal | Architecture & Gestion de Projet",
+      "description": "Ligne Carré Inc. offre des services de conception architecturale, de design intérieur et de gestion complète de projets à Montréal. Une expertise humaine, précise et accessible pour des projets résidentiels, institutionnels, commerciaux ainsi que culturels et sportifs."
+    }
   },
   "about": {
     "title": "À PROPOS",

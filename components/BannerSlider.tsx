@@ -10,6 +10,7 @@ const bannerImages = [
   '/images/ligne-carre-banner-2.webp',
   '/images/ligne-carre-banner-3.webp',
   '/images/ligne-carre-banner-4.webp',
+  '/images/ligne-carre-banner-5.webp',
 ];
 
 export function BannerSlider() {

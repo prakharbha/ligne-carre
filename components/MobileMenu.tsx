@@ -1,16 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  navItems: Array<{ href: string; label: string }>;
+  navItems: Array<{ href: '/' | '/about' | '/services' | '/portfolio' | '/news' | '/careers' | '/contact'; label: string }>;
   locale: string;
-  onLanguageSwitch: (locale: string) => void;
+  onLanguageSwitch: (locale: 'en' | 'fr') => void;
 }
 
 export function MobileMenu({ isOpen, onClose, navItems, locale, onLanguageSwitch }: MobileMenuProps) {

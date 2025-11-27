@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { getLocalizedPath } from '@/lib/routing';
 
 export function Footer() {
   const t = useTranslations('nav');
@@ -11,10 +10,10 @@ export function Footer() {
   const locale = useLocale() as 'en' | 'fr';
 
   const footerNavItems = [
-    { href: getLocalizedPath('/about', locale), label: t('about') },
-    { href: getLocalizedPath('/services', locale), label: t('services') },
-    { href: getLocalizedPath('/portfolio', locale), label: t('portfolio') },
-    { href: getLocalizedPath('/contact', locale), label: t('contact') },
+    { href: '/about' as const, label: t('about') },
+    { href: '/services' as const, label: t('services') },
+    { href: '/portfolio' as const, label: t('portfolio') },
+    { href: '/contact' as const, label: t('contact') },
   ];
 
   return (

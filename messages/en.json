@@ -13,7 +13,11 @@
     "subtitle": "Architecture and Project Management",
     "slogan": "Ligne Carré: Building the Future ONE line at a time.",
     "cta": "View Our Work",
-    "featured": "Featured Projects"
+    "featured": "Featured Projects",
+    "seo": {
+      "title": "Ligne Carré Inc. – Architect in Montreal | Architecture & Project Management",
+      "description": "Ligne Carré Inc. provides architectural design, interior design and full project management services in Montreal. Human, precise and accessible expertise for residential, Institutional, commercial and Cultural / Sports projects."
+    }
   },
   "about": {
     "title": "ABOUT",

@@ -13,13 +13,13 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: getLocalizedPath('/', locale), label: t('home'), route: '/' as const },
-    { href: getLocalizedPath('/about', locale), label: t('about'), route: '/about' as const },
-    { href: getLocalizedPath('/services', locale), label: t('services'), route: '/services' as const },
-    { href: getLocalizedPath('/portfolio', locale), label: t('portfolio'), route: '/portfolio' as const },
-    { href: getLocalizedPath('/news', locale), label: t('news'), route: '/news' as const },
-    { href: getLocalizedPath('/careers', locale), label: t('careers'), route: '/careers' as const },
-    { href: getLocalizedPath('/contact', locale), label: t('contact'), route: '/contact' as const },
+    { href: '/' as const, label: t('home'), route: '/' as const },
+    { href: '/about' as const, label: t('about'), route: '/about' as const },
+    { href: '/services' as const, label: t('services'), route: '/services' as const },
+    { href: '/portfolio' as const, label: t('portfolio'), route: '/portfolio' as const },
+    { href: '/news' as const, label: t('news'), route: '/news' as const },
+    { href: '/careers' as const, label: t('careers'), route: '/careers' as const },
+    { href: '/contact' as const, label: t('contact'), route: '/contact' as const },
   ];
 
   const switchLanguage = (newLocale: 'en' | 'fr') => {
