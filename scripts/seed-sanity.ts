@@ -85,6 +85,15 @@ async function seedData() {
 
     // 2. Create Services
     console.log('📝 Creating Services...');
+    const existingServices = await client.fetch('*[_type == "service"]');
+    if (existingServices && existingServices.length > 0) {
+      console.log(`🗑️  Deleting ${existingServices.length} existing service(s)...`);
+      for (const service of existingServices) {
+        await client.delete(service._id);
+      }
+      console.log('✅ Existing services deleted\n');
+    }
+    
     const services = [
       {
         _type: 'service',
@@ -131,6 +140,15 @@ async function seedData() {
 
     // 3. Create Portfolio Items
     console.log('📝 Creating Portfolio Items...');
+    const existingPortfolioItems = await client.fetch('*[_type == "portfolioItem"]');
+    if (existingPortfolioItems && existingPortfolioItems.length > 0) {
+      console.log(`🗑️  Deleting ${existingPortfolioItems.length} existing portfolio item(s)...`);
+      for (const item of existingPortfolioItems) {
+        await client.delete(item._id);
+      }
+      console.log('✅ Existing portfolio items deleted\n');
+    }
+    
     const portfolioItems = [
       {
         _type: 'portfolioItem',
@@ -205,6 +223,15 @@ async function seedData() {
 
     // 4. Create News Articles
     console.log('📝 Creating News Articles...');
+    const existingNewsArticles = await client.fetch('*[_type == "newsArticle"]');
+    if (existingNewsArticles && existingNewsArticles.length > 0) {
+      console.log(`🗑️  Deleting ${existingNewsArticles.length} existing news article(s)...`);
+      for (const article of existingNewsArticles) {
+        await client.delete(article._id);
+      }
+      console.log('✅ Existing news articles deleted\n');
+    }
+    
     const newsArticles = [
       {
         _type: 'newsArticle',
@@ -318,10 +345,14 @@ async function seedData() {
     // 5. Create Page Content
     console.log('📝 Creating Page Content...');
     
-    // Careers Page
-    const existingCareers = await client.fetch('*[_type == "pageContent" && pageType == "careers"][0]');
-    if (existingCareers) {
-      await client.delete(existingCareers._id);
+    // Careers Page - Delete all existing careers documents
+    const existingCareersDocs = await client.fetch('*[_type == "pageContent" && pageType == "careers"]');
+    if (existingCareersDocs && existingCareersDocs.length > 0) {
+      console.log(`🗑️  Deleting ${existingCareersDocs.length} existing Careers document(s)...`);
+      for (const doc of existingCareersDocs) {
+        await client.delete(doc._id);
+      }
+      console.log('✅ Existing Careers documents deleted\n');
     }
     
     const careersContent = {
@@ -419,10 +450,14 @@ async function seedData() {
     await client.create(careersContent);
     console.log('✅ Created Careers page content');
 
-    // Contact Page
-    const existingContact = await client.fetch('*[_type == "pageContent" && pageType == "contact"][0]');
-    if (existingContact) {
-      await client.delete(existingContact._id);
+    // Contact Page - Delete all existing contact documents
+    const existingContactDocs = await client.fetch('*[_type == "pageContent" && pageType == "contact"]');
+    if (existingContactDocs && existingContactDocs.length > 0) {
+      console.log(`🗑️  Deleting ${existingContactDocs.length} existing Contact document(s)...`);
+      for (const doc of existingContactDocs) {
+        await client.delete(doc._id);
+      }
+      console.log('✅ Existing Contact documents deleted\n');
     }
     
     const contactContent = {
