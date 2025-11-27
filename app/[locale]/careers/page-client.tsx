@@ -71,7 +71,23 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="prose prose-lg max-w-none">
-              <PortableText value={content} />
+              {content && content.length > 0 ? (
+                <PortableText value={content} />
+              ) : (
+                <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
+                  {t('whyJoin.description')}
+                </p>
+              )}
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <div className="pt-8">
+              <Link
+                href="/contact"
+                className="inline-block px-8 py-4 border-2 border-foreground text-foreground font-light hover:bg-foreground hover:text-white transition-all duration-300"
+              >
+                {t('contactUs')}
+              </Link>
             </div>
           </AnimatedSection>
         </div>

@@ -5,7 +5,16 @@
 // Banner Images
 export const bannerImagesQuery = `*[_type == "bannerImage"] | order(order asc) {
   _id,
-  image,
+  image {
+    asset-> {
+      _id,
+      _type,
+      url,
+      metadata {
+        dimensions
+      }
+    }
+  },
   order,
   altText_en,
   altText_fr
@@ -27,7 +36,16 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   _id,
   title_en,
   title_fr,
-  image,
+  image {
+    asset-> {
+      _id,
+      _type,
+      url,
+      metadata {
+        dimensions
+      }
+    }
+  },
   category,
   order
 }`;
@@ -42,7 +60,16 @@ export const newsArticlesQuery = `*[_type == "newsArticle"] | order(date desc) {
   date,
   excerpt_en,
   excerpt_fr,
-  featuredImage
+  featuredImage {
+    asset-> {
+      _id,
+      _type,
+      url,
+      metadata {
+        dimensions
+      }
+    }
+  }
 }`;
 
 // Single News Article by slug
@@ -57,7 +84,16 @@ export const newsArticleBySlugQuery = `*[_type == "newsArticle" && (slug_en.curr
   excerpt_fr,
   content_en,
   content_fr,
-  featuredImage
+  featuredImage {
+    asset-> {
+      _id,
+      _type,
+      url,
+      metadata {
+        dimensions
+      }
+    }
+  }
 }`;
 
 // Page Content

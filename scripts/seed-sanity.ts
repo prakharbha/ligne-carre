@@ -306,6 +306,11 @@ async function seedData() {
     console.log('📝 Creating Page Content...');
     
     // Careers Page
+    const existingCareers = await client.fetch('*[_type == "pageContent" && pageType == "careers"][0]');
+    if (existingCareers) {
+      await client.delete(existingCareers._id);
+    }
+    
     const careersContent = {
       _type: 'pageContent',
       pageType: 'careers',
@@ -316,10 +321,40 @@ async function seedData() {
       content_en: [
         {
           _type: 'block',
+          style: 'h2',
           children: [
             {
               _type: 'span',
-              text: 'Join our team of talented architects and project managers. We are always looking for passionate individuals to help shape the future.',
+              text: 'Why Join Us',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'Join our team of talented architects and project managers. We are always looking for passionate individuals to help shape the future of architecture and design.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Open Positions',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'We are currently looking for experienced architects, project managers, and design professionals to join our growing team. If you are passionate about architecture and want to work on exciting projects, we would love to hear from you.',
             },
           ],
           style: 'normal',
@@ -328,10 +363,40 @@ async function seedData() {
       content_fr: [
         {
           _type: 'block',
+          style: 'h2',
           children: [
             {
               _type: 'span',
-              text: "Rejoignez notre équipe d'architectes et de gestionnaires de projets talentueux. Nous recherchons toujours des personnes passionnées pour aider à façonner l'avenir.",
+              text: 'Pourquoi Nous Rejoindre',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Rejoignez notre équipe d'architectes et de gestionnaires de projets talentueux. Nous recherchons toujours des personnes passionnées pour aider à façonner l'avenir de l'architecture et du design.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Postes Ouverts',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Nous recherchons actuellement des architectes expérimentés, des gestionnaires de projets et des professionnels du design pour rejoindre notre équipe en croissance. Si vous êtes passionné par l'architecture et souhaitez travailler sur des projets passionnants, nous serions ravis d'avoir de vos nouvelles.",
             },
           ],
           style: 'normal',
@@ -342,6 +407,11 @@ async function seedData() {
     console.log('✅ Created Careers page content');
 
     // Contact Page
+    const existingContact = await client.fetch('*[_type == "pageContent" && pageType == "contact"][0]');
+    if (existingContact) {
+      await client.delete(existingContact._id);
+    }
+    
     const contactContent = {
       _type: 'pageContent',
       pageType: 'contact',
@@ -350,6 +420,16 @@ async function seedData() {
       subtitle_en: "Let's Discuss Your Project",
       subtitle_fr: "Discutons de Votre Projet",
       content_en: [
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Get in Touch',
+            },
+          ],
+        },
         {
           _type: 'block',
           children: [
@@ -362,6 +442,16 @@ async function seedData() {
         },
       ],
       content_fr: [
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Entrer en Contact',
+            },
+          ],
+        },
         {
           _type: 'block',
           children: [

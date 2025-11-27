@@ -34,42 +34,48 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <AnimatedSection delay={0.1}>
               <div className="space-y-8">
-                {content ? (
-                  <div className="prose prose-lg max-w-none">
+                {content && content.length > 0 ? (
+                  <div className="prose prose-lg max-w-none mb-8">
                     <PortableText value={content} />
                   </div>
                 ) : (
-                  <>
-                    <div>
-                      <h2 className="font-season-mix text-2xl text-foreground mb-4">
-                        {t('getInTouch.title')}
-                      </h2>
-                      <p className="text-base text-foreground leading-relaxed font-light mb-6">
-                        {t('getInTouch.description')}
-                      </p>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="font-season-mix text-lg text-foreground mb-2">
-                          {t('office.label')}
-                        </h3>
-                        <p className="text-sm text-gray-600 font-light">{address}</p>
-                      </div>
-                      <div>
-                        <h3 className="font-season-mix text-lg text-foreground mb-2">
-                          {t('email.label')}
-                        </h3>
-                        <p className="text-sm text-gray-600 font-light">{email}</p>
-                      </div>
-                      <div>
-                        <h3 className="font-season-mix text-lg text-foreground mb-2">
-                          {t('phone.label')}
-                        </h3>
-                        <p className="text-sm text-gray-600 font-light">{phone}</p>
-                      </div>
-                    </div>
-                  </>
+                  <div>
+                    <h2 className="font-season-mix text-2xl text-foreground mb-4">
+                      {t('getInTouch.title')}
+                    </h2>
+                    <p className="text-base text-foreground leading-relaxed font-light mb-6">
+                      {t('getInTouch.description')}
+                    </p>
+                  </div>
                 )}
+                <div className="space-y-4 pt-4 border-t border-gray-200">
+                  <div>
+                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                      {t('office.label')}
+                    </h3>
+                    <p className="text-sm text-gray-600 font-light">{address || t('office.value')}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                      {t('email.label')}
+                    </h3>
+                    <p className="text-sm text-gray-600 font-light">
+                      <a href={`mailto:${email || t('email.value')}`} className="hover:text-foreground transition-colors">
+                        {email || t('email.value')}
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                      {t('phone.label')}
+                    </h3>
+                    <p className="text-sm text-gray-600 font-light">
+                      <a href={`tel:${phone || t('phone.value')}`} className="hover:text-foreground transition-colors">
+                        {phone || t('phone.value')}
+                      </a>
+                    </p>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
 
