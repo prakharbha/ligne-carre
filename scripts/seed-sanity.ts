@@ -29,12 +29,13 @@ const client = createClient({
 
 // Helper function to add _key properties to Portable Text blocks
 function addKeysToPortableText(blocks: any[], prefix: string = ''): any[] {
+  const timestamp = Date.now();
   return blocks.map((block, index) => ({
     ...block,
-    _key: `${prefix}block-${index}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    _key: `${prefix}block-${index}-${timestamp}-${Math.random().toString(36).substr(2, 9)}`,
     children: block.children?.map((child: any, childIndex: number) => ({
       ...child,
-      _key: `${prefix}span-${index}-${childIndex}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      _key: `${prefix}span-${index}-${childIndex}-${timestamp}-${Math.random().toString(36).substr(2, 9)}`,
     })) || [],
   }));
 }
@@ -479,7 +480,16 @@ async function seedData() {
     await client.create(contactContent);
     console.log('✅ Created Contact page content');
 
-    // Privacy Page
+    // Privacy Page - Delete all existing privacy documents first
+    const existingPrivacyDocs = await client.fetch('*[_type == "pageContent" && pageType == "privacy"]');
+    if (existingPrivacyDocs && existingPrivacyDocs.length > 0) {
+      console.log(`🗑️  Deleting ${existingPrivacyDocs.length} existing Privacy Policy document(s)...`);
+      for (const doc of existingPrivacyDocs) {
+        await client.delete(doc._id);
+      }
+      console.log('✅ Existing Privacy Policy documents deleted\n');
+    }
+    
     const privacyContent = {
       _type: 'pageContent',
       pageType: 'privacy',
@@ -490,10 +500,100 @@ async function seedData() {
       content_en: addKeysToPortableText([
         {
           _type: 'block',
+          style: 'h2',
           children: [
             {
               _type: 'span',
-              text: 'This Privacy Policy describes how we collect, use, and protect your personal information when you use our website.',
+              text: 'Introduction',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'This Privacy Policy describes how Ligne Carré Inc. ("we", "our", or "us") collects, uses, and protects your personal information when you use our website. By using our website, you agree to the collection and use of information in accordance with this policy.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Information We Collect',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'We may collect personal information that you voluntarily provide to us when you contact us through our website, including your name, email address, phone number, and any other information you choose to provide.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'How We Use Your Information',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'We use the information we collect to respond to your inquiries, provide our services, improve our website, and communicate with you about our services and projects.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Data Security',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no method of transmission over the Internet is 100% secure.',
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Contact Us',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: 'If you have any questions about this Privacy Policy, please contact us at info@lignecarre.com.',
             },
           ],
           style: 'normal',
@@ -502,10 +602,100 @@ async function seedData() {
       content_fr: addKeysToPortableText([
         {
           _type: 'block',
+          style: 'h2',
           children: [
             {
               _type: 'span',
-              text: "Cette Politique de Confidentialité décrit comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez notre site web.",
+              text: 'Introduction',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Cette Politique de Confidentialité décrit comment Ligne Carré Inc. (« nous », « notre » ou « nos ») collecte, utilise et protège vos informations personnelles lorsque vous utilisez notre site web. En utilisant notre site web, vous acceptez la collecte et l'utilisation d'informations conformément à cette politique.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Informations que Nous Collectons',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Nous pouvons collecter des informations personnelles que vous nous fournissez volontairement lorsque vous nous contactez via notre site web, y compris votre nom, votre adresse e-mail, votre numéro de téléphone et toute autre information que vous choisissez de fournir.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: "Comment Nous Utilisons Vos Informations",
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Nous utilisons les informations que nous collectons pour répondre à vos demandes, fournir nos services, améliorer notre site web et communiquer avec vous concernant nos services et projets.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Sécurité des Données',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Nous prenons des mesures raisonnables pour protéger vos informations personnelles contre l'accès non autorisé, l'utilisation ou la divulgation. Cependant, aucune méthode de transmission sur Internet n'est sécurisée à 100%.",
+            },
+          ],
+          style: 'normal',
+        },
+        {
+          _type: 'block',
+          style: 'h2',
+          children: [
+            {
+              _type: 'span',
+              text: 'Contactez-Nous',
+            },
+          ],
+        },
+        {
+          _type: 'block',
+          children: [
+            {
+              _type: 'span',
+              text: "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à info@lignecarre.com.",
             },
           ],
           style: 'normal',
