@@ -2,11 +2,11 @@
   "nav": {
     "home": "Accueil",
     "about": "À propos",
-    "services": "Services",
-    "portfolio": "Portfolio",
+    "services": "Nos Services",
+    "portfolio": "Projets",
     "news": "Actualités",
     "careers": "Carrières",
-    "contact": "Contact"
+    "contact": "Nous Contacter"
   },
   "home": {
     "title": "Ligne Carré",
