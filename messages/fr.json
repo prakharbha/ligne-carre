@@ -160,6 +160,15 @@
       "name": "Nom",
       "email": "Courriel",
       "phone": "Téléphone",
+      "inquiryType": "Type de Demande",
+      "inquiryTypes": {
+        "general": "Demande Générale",
+        "newProject": "Nouveau Projet",
+        "existingProject": "Projet Existant",
+        "consultation": "Consultation",
+        "quote": "Devis/Estimation",
+        "other": "Autre"
+      },
       "message": "Message",
       "submit": "Envoyer le Message"
     }

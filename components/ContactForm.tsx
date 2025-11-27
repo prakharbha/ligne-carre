@@ -10,6 +10,7 @@ export function ContactForm() {
     name: '',
     email: '',
     phone: '',
+    inquiryType: '',
     message: '',
   });
 
@@ -19,7 +20,7 @@ export function ContactForm() {
     console.log('Form submitted:', formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -76,6 +77,28 @@ export function ContactForm() {
           onChange={handleChange}
           className="w-full px-4 py-3 border border-gray-300 focus:border-foreground focus:outline-none transition-colors duration-300 bg-white text-foreground font-light"
         />
+      </div>
+
+      <div>
+        <label htmlFor="inquiryType" className="block text-sm font-light text-foreground mb-2">
+          {t('inquiryType')}
+        </label>
+        <select
+          id="inquiryType"
+          name="inquiryType"
+          value={formData.inquiryType}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 border border-gray-300 focus:border-foreground focus:outline-none transition-colors duration-300 bg-white text-foreground font-light"
+        >
+          <option value="">-- {t('inquiryType')} --</option>
+          <option value="general">{t('inquiryTypes.general')}</option>
+          <option value="newProject">{t('inquiryTypes.newProject')}</option>
+          <option value="existingProject">{t('inquiryTypes.existingProject')}</option>
+          <option value="consultation">{t('inquiryTypes.consultation')}</option>
+          <option value="quote">{t('inquiryTypes.quote')}</option>
+          <option value="other">{t('inquiryTypes.other')}</option>
+        </select>
       </div>
 
       <div>

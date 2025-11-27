@@ -160,6 +160,15 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
+      "inquiryType": "Inquiry Type",
+      "inquiryTypes": {
+        "general": "General Inquiry",
+        "newProject": "New Project",
+        "existingProject": "Existing Project",
+        "consultation": "Consultation",
+        "quote": "Quote/Estimate",
+        "other": "Other"
+      },
       "message": "Message",
       "submit": "Send Message"
     }
