@@ -65,7 +65,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* Services Section Preview */}
-      <section className="py-24 lg:py-32 bg-[#cccccc]">
+      <section className="py-24 lg:py-32 bg-[#dddddd]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
@@ -151,7 +151,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* News Section Preview */}
-      <section className="py-24 lg:py-32 bg-[#cccccc]">
+      <section className="py-24 lg:py-32 bg-[#dddddd]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
