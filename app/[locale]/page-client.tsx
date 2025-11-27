@@ -90,7 +90,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
                     <h3 className="font-medium text-xl text-foreground mb-2">
                       {serviceName}
                     </h3>
-                    <p className="text-sm text-gray-600 font-light">
+                    <p className="text-base text-gray-600 font-light">
                       {t('services.description', { service: serviceName })}
                     </p>
                   </div>
@@ -130,7 +130,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
                     <h3 className="font-medium text-xl text-foreground mb-2">
                       {t('portfolio.featuredProject', { number: item })}
                     </h3>
-                    <p className="text-sm text-gray-600 font-light">
+                    <p className="text-base text-gray-600 font-light">
                       {t('portfolio.description')}
                     </p>
                   </motion.div>

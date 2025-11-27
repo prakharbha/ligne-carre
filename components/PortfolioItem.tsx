@@ -37,7 +37,7 @@ export function PortfolioItem({ item }: PortfolioItemProps) {
       <h3 className="font-medium text-xl text-foreground mb-2">
         {item.title}
       </h3>
-      <p className="text-sm text-gray-600 font-light capitalize">
+      <p className="text-base text-gray-600 font-light capitalize">
         {item.category}
       </p>
     </motion.div>
