@@ -9,6 +9,7 @@ export function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: '',
   });
 
@@ -59,6 +60,20 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          className="w-full px-4 py-3 border border-gray-300 focus:border-foreground focus:outline-none transition-colors duration-300 bg-white text-foreground font-light"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phone" className="block text-sm font-light text-foreground mb-2">
+          {t('phone')}
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
           className="w-full px-4 py-3 border border-gray-300 focus:border-foreground focus:outline-none transition-colors duration-300 bg-white text-foreground font-light"
         />
       </div>

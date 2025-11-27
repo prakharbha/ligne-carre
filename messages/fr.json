@@ -159,6 +159,7 @@
     "form": {
       "name": "Nom",
       "email": "Courriel",
+      "phone": "Téléphone",
       "message": "Message",
       "submit": "Envoyer le Message"
     }
