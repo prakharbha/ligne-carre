@@ -118,28 +118,38 @@ async function uploadBannerImages() {
     if (portfolioItems.length === 0) {
       console.log('⚠️  No portfolio items found. Run seed:sanity first.\n');
     } else {
-      // Use home-banner.jpg as placeholder for all portfolio items
-      console.log('📤 Uploading placeholder image for portfolio items...');
-      const portfolioImageAsset = await uploadImage('public/images/home-banner.jpg', 'portfolio-placeholder.jpg');
+      // Check which items are missing images
+      const itemsWithoutImages = portfolioItems.filter((item: any) => !item.image || !item.image.asset);
       
-      for (const item of portfolioItems) {
-        console.log(`📝 Updating portfolio item: ${item.title_en || item._id}...`);
-        await client
-          .patch(item._id)
-          .set({
-            image: {
-              _type: 'image',
-              asset: {
-                _type: 'reference',
-                _ref: portfolioImageAsset._id,
-              },
-            },
-          })
-          .commit();
-        console.log(`✅ Updated portfolio item: ${item.title_en || item._id}\n`);
+      if (itemsWithoutImages.length > 0) {
+        console.log(`📤 Found ${itemsWithoutImages.length} portfolio items without images. Uploading placeholder...`);
+        const portfolioImageAsset = await uploadImage('public/images/home-banner.jpg', 'portfolio-placeholder.jpg');
+        
+        for (const item of itemsWithoutImages) {
+          console.log(`📝 Updating portfolio item: ${item.title_en || item._id}...`);
+          try {
+            await client
+              .patch(item._id)
+              .set({
+                image: {
+                  _type: 'image',
+                  asset: {
+                    _type: 'reference',
+                    _ref: portfolioImageAsset._id,
+                  },
+                },
+              })
+              .commit();
+            console.log(`✅ Updated portfolio item: ${item.title_en || item._id}\n`);
+          } catch (error: any) {
+            console.error(`❌ Error updating ${item.title_en || item._id}:`, error.message);
+          }
+        }
+        
+        console.log(`✅ Updated ${itemsWithoutImages.length} portfolio items with images\n`);
+      } else {
+        console.log('✅ All portfolio items already have images\n');
       }
-      
-      console.log(`✅ Updated ${portfolioItems.length} portfolio items with images\n`);
     }
 
     console.log('🎉 All images uploaded successfully!');

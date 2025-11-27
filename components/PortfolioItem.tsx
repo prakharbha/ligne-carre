@@ -14,11 +14,10 @@ interface PortfolioItemProps {
 }
 
 export function PortfolioItem({ item }: PortfolioItemProps) {
-  if (!item.image) {
-    return null;
-  }
-  
-  const imageUrl = urlFor(item.image).width(800).height(600).url();
+  // Use fallback image if no image is provided
+  const imageUrl = item.image 
+    ? urlFor(item.image).width(800).height(600).url()
+    : '/images/home-banner.jpg';
 
   return (
     <motion.div
