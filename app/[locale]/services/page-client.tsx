@@ -42,7 +42,7 @@ export default function ServicesPage({ services, locale }: ServicesPageProps) {
                     transition={{ duration: 0.3 }}
                     className="p-8 lg:p-12 border border-gray-200 hover:border-foreground transition-colors duration-300"
                   >
-                    <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4">
+                    <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4">
                       {title}
                     </h2>
                     <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">

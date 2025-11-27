@@ -99,7 +99,7 @@ export function BannerSlider({ images }: BannerSliderProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-season-mix text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
+            className="font-medium text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
           >
             {t('title')}
           </motion.h1>

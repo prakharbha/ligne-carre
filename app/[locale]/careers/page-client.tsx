@@ -25,7 +25,7 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
             <div className="space-y-8">
               <AnimatedSection delay={0.1}>
                 <div className="space-y-6">
-                  <h2 className="font-season-mix text-3xl text-foreground">
+                  <h2 className="font-medium text-3xl text-foreground">
                     {t('whyJoin.title')}
                   </h2>
                   <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
@@ -35,7 +35,7 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
               </AnimatedSection>
               <AnimatedSection delay={0.2}>
                 <div className="space-y-6">
-                  <h2 className="font-season-mix text-3xl text-foreground">
+                  <h2 className="font-medium text-3xl text-foreground">
                     {t('openPositions.title')}
                   </h2>
                   <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
@@ -77,7 +77,7 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
                   components={{
                     block: {
                       h2: ({ children }) => (
-                        <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                        <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
                           {children}
                         </h2>
                       ),

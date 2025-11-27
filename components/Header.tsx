@@ -53,7 +53,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#cccccc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
             <Link href="/" className="flex items-center space-x-3 md:space-x-4">
@@ -66,7 +66,7 @@ export function Header() {
                 priority
               />
               <div>
-                <div className="font-season-mix text-base md:text-xl lg:text-2xl text-foreground">
+                <div className="font-medium text-base md:text-xl lg:text-2xl text-foreground">
                   Ligne Carré
                 </div>
                 <div className="text-[10px] md:text-xs lg:text-sm text-gray-600 font-light leading-tight">

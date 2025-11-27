@@ -33,7 +33,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       <BannerSlider images={bannerImages} />
 
       {/* About Section Preview */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
@@ -47,7 +47,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <h2 className="font-season-mix text-4xl lg:text-5xl text-foreground mb-6">
+              <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-6">
                 {tNav('about')}
               </h2>
               <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
@@ -65,10 +65,10 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* Services Section Preview */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-24 lg:py-32 bg-[#cccccc]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="font-season-mix text-4xl lg:text-5xl text-foreground mb-16 text-center">
+            <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
               {tNav('services')}
             </h2>
           </AnimatedSection>
@@ -87,7 +87,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="font-season-mix text-xl text-foreground mb-2">
+                    <h3 className="font-medium text-xl text-foreground mb-2">
                       {serviceName}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
@@ -102,10 +102,10 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* Portfolio Section Preview */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="font-season-mix text-4xl lg:text-5xl text-foreground mb-16 text-center">
+            <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
               {tNav('portfolio')}
             </h2>
           </AnimatedSection>
@@ -127,7 +127,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="font-season-mix text-xl text-foreground mb-2">
+                    <h3 className="font-medium text-xl text-foreground mb-2">
                       {t('portfolio.featuredProject', { number: item })}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
@@ -151,10 +151,10 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* News Section Preview */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-24 lg:py-32 bg-[#cccccc]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="font-season-mix text-4xl lg:text-5xl text-foreground mb-16 text-center">
+            <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
               {tNav('news')}
             </h2>
           </AnimatedSection>
@@ -164,7 +164,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
               <AnimatedSection key={item} delay={index * 0.1}>
                 <div className="bg-gray-50 p-6">
                   <div className="text-sm text-gray-500 mb-2">{t('news.date')}</div>
-                  <h3 className="font-season-mix text-xl text-foreground mb-3">
+                  <h3 className="font-medium text-xl text-foreground mb-3">
                     {t('news.latestUpdate', { number: item })}
                   </h3>
                   <p className="text-sm text-gray-600 font-light mb-4">
@@ -184,10 +184,10 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
       </section>
 
       {/* Careers Section Preview */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="font-season-mix text-4xl lg:text-5xl text-foreground mb-6">
+            <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-6">
               {tNav('careers')}
             </h2>
             <p className="text-lg text-gray-600 font-light mb-8 max-w-2xl mx-auto">

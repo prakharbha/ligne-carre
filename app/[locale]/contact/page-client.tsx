@@ -41,7 +41,7 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
                       components={{
                         block: {
                           h2: ({ children }) => (
-                            <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                            <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
                               {children}
                             </h2>
                           ),
@@ -56,7 +56,7 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
                   </div>
                 ) : (
                   <div>
-                    <h2 className="font-season-mix text-2xl text-foreground mb-4">
+                    <h2 className="font-medium text-2xl text-foreground mb-4">
                       {t('getInTouch.title')}
                     </h2>
                     <p className="text-base text-foreground leading-relaxed font-light mb-6">
@@ -66,13 +66,13 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
                 )}
                 <div className="space-y-4 pt-4 border-t border-gray-200">
                   <div>
-                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                    <h3 className="font-medium text-lg text-foreground mb-2">
                       {t('office.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">{address || t('office.value')}</p>
                   </div>
                   <div>
-                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                    <h3 className="font-medium text-lg text-foreground mb-2">
                       {t('email.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
@@ -82,7 +82,7 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-season-mix text-lg text-foreground mb-2">
+                    <h3 className="font-medium text-lg text-foreground mb-2">
                       {t('phone.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">

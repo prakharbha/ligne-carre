@@ -17,7 +17,7 @@ export default function AboutPage() {
             {/* Our Story Section */}
             <AnimatedSection delay={0.1}>
               <div className="space-y-6">
-                <h2 className="font-season-mix text-3xl lg:text-4xl text-foreground mb-6">
+                <h2 className="font-medium text-3xl lg:text-4xl text-foreground mb-6">
                   {t('story.title')}
                 </h2>
                 <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
@@ -32,7 +32,7 @@ export default function AboutPage() {
             {/* Our Philosophy Section */}
             <AnimatedSection delay={0.2}>
               <div className="pt-12 border-t border-gray-200">
-                <h2 className="font-season-mix text-3xl lg:text-4xl text-foreground mb-6">
+                <h2 className="font-medium text-3xl lg:text-4xl text-foreground mb-6">
                   {t('philosophy.title')}
                 </h2>
                 <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-6">
@@ -47,12 +47,12 @@ export default function AboutPage() {
             {/* Team Section */}
             <AnimatedSection delay={0.3}>
               <div className="pt-12 border-t border-gray-200">
-                <h2 className="font-season-mix text-3xl lg:text-4xl text-foreground mb-8">
+                <h2 className="font-medium text-3xl lg:text-4xl text-foreground mb-8">
                   {t('team.title')}
                 </h2>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-2">
+                    <h3 className="font-medium text-2xl lg:text-3xl text-foreground mb-2">
                       {t('team.member.name')}
                     </h3>
                     <p className="text-lg text-gray-600 font-light mb-6">

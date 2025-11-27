@@ -23,7 +23,7 @@ export function NewsletterCTA() {
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-8">
-            <h2 className="font-season-mix text-3xl lg:text-4xl mb-4">
+            <h2 className="font-medium text-3xl lg:text-4xl mb-4">
               {t('title')}
             </h2>
             <p className="text-lg text-gray-300 font-light">

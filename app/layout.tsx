@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SeasonMix, SeasonSans } from './fonts';
+import { roboto } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${SeasonMix.variable} ${SeasonSans.variable}`}>
-      <body className="font-season-sans antialiased">{children}</body>
+    <html lang="en" className={roboto.variable}>
+      <body className="font-roboto font-light antialiased">{children}</body>
     </html>
   );
 }

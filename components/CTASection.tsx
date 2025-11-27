@@ -17,7 +17,7 @@ export function CTASection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="font-season-mix text-3xl lg:text-4xl text-foreground mb-6">
+          <h2 className="font-medium text-3xl lg:text-4xl text-foreground mb-6">
             {t('cta')}
           </h2>
           <Link

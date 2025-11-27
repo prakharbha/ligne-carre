@@ -1,18 +1,9 @@
-import localFont from 'next/font/local';
+import { Roboto } from 'next/font/google';
 
-export const SeasonMix = localFont({
-  src: '../public/fonts/season-mix-regular.woff2',
-  variable: '--font-season-mix',
+export const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '500'],
+  variable: '--font-roboto',
   display: 'swap',
-  weight: '400',
-  adjustFontFallback: false,
-});
-
-export const SeasonSans = localFont({
-  src: '../public/fonts/season-sans-regular.woff2',
-  variable: '--font-season-sans',
-  display: 'swap',
-  weight: '400',
-  adjustFontFallback: false,
 });
 

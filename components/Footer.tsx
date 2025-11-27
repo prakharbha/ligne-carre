@@ -42,7 +42,7 @@ export function Footer({ siteSettings }: FooterProps) {
                 className="object-contain"
               />
               <div>
-                <div className="font-season-mix text-lg text-white">
+                <div className="font-medium text-lg text-white">
                   Ligne Carré
                 </div>
                 <div className="text-xs text-gray-400 font-light">
@@ -54,7 +54,7 @@ export function Footer({ siteSettings }: FooterProps) {
 
           {/* Navigation Section */}
           <div>
-            <h3 className="text-white font-season-mix text-sm uppercase tracking-wide mb-4">
+            <h3 className="text-white font-medium text-sm uppercase tracking-wide mb-4">
               {tFooter('navigation')}
             </h3>
             <nav className="flex flex-col space-y-3">
@@ -72,7 +72,7 @@ export function Footer({ siteSettings }: FooterProps) {
 
           {/* Contact Section */}
           <div>
-            <h3 className="text-white font-season-mix text-sm uppercase tracking-wide mb-4">
+            <h3 className="text-white font-medium text-sm uppercase tracking-wide mb-4">
               {tFooter('contact')}
             </h3>
             <div className="space-y-2 text-sm text-gray-300 font-light">

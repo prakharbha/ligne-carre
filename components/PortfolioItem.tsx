@@ -34,7 +34,7 @@ export function PortfolioItem({ item }: PortfolioItemProps) {
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
       </div>
-      <h3 className="font-season-mix text-xl text-foreground mb-2">
+      <h3 className="font-medium text-xl text-foreground mb-2">
         {item.title}
       </h3>
       <p className="text-sm text-gray-600 font-light capitalize">

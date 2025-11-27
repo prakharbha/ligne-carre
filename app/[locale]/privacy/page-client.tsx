@@ -31,7 +31,7 @@ export default function PrivacyPage({ pageContent, locale }: PrivacyPageProps) {
                 components={{
                   block: {
                     h2: ({ children }) => (
-                      <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+                      <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
                         {children}
                       </h2>
                     ),

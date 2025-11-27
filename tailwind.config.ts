@@ -13,8 +13,7 @@ const config: Config = {
         foreground: '#1a1a1a',
       },
       fontFamily: {
-        'season-mix': ['var(--font-season-mix)'],
-        'season-sans': ['var(--font-season-sans)'],
+        'roboto': ['var(--font-roboto)', 'sans-serif'],
       },
     },
   },

@@ -52,7 +52,7 @@ export default function NewsPage({ articles, locale }: NewsPageProps) {
                       className="border-b border-gray-200 pb-12 last:border-0 cursor-pointer"
                     >
                       <div className="text-sm text-gray-500 font-light mb-2">{date}</div>
-                      <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground mb-4">
+                      <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4">
                         {title}
                       </h2>
                       <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
