@@ -14,7 +14,11 @@ interface PortfolioItemProps {
 }
 
 export function PortfolioItem({ item }: PortfolioItemProps) {
-  const imageUrl = item.image ? urlFor(item.image).width(800).height(600).url() : '/images/home-banner.jpg';
+  if (!item.image) {
+    return null;
+  }
+  
+  const imageUrl = urlFor(item.image).width(800).height(600).url();
 
   return (
     <motion.div

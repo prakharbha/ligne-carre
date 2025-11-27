@@ -54,6 +54,11 @@ export function BannerSlider({ images }: BannerSliderProps) {
 
   const currentImage = bannerImages[currentIndex];
   const altText = locale === 'fr' ? currentImage.altText_fr : currentImage.altText_en;
+  
+  if (!currentImage.image) {
+    return null;
+  }
+  
   const imageUrl = urlFor(currentImage.image).width(1920).height(1080).url();
 
   return (
