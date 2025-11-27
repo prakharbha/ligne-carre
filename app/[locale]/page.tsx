@@ -39,13 +39,13 @@ export default function HomePage() {
                 {tNav('about')}
               </h2>
               <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
-                {t('home.about.description')}
+                {t('about.description')}
               </p>
               <Link
                 href="/about"
                 className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
               >
-                {t('home.about.learnMore')}
+                {t('about.learnMore')}
               </Link>
             </AnimatedSection>
           </div>
@@ -63,7 +63,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {['sports', 'health', 'education', 'residential'].map((serviceKey, index) => {
-              const serviceName = t(`home.services.${serviceKey}`);
+              const serviceName = t(`services.${serviceKey}`);
               return (
                 <AnimatedSection key={serviceKey} delay={index * 0.1}>
                   <div className="text-center">
@@ -79,7 +79,7 @@ export default function HomePage() {
                       {serviceName}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      {t('home.services.description', { service: serviceName })}
+                      {t('services.description', { service: serviceName })}
                     </p>
                   </div>
                 </AnimatedSection>
@@ -116,10 +116,10 @@ export default function HomePage() {
                       />
                     </div>
                     <h3 className="font-season-mix text-xl text-foreground mb-2">
-                      {t('home.portfolio.featuredProject', { number: item })}
+                      {t('portfolio.featuredProject', { number: item })}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      {t('home.portfolio.description')}
+                      {t('portfolio.description')}
                     </p>
                   </motion.div>
                 </Link>
@@ -132,7 +132,7 @@ export default function HomePage() {
               href="/portfolio"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
-              {t('home.portfolio.viewAll')}
+              {t('portfolio.viewAll')}
             </Link>
           </div>
         </div>
@@ -151,18 +151,18 @@ export default function HomePage() {
             {[1, 2, 3].map((item, index) => (
               <AnimatedSection key={item} delay={index * 0.1}>
                 <div className="bg-gray-50 p-6">
-                  <div className="text-sm text-gray-500 mb-2">{t('home.news.date')}</div>
+                  <div className="text-sm text-gray-500 mb-2">{t('news.date')}</div>
                   <h3 className="font-season-mix text-xl text-foreground mb-3">
-                    {t('home.news.latestUpdate', { number: item })}
+                    {t('news.latestUpdate', { number: item })}
                   </h3>
                   <p className="text-sm text-gray-600 font-light mb-4">
-                    {t('home.news.description')}
+                    {t('news.description')}
                   </p>
                   <Link
                     href="/news"
                     className="text-sm text-foreground hover:text-gray-600 transition-colors"
                   >
-                    {t('home.news.readMore')} →
+                    {t('news.readMore')} →
                   </Link>
                 </div>
               </AnimatedSection>
@@ -179,13 +179,13 @@ export default function HomePage() {
               {tNav('careers')}
             </h2>
             <p className="text-lg text-gray-600 font-light mb-8 max-w-2xl mx-auto">
-              {t('home.careers.description')}
+              {t('careers.description')}
             </p>
             <Link
               href="/careers"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
-              {t('home.careers.viewOpportunities')}
+              {t('careers.viewOpportunities')}
             </Link>
           </AnimatedSection>
         </div>
