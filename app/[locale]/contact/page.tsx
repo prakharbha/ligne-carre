@@ -10,7 +10,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle="Let's Discuss Your Project" />
+      <PageBanner title={t('title')} subtitle={t('subtitle')} />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -20,39 +20,38 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="font-season-mix text-2xl text-foreground mb-4">
-                    Get in Touch
+                    {t('getInTouch.title')}
                   </h2>
                   <p className="text-base text-foreground leading-relaxed font-light mb-6">
-                    We would love to hear from you. Whether you have a project in mind or 
-                    questions about our services, please don't hesitate to reach out.
+                    {t('getInTouch.description')}
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   <div>
                     <h3 className="font-season-mix text-lg text-foreground mb-2">
-                      Office
+                      {t('office.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      Montreal, Quebec, Canada
+                      {t('office.value')}
                     </p>
                   </div>
 
                   <div>
                     <h3 className="font-season-mix text-lg text-foreground mb-2">
-                      Email
+                      {t('email.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      contact@lignecarre.com
+                      {t('email.value')}
                     </p>
                   </div>
 
                   <div>
                     <h3 className="font-season-mix text-lg text-foreground mb-2">
-                      Phone
+                      {t('phone.label')}
                     </h3>
                     <p className="text-sm text-gray-600 font-light">
-                      +1 (514) 000-0000
+                      {t('phone.value')}
                     </p>
                   </div>
                 </div>

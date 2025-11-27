@@ -11,27 +11,27 @@ export default function NewsPage() {
   const newsItems = [
     {
       id: 1,
-      title: 'New Project Announcement',
-      date: 'January 2025',
-      excerpt: 'We are excited to announce our latest architectural project in the MENA region.',
+      title: t('items.item1.title'),
+      date: t('items.item1.date'),
+      excerpt: t('items.item1.excerpt'),
     },
     {
       id: 2,
-      title: 'Award Recognition',
-      date: 'December 2024',
-      excerpt: 'Ligne Carré receives recognition for excellence in sustainable architecture.',
+      title: t('items.item2.title'),
+      date: t('items.item2.date'),
+      excerpt: t('items.item2.excerpt'),
     },
     {
       id: 3,
-      title: 'Team Expansion',
-      date: 'November 2024',
-      excerpt: 'We are growing our team to better serve our clients across Montreal and the MENA region.',
+      title: t('items.item3.title'),
+      date: t('items.item3.date'),
+      excerpt: t('items.item3.excerpt'),
     },
   ];
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle="Latest Updates & Announcements" />
+      <PageBanner title={t('title')} subtitle={t('subtitle')} />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">

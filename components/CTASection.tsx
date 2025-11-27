@@ -1,12 +1,11 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { motion } from 'framer-motion';
 
 export function CTASection() {
   const t = useTranslations('home');
-  const locale = useLocale();
 
   return (
     <section className="py-16 lg:py-20 bg-white">
@@ -22,7 +21,7 @@ export function CTASection() {
             {t('cta')}
           </h2>
           <Link
-            href={`/${locale}/portfolio`}
+            href="/portfolio"
             className="inline-block px-8 py-3 border-2 border-foreground text-foreground font-light hover:bg-foreground hover:text-white transition-all duration-300"
           >
             {t('cta')}

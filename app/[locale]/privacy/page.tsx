@@ -1,64 +1,58 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageBanner } from '@/components/PageBanner';
 
 export default function PrivacyPage() {
+  const t = useTranslations('privacy');
+
+  const sections = [
+    {
+      key: 'introduction',
+    },
+    {
+      key: 'informationCollection',
+    },
+    {
+      key: 'informationUse',
+    },
+    {
+      key: 'informationSharing',
+    },
+    {
+      key: 'dataSecurity',
+    },
+    {
+      key: 'yourRights',
+    },
+    {
+      key: 'contact',
+    },
+  ];
+
   return (
     <div>
-      <PageBanner title="Privacy Policy" subtitle="Your Privacy Matters to Us" />
+      <PageBanner title={t('title')} subtitle={t('lastUpdated')} />
       
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-
-          <div className="space-y-8">
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-4">
-                <h2 className="font-season-mix text-2xl text-foreground">
-                  Information We Collect
-                </h2>
-                <p className="text-base text-foreground leading-relaxed font-light">
-                  We collect information that you provide directly to us, such as when you fill out 
-                  a contact form, request information, or communicate with us. This may include your 
-                  name, email address, phone number, and any other information you choose to provide.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="space-y-4">
-                <h2 className="font-season-mix text-2xl text-foreground">
-                  How We Use Your Information
-                </h2>
-                <p className="text-base text-foreground leading-relaxed font-light">
-                  We use the information we collect to respond to your inquiries, provide services, 
-                  send you updates about our work, and improve our website. We do not sell or share 
-                  your personal information with third parties without your consent.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.3}>
-              <div className="space-y-4">
-                <h2 className="font-season-mix text-2xl text-foreground">
-                  Contact Us
-                </h2>
-                <p className="text-base text-foreground leading-relaxed font-light">
-                  If you have any questions about this Privacy Policy, please contact us at 
-                  contact@lignecarre.com.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.4}>
-              <div className="pt-8 text-sm text-gray-600 font-light">
-                Last updated: January 2025
-              </div>
-            </AnimatedSection>
+          <div className="space-y-12">
+            {sections.map((section, index) => (
+              <AnimatedSection key={section.key} delay={index * 0.1}>
+                <div className="space-y-4">
+                  <h2 className="font-season-mix text-2xl lg:text-3xl text-foreground">
+                    {t(`sections.${section.key}.title`)}
+                  </h2>
+                  <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
+                    {t(`sections.${section.key}.content`)}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
     </div>
   );
 }
-

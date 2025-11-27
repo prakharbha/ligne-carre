@@ -11,40 +11,56 @@
   "home": {
     "title": "Ligne Carré",
     "subtitle": "Architecture et Gestion de Projets",
-    "slogan": "Ligne Carré : la précision commence par chaque ligne.",
+    "slogan": "Ligne Carré : Construire l'avenir ligne après ligne.",
     "cta": "Voir Nos Projets",
     "featured": "Projets en Vedette"
   },
   "about": {
-    "title": "À propos de nous",
-    "founder": {
-      "name": "Fadi Abousader",
-      "title": "Architecte OAQ - Gestionnaire de Projets MGPA",
-      "bio": "Je suis un architecte agréé (OAQ) avec un B. Arch de l'Université de Balamand (Liban) et une maîtrise en gestion de projets de l'Université de Montréal. J'exerce depuis plus de 25 ans à Montréal et dans la région MENA : Dubaï, Qatar, Arabie Saoudite (vision 2030). Le travail s'est concentré principalement sur les activités suivantes : Sports, Santé, Éducation et Résidentiel.",
-      "goal": "Mon objectif, en tant que gestionnaire de projets, est de trouver un travail stimulant et gratifiant qui me permettrait d'élargir mon expérience actuelle tout en mettant mes capacités au défi."
+    "title": "À PROPOS",
+    "subtitle": "Notre Histoire, Philosophie & Équipe",
+    "story": {
+      "title": "Notre Histoire",
+      "paragraph1": "Ligne Carré Inc. est une firme spécialisée en architecture et en gestion de projet, offrant des solutions innovantes, fonctionnelles et personnalisées pour les projets résidentiels, institutionnels, sportifs et commerciaux. Forte d'une expertise internationale, notre entreprise met de l'avant une approche qui allie créativité, précision technique, et respect rigoureux des normes en vigueur.",
+      "paragraph2": "Basée à Montréal, Ligne Carré Inc. accompagne ses clients à chaque étape : de la conception architecturale à la réalisation, tout en assurant l'optimisation des coûts, le respect des échéanciers et l'adaptation aux besoins spécifiques de chaque projet. Nous avons à cœur de contribuer à un développement urbain durable et à l'amélioration de la qualité du cadre bâti."
+    },
+    "philosophy": {
+      "title": "Notre Philosophie",
+      "paragraph1": "Ligne Carré Inc. se positionne comme votre partenaire de confiance en architecture et en gestion de projet au Québec. Nous offrons des services complets, flexibles et sur mesure pour transformer vos idées en projets concrets — qu'il s'agisse de bâtiments résidentiels, commerciaux ou institutionnels.",
+      "paragraph2": "Notre démarche repose sur une combinaison d'innovation, d'expertise technique, et d'une approche humaine et accessible. Nous mettons tout en œuvre pour garantir le succès de chaque étape : conception, coordination, suivi de chantier et livraison. À Ligne Carré Inc., nous nous engageons à respecter les délais, maîtriser les budgets, et dépasser vos attentes. Découvrez notre portfolio et voyez comment nous donnons vie à des projets qui se distinguent par leur qualité, leur précision et leur impact."
+    },
+    "team": {
+      "title": "Équipe",
+      "member": {
+        "name": "Fadi Abou-Sader",
+        "title": "Architecte OAQ – Gestionnaire de Projets | MGPA",
+        "bio": "Fadi Abou-Sader est architecte, membre de l'Ordre des Architectes du Québec (OAQ) et de l'Ordre des Architectes de Beyrouth, cumulant plus de 28 ans d'expérience au Liban, au Québec et dans la région MENA.",
+        "founder": "Diplômé de l'Académie Libanaise des Beaux-Arts et titulaire d'une maîtrise en montage et gestion de projet de l'Université de Montréal, il a dirigé des projets résidentiels, institutionnels et sportifs, alliant architecture innovante et gestion rigoureuse. Fondateur de Ligne Carré Inc., il accompagne ses clients du premier croquis à la livraison finale, avec une approche humaine, accessible, et orientée vers la précision — parce que chaque ligne compte."
+      }
     }
   },
   "services": {
     "title": "Nos Services",
+    "subtitle": "Architecture, Design & Gestion de Projets",
     "residential": {
       "title": "Résidentiel",
-      "description": "Services d'architecture et de design résidentiel sur mesure."
+      "description": "Services d'architecture et de design résidentiel sur mesure adaptés à votre style de vie et à vos besoins. Des maisons unifamiliales aux développements multi-unités, nous créons des espaces qui combinent fonctionnalité, esthétique et durabilité."
     },
     "commercial": {
       "title": "Commercial",
-      "description": "Conception de bâtiments commerciaux et gestion de projets."
+      "description": "Services de conception de bâtiments commerciaux et de gestion de projets. Nous nous spécialisons dans la création d'espaces commerciaux efficaces et modernes qui répondent aux objectifs commerciaux tout en respectant les règlements locaux et les codes du bâtiment."
     },
     "interior": {
       "title": "Design d'Intérieur",
-      "description": "Solutions complètes de design d'intérieur."
+      "description": "Solutions complètes de design d'intérieur qui transforment les espaces en environnements inspirants. Notre approche intègre l'architecture et le design d'intérieur pour créer des intérieurs cohérents, fonctionnels et esthétiquement agréables."
     },
     "projectManagement": {
       "title": "Gestion de Projets",
-      "description": "Services experts de gestion de projets pour des projets architecturaux complexes."
+      "description": "Services experts de gestion de projets pour des projets architecturaux complexes. Nous assurons la livraison dans les délais, le contrôle des budgets et l'assurance qualité depuis le concept initial jusqu'à la construction finale, en coordonnant tous les intervenants et en gérant chaque phase de développement."
     }
   },
   "portfolio": {
     "title": "Portfolio",
+    "subtitle": "Découvrez Notre Excellence Architecturale",
     "filter": {
       "all": "Tous",
       "sports": "Sports",
@@ -58,14 +74,58 @@
     }
   },
   "news": {
-    "title": "Actualités et Mises à Jour"
+    "title": "Actualités et Mises à Jour",
+    "subtitle": "Dernières Actualités et Annonces",
+    "items": {
+      "item1": {
+        "title": "Annonce de Nouveau Projet",
+        "date": "Janvier 2025",
+        "excerpt": "Nous sommes ravis d'annoncer notre dernier projet architectural dans la région MENA."
+      },
+      "item2": {
+        "title": "Reconnaissance par Prix",
+        "date": "Décembre 2024",
+        "excerpt": "Ligne Carré reçoit une reconnaissance pour l'excellence en architecture durable."
+      },
+      "item3": {
+        "title": "Expansion de l'Équipe",
+        "date": "Novembre 2024",
+        "excerpt": "Nous agrandissons notre équipe pour mieux servir nos clients à Montréal et dans la région MENA."
+      }
+    }
   },
   "careers": {
     "title": "Carrières",
-    "subtitle": "Rejoignez Notre Équipe"
+    "subtitle": "Rejoignez Notre Équipe",
+    "whyJoin": {
+      "title": "Pourquoi Rejoindre Ligne Carré?",
+      "description": "Chez Ligne Carré, nous nous engageons à l'excellence en architecture et en gestion de projets. Nous offrons des opportunités de travailler sur des projets diversifiés à Montréal et dans la région MENA, notamment des installations sportives, des bâtiments de santé, des établissements d'enseignement et des développements résidentiels. Rejoignez une équipe qui valorise la précision, l'innovation et la croissance professionnelle."
+    },
+    "openPositions": {
+      "title": "Postes Ouverts",
+      "description": "Nous recherchons toujours des architectes talentueux, des gestionnaires de projets et des professionnels du design qui partagent notre passion pour la précision et l'excellence. Veuillez nous contacter pour en savoir plus sur les opportunités actuelles."
+    },
+    "contactUs": "Contactez-nous"
   },
   "contact": {
     "title": "Contactez-nous",
+    "subtitle": "Discutons de Votre Projet",
+    "getInTouch": {
+      "title": "Entrer en Contact",
+      "description": "Nous serions ravis d'avoir de vos nouvelles. Que vous ayez un projet en tête ou des questions sur nos services, n'hésitez pas à nous contacter."
+    },
+    "office": {
+      "label": "Bureau",
+      "value": "Montréal, Québec, Canada"
+    },
+    "email": {
+      "label": "Courriel",
+      "value": "contact@lignecarre.com"
+    },
+    "phone": {
+      "label": "Téléphone",
+      "value": "+1 (514) 000-0000"
+    },
     "form": {
       "name": "Nom",
       "email": "Courriel",
@@ -74,7 +134,44 @@
     }
   },
   "footer": {
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "privacy": "Politique de Confidentialité",
     "copyright": "Copyright 2025 Ligne Carré Architecture and Design Studio, LLC"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière Mise à Jour : Janvier 2025",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "Ligne Carré Inc. (« nous », « notre » ou « nos ») s'engage à protéger votre vie privée. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web."
+      },
+      "informationCollection": {
+        "title": "Informations que Nous Collectons",
+        "content": "Nous pouvons collecter des informations que vous nous fournissez directement, notamment votre nom, votre adresse courriel, votre numéro de téléphone et tout message que vous envoyez via notre formulaire de contact. Nous collectons également automatiquement certaines informations sur votre appareil et la façon dont vous interagissez avec notre site web."
+      },
+      "informationUse": {
+        "title": "Comment Nous Utilisons Vos Informations",
+        "content": "Nous utilisons les informations que nous collectons pour répondre à vos demandes, fournir nos services, améliorer notre site web et communiquer avec vous concernant nos services. Nous ne vendons ni ne louons vos informations personnelles à des tiers."
+      },
+      "informationSharing": {
+        "title": "Partage d'Informations",
+        "content": "Nous pouvons partager vos informations avec des fournisseurs de services qui nous aident à exploiter notre site web et à mener nos activités, à condition qu'ils acceptent de garder ces informations confidentielles. Nous pouvons également divulguer des informations si la loi l'exige."
+      },
+      "dataSecurity": {
+        "title": "Sécurité des Données",
+        "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles. Cependant, aucune méthode de transmission sur Internet n'est sécurisée à 100%, et nous ne pouvons garantir une sécurité absolue."
+      },
+      "yourRights": {
+        "title": "Vos Droits",
+        "content": "Vous avez le droit d'accéder, de corriger ou de supprimer vos informations personnelles. Vous pouvez également vous désabonner de certaines communications de notre part. Pour exercer ces droits, veuillez nous contacter en utilisant les informations fournies sur notre page de contact."
+      },
+      "contact": {
+        "title": "Contactez-nous",
+        "content": "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à contact@lignecarre.com ou via notre page de contact."
+      }
+    }
   }
 }
 

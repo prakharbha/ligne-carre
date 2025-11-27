@@ -1,19 +1,20 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { getLocalizedPath } from '@/lib/routing';
 
 export function Footer() {
   const t = useTranslations('nav');
   const tFooter = useTranslations('footer');
-  const locale = useLocale();
+  const locale = useLocale() as 'en' | 'fr';
 
   const footerNavItems = [
-    { href: `/${locale}/about`, label: t('about') },
-    { href: `/${locale}/services`, label: t('services') },
-    { href: `/${locale}/portfolio`, label: t('portfolio') },
-    { href: `/${locale}/contact`, label: t('contact') },
+    { href: getLocalizedPath('/about', locale), label: t('about') },
+    { href: getLocalizedPath('/services', locale), label: t('services') },
+    { href: getLocalizedPath('/portfolio', locale), label: t('portfolio') },
+    { href: getLocalizedPath('/contact', locale), label: t('contact') },
   ];
 
   return (
@@ -22,7 +23,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
           {/* Logo Section */}
           <div>
-            <Link href={`/${locale}`} className="flex items-center space-x-4 mb-4">
+            <Link href="/" className="flex items-center space-x-4 mb-4">
               <Image
                 src="/images/logo_ligne.png"
                 alt="Ligne Carré"
@@ -44,7 +45,7 @@ export function Footer() {
           {/* Navigation Section */}
           <div>
             <h3 className="text-white font-season-mix text-sm uppercase tracking-wide mb-4">
-              Navigation
+              {tFooter('navigation')}
             </h3>
             <nav className="flex flex-col space-y-3">
               {footerNavItems.map((item) => (
@@ -62,7 +63,7 @@ export function Footer() {
           {/* Contact Section */}
           <div>
             <h3 className="text-white font-season-mix text-sm uppercase tracking-wide mb-4">
-              Contact
+              {tFooter('contact')}
             </h3>
             <div className="space-y-2 text-sm text-gray-300 font-light">
               <p>Montreal, Quebec, Canada</p>
@@ -73,10 +74,16 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-700 pt-8">
-          <div className="text-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400 font-light">
               {tFooter('copyright')}
             </p>
+            <Link
+              href="/privacy"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light"
+            >
+              {tFooter('privacy')}
+            </Link>
           </div>
         </div>
       </div>

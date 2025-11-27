@@ -29,7 +29,7 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle="Architecture, Design & Project Management" />
+      <PageBanner title={t('title')} subtitle={t('subtitle')} />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

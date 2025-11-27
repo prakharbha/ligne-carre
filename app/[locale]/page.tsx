@@ -2,57 +2,23 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { motion } from 'framer-motion';
 import { CTASection } from '@/components/CTASection';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { NewsletterCTA } from '@/components/NewsletterCTA';
+import { BannerSlider } from '@/components/BannerSlider';
+import { getLocalizedPath } from '@/lib/routing';
 
 export default function HomePage() {
   const t = useTranslations('home');
   const tNav = useTranslations('nav');
-  const locale = useLocale();
+  const locale = useLocale() as 'en' | 'fr';
 
   return (
     <div className="pt-20 lg:pt-24">
-      {/* Hero Section with Parallax */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src="/images/home-banner.jpg"
-            alt="Ligne Carré Architecture"
-            fill
-            priority
-            className="object-cover"
-            quality={90}
-          />
-          <div className="absolute inset-0 bg-black/20" />
-        </motion.div>
-
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-season-mix text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
-          >
-            {t('slogan').replace('Ligne Carré: ', '')}
-          </motion.p>
-        </div>
-      </section>
+      {/* Hero Section with Banner Slider */}
+      <BannerSlider />
 
       {/* About Section Preview */}
       <section className="py-24 lg:py-32 bg-gray-50">
@@ -77,7 +43,7 @@ export default function HomePage() {
                 Specializing in Sports, Health, Education, and Residential projects.
               </p>
               <Link
-                href={`/${locale}/about`}
+                href="/about"
                 className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
               >
                 Learn More
@@ -133,7 +99,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {[1, 2, 3].map((item, index) => (
               <AnimatedSection key={item} delay={index * 0.1}>
-                <Link href={`/${locale}/portfolio`}>
+                <Link href="/portfolio">
                   <motion.div
                     whileHover={{ y: -8 }}
                     transition={{ duration: 0.3 }}
@@ -161,7 +127,7 @@ export default function HomePage() {
 
           <div className="text-center mt-12">
             <Link
-              href={`/${locale}/portfolio`}
+              href="/portfolio"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
               View All Projects
@@ -191,7 +157,7 @@ export default function HomePage() {
                     Stay informed about our latest projects and industry insights.
                   </p>
                   <Link
-                    href={`/${locale}/news`}
+                    href="/news"
                     className="text-sm text-foreground hover:text-gray-600 transition-colors"
                   >
                     Read More →
@@ -215,7 +181,7 @@ export default function HomePage() {
               We're always looking for passionate individuals to help shape the future.
             </p>
             <Link
-              href={`/${locale}/careers`}
+              href="/careers"
               className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
             >
               View Opportunities

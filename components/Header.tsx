@@ -2,28 +2,50 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { MobileMenu } from './MobileMenu';
+import { getLocalizedPath } from '@/lib/routing';
 
 export function Header() {
   const t = useTranslations('nav');
-  const locale = useLocale();
+  const locale = useLocale() as 'en' | 'fr';
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/about`, label: t('about') },
-    { href: `/${locale}/services`, label: t('services') },
-    { href: `/${locale}/portfolio`, label: t('portfolio') },
-    { href: `/${locale}/news`, label: t('news') },
-    { href: `/${locale}/careers`, label: t('careers') },
-    { href: `/${locale}/contact`, label: t('contact') },
+    { href: getLocalizedPath('/', locale), label: t('home'), route: '/' as const },
+    { href: getLocalizedPath('/about', locale), label: t('about'), route: '/about' as const },
+    { href: getLocalizedPath('/services', locale), label: t('services'), route: '/services' as const },
+    { href: getLocalizedPath('/portfolio', locale), label: t('portfolio'), route: '/portfolio' as const },
+    { href: getLocalizedPath('/news', locale), label: t('news'), route: '/news' as const },
+    { href: getLocalizedPath('/careers', locale), label: t('careers'), route: '/careers' as const },
+    { href: getLocalizedPath('/contact', locale), label: t('contact'), route: '/contact' as const },
   ];
 
-  const switchLanguage = (newLocale: string) => {
-    const path = window.location.pathname;
-    const newPath = path.replace(`/${locale}`, `/${newLocale}`);
+  const switchLanguage = (newLocale: 'en' | 'fr') => {
+    const currentPath = window.location.pathname;
+    // Extract the path after the locale
+    const pathWithoutLocale = currentPath.replace(/^\/(en|fr)/, '') || '/';
+    
+    // Map French slugs back to route keys
+    const slugToRoute: Record<string, string> = {
+      '/': '/',
+      '/a-propos': '/about',
+      '/about': '/about',
+      '/services': '/services',
+      '/portfolio': '/portfolio',
+      '/actualites': '/news',
+      '/news': '/news',
+      '/carrieres': '/careers',
+      '/careers': '/careers',
+      '/nous-contacter': '/contact',
+      '/contact': '/contact',
+      '/confidentialite': '/privacy',
+      '/privacy': '/privacy',
+    };
+    
+    const route = (slugToRoute[pathWithoutLocale] || pathWithoutLocale) as '/' | '/about' | '/services' | '/portfolio' | '/news' | '/careers' | '/contact' | '/privacy';
+    const newPath = getLocalizedPath(route, newLocale);
     window.location.href = newPath;
   };
 
@@ -32,7 +54,7 @@ export function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            <Link href={`/${locale}`} className="flex items-center space-x-3 md:space-x-4">
+            <Link href="/" className="flex items-center space-x-3 md:space-x-4">
               <Image
                 src="/images/logo_ligne.png"
                 alt="Ligne Carré"
