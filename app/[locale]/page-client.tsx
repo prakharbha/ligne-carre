@@ -13,10 +13,11 @@ import { getLocalizedField } from '@/lib/sanity/utils';
 interface HomePageProps {
   bannerImages: any[];
   siteSettings: any;
+  services: any[];
   locale: 'en' | 'fr';
 }
 
-export default function HomePage({ bannerImages, siteSettings, locale }: HomePageProps) {
+export default function HomePage({ bannerImages, siteSettings, services, locale }: HomePageProps) {
   const t = useTranslations('home');
   const tNav = useTranslations('nav');
 
@@ -39,7 +40,7 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
             <AnimatedSection>
               <div className="relative h-96 overflow-hidden">
                 <Image
-                  src="/images/home-banner.jpg"
+                  src="/images/about-section.webp"
                   alt="About Ligne Carré"
                   fill
                   className="object-cover"
@@ -74,14 +75,27 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['sports', 'health', 'education', 'residential'].map((serviceKey, index) => {
-              const serviceName = t(`services.${serviceKey}`);
+            {services.slice(0, 4).map((service, index) => {
+              const serviceName = getLocalizedField(service, locale, 'title');
+              const serviceDescription = getLocalizedField(service, locale, 'description');
+              const slug = service.slug?.current || '';
+              
+              // Map service slugs to image paths
+              const imageMap: Record<string, string> = {
+                'residential': '/images/service-residential.webp',
+                'commercial': '/images/service-commercial.webp',
+                'interior-design': '/images/service-interior-design.webp',
+                'project-management': '/images/service-project-management.webp',
+              };
+              
+              const imagePath = imageMap[slug] || '/images/home-banner.jpg';
+              
               return (
-                <AnimatedSection key={serviceKey} delay={index * 0.1}>
+                <AnimatedSection key={service._id} delay={index * 0.1}>
                   <div className="text-center">
                     <div className="relative h-48 mb-6 overflow-hidden">
                       <Image
-                        src="/images/home-banner.jpg"
+                        src={imagePath}
                         alt={serviceName}
                         fill
                         className="object-cover"
@@ -90,8 +104,8 @@ export default function HomePage({ bannerImages, siteSettings, locale }: HomePag
                     <h3 className="font-medium text-xl text-foreground mb-2">
                       {serviceName}
                     </h3>
-                    <p className="text-base text-gray-600 font-light">
-                      {t('services.description', { service: serviceName })}
+                    <p className="text-base text-gray-600 font-light line-clamp-3">
+                      {serviceDescription?.split('\n')[0] || t('services.description', { service: serviceName })}
                     </p>
                   </div>
                 </AnimatedSection>

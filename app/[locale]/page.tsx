@@ -1,4 +1,4 @@
-import { getBannerImages, getSiteSettings } from '@/lib/sanity/fetch';
+import { getBannerImages, getSiteSettings, getServices } from '@/lib/sanity/fetch';
 import HomePage from './page-client';
 
 export default async function Page({
@@ -7,15 +7,17 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const [bannerImages, siteSettings] = await Promise.all([
+  const [bannerImages, siteSettings, services] = await Promise.all([
     getBannerImages(),
     getSiteSettings(),
+    getServices(),
   ]);
 
   return (
     <HomePage
       bannerImages={bannerImages || []}
       siteSettings={siteSettings}
+      services={services || []}
       locale={locale as 'en' | 'fr'}
     />
   );
