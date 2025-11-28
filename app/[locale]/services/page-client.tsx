@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import Image from 'next/image';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageBanner } from '@/components/PageBanner';
 import { motion } from 'framer-motion';
@@ -34,20 +35,41 @@ export default function ServicesPage({ services, locale }: ServicesPageProps) {
             {services.map((service, index) => {
               const title = getLocalizedField(service, locale, 'title');
               const description = getLocalizedField(service, locale, 'description');
+              const slug = service.slug?.current || '';
+              
+              // Map service slugs to image paths
+              const imageMap: Record<string, string> = {
+                'residential': '/images/service-residential.webp',
+                'commercial': '/images/service-commercial.webp',
+                'interior-design': '/images/service-interior-design.webp',
+                'project-management': '/images/service-project-management.webp',
+              };
+              
+              const imagePath = imageMap[slug] || '/images/home-banner.jpg';
               
               return (
                 <AnimatedSection key={service._id} delay={index * 0.1}>
                   <motion.div
                     whileHover={{ y: -8 }}
                     transition={{ duration: 0.3 }}
-                    className="p-8 lg:p-12 border border-gray-200 hover:border-foreground transition-colors duration-300"
+                    className="border border-gray-200 hover:border-foreground transition-colors duration-300 overflow-hidden"
                   >
-                    <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4">
-                      {title}
-                    </h2>
-                    <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
-                      {description}
-                    </p>
+                    <div className="relative h-64 lg:h-80 overflow-hidden">
+                      <Image
+                        src={imagePath}
+                        alt={title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-8 lg:p-12">
+                      <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4">
+                        {title}
+                      </h2>
+                      <p className="text-base lg:text-lg text-foreground leading-relaxed font-light whitespace-pre-line">
+                        {description}
+                      </p>
+                    </div>
                   </motion.div>
                 </AnimatedSection>
               );
