@@ -372,6 +372,222 @@ async function seedData() {
         ], 'fmc01-fr-'),
         order: 0,
       },
+      {
+        _type: 'portfolioItem',
+        title_en: 'FMC03 - Heritage Private Residence – Lot 669 Beirut – Lebanon',
+        title_fr: 'FMC03 - Résidence privée patrimoniale – Lot 669 Beyrouth – Liban',
+        slug_en: { current: 'fmc03-heritage-private-residence-lot-669' },
+        slug_fr: { current: 'fmc03-residence-privee-patrimoniale-lot-669' },
+        location_en: 'Beirut – Lebanon',
+        location_fr: 'Beyrouth – Liban',
+        year: '2000–2002',
+        projectType: 'residential',
+        category: 'residential',
+        role_en: 'Senior Architect - F.M. Consultants',
+        role_fr: 'Architecte senior - F.M. Consultants',
+        client: 'Private',
+        area: '1,265 m²',
+        estimatedCost: '8,000,000 USD',
+        description_en: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Project Overview' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Between 2000–2002, F.M. Consultants led the restoration and modernization of a private heritage residence in Beirut, a landmark project blending Lebanese traditional architecture with discreet contemporary upgrades. The residence, spanning 1,265 m² with an estimated cost of 8 million USD, stands as a benchmark in heritage architecture, historic building restoration, and luxury residential renovation.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'The mission was to preserve authentic Lebanese identity—stone masonry, vaults, arcades—while integrating modern standards of comfort, safety, and energy performance. The result: a refined balance of architectural authenticity and modern living.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsibilities & Expertise' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Architectural Survey & Diagnostics' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Complete architectural survey and structural condition assessment' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Documentation of heritage elements for preservation, restoration, or reconstruction' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Concept Design & Rehabilitation Strategy' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Development of a heritage-sensitive rehabilitation concept' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Detailed architectural drawings: plans, elevations, sections, joinery, and stonework interfaces' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Building Envelope & Materials' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Restoration of original stone masonry with selective replacement' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Integration of high-performance glazing without altering character' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Use of local natural materials: solid wood, wrought iron, Lebanese marble' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Technical Coordination (MEP & Structural Upgrades)' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Seamless integration of mechanical, electrical, and plumbing systems within historic fabric' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Structural reinforcement meeting seismic safety standards' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Discreet indirect lighting and modern HVAC systems' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Project Management & Site Supervision' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Coordination with engineers, conservation specialists, and artisans' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Management of heritage craftsmen: stone carvers, ironworkers, wood restoration experts' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Quality control, schedule monitoring, and compliance with heritage preservation regulations' }],
+          },
+        ], 'fmc03-en-'),
+        description_fr: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Présentation du projet' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Entre 2000 et 2002, F.M. Consultants a dirigé la restauration et la modernisation d\'une résidence patrimoniale privée à Beyrouth, un projet de référence alliant architecture traditionnelle libanaise et intégration discrète de solutions contemporaines.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Avec une superficie de 1 265 m² et un budget estimé à 8 millions USD, cette réalisation constitue un jalon majeur en matière de rénovation de villas de luxe, conservation du patrimoine architectural et réhabilitation de bâtiments historiques.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'L\'objectif était de préserver l\'identité libanaise authentique, maçonnerie en pierre, voûtes, arcades, tout en répondant aux standards modernes de confort, de sécurité et de performance énergétique. Le résultat offre un équilibre raffiné entre authenticité architecturale et vie contemporaine.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsabilités & Expertise' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Relevé architectural & diagnostic' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Relevé complet et évaluation de l\'état structurel' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Documentation des éléments patrimoniaux à conserver, restaurer ou reconstruire' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Conception & stratégie de réhabilitation' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Élaboration d\'un concept de réhabilitation respectueux du patrimoine' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Production de dessins détaillés : plans, élévations, coupes, menuiseries, interfaces de pierre' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Enveloppe & matériaux' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Restauration de la maçonnerie en pierre d\'origine avec remplacement sélectif' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Intégration de vitrages haute performance sans altérer le caractère architectural' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Sélection de matériaux locaux : bois massif, fer forgé, marbre libanais' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Coordination technique (MEP & renforcement structurel)' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Intégration discrète des systèmes CVC, électriques et hydrauliques dans la structure historique' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Renforcement structurel conforme aux normes antisismiques' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Mise en place d\'un éclairage indirect et de systèmes de climatisation modernes' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Gestion de projet & suivi de chantier' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Coordination avec ingénieurs, spécialistes en conservation et artisans' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Supervision des maîtres artisans : tailleurs de pierre, ferronniers, restaurateurs de bois' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Contrôle qualité, suivi des délais et conformité aux réglementations de préservation du patrimoine.' }],
+          },
+        ], 'fmc03-fr-'),
+        order: 1,
+      },
     ];
 
     for (const item of portfolioItems) {

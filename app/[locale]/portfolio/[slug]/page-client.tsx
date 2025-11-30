@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { AnimatedSection } from '@/components/AnimatedSection';
@@ -7,6 +8,7 @@ import { PageBanner } from '@/components/PageBanner';
 import { PortableText } from '@portabletext/react';
 import { getLocalizedField } from '@/lib/sanity/utils';
 import { urlFor } from '@/sanity/lib/image';
+import { ImageLightbox } from '@/components/ImageLightbox';
 
 interface PortfolioItemPageProps {
   portfolioItem: any;
@@ -15,11 +17,30 @@ interface PortfolioItemPageProps {
 
 export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioItemPageProps) {
   const t = useTranslations('portfolio');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const title = getLocalizedField(portfolioItem, locale, 'title');
   const location = getLocalizedField(portfolioItem, locale, 'location');
   const role = getLocalizedField(portfolioItem, locale, 'role');
   const description = getLocalizedField(portfolioItem, locale, 'description');
+
+  // Combine main image and gallery images into one array
+  const allImages = [];
+  if (portfolioItem.image) {
+    allImages.push(portfolioItem.image);
+  }
+  if (portfolioItem.gallery && Array.isArray(portfolioItem.gallery)) {
+    allImages.push(...portfolioItem.gallery);
+  }
+
+  // Generate image URLs for lightbox
+  const imageUrls = allImages.map((img: any) => urlFor(img).width(1920).height(1080).url());
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   const portableTextComponents = {
     block: {
@@ -57,12 +78,6 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
       },
     },
   };
-
-  const featuredImageUrl = portfolioItem.image
-    ? urlFor(portfolioItem.image).width(1920).height(1080).url()
-    : '/images/home-banner.jpg';
-
-  const galleryImages = portfolioItem.gallery || [];
 
   return (
     <div>
@@ -129,40 +144,16 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
             </div>
           </AnimatedSection>
 
-          {/* Featured Image */}
-          <AnimatedSection delay={0.1}>
-            <div className="relative w-full h-96 lg:h-[600px] mb-12 overflow-hidden">
-              <Image
-                src={featuredImageUrl}
-                alt={title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </AnimatedSection>
-
-          {/* Description */}
-          {description && description.length > 0 && (
-            <AnimatedSection delay={0.2}>
-              <div className="prose prose-lg max-w-none mb-12">
-                <PortableText value={description} components={portableTextComponents} />
-              </div>
-            </AnimatedSection>
-          )}
-
-          {/* Gallery */}
-          {galleryImages.length > 0 && (
-            <AnimatedSection delay={0.3}>
-              <h2 className="font-medium text-3xl lg:text-4xl text-foreground mb-8">
-                {t('detail.gallery')}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {galleryImages.map((image: any, index: number) => {
+          {/* Image Grid - All images in 3-column grid */}
+          {allImages.length > 0 && (
+            <AnimatedSection delay={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {allImages.map((image: any, index: number) => {
                   const imageUrl = urlFor(image).width(800).height(600).url();
                   return (
                     <div
                       key={index}
+                      onClick={() => openLightbox(index)}
                       className="relative h-64 lg:h-80 overflow-hidden group cursor-pointer"
                     >
                       <Image
@@ -171,14 +162,32 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                     </div>
                   );
                 })}
               </div>
             </AnimatedSection>
           )}
+
+          {/* Description */}
+          {description && description.length > 0 && (
+            <AnimatedSection delay={0.2}>
+              <div className="prose prose-lg max-w-none">
+                <PortableText value={description} components={portableTextComponents} />
+              </div>
+            </AnimatedSection>
+          )}
         </div>
       </section>
+
+      {/* Lightbox */}
+      <ImageLightbox
+        images={imageUrls}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }
