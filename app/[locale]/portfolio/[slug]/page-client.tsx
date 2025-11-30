@@ -133,9 +133,9 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                       )}
                     </div>
 
-                    {/* Second Row: Estimated Cost, Role */}
-                    <div className={`grid grid-cols-1 ${portfolioItem.estimatedCost ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-6 lg:gap-8`}>
-                      {portfolioItem.estimatedCost && (
+                    {/* Second Row: Estimated Cost, Role (aligned below Client), empty */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                      {portfolioItem.estimatedCost ? (
                         <div>
                           <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
                             {t('detail.cost')}
@@ -144,9 +144,11 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                             {portfolioItem.estimatedCost}
                           </p>
                         </div>
+                      ) : (
+                        <div></div>
                       )}
 
-                      <div className={portfolioItem.estimatedCost ? '' : 'md:col-span-1'}>
+                      <div>
                         <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
                           {t('detail.role')}
                         </h3>
@@ -154,6 +156,8 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                           {role}
                         </p>
                       </div>
+
+                      <div></div>
                     </div>
                   </div>
                 </div>
