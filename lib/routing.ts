@@ -13,7 +13,7 @@ const pathnames: Record<string, string | { en: string; fr: string }> = {
   },
   '/portfolio': {
     en: '/portfolio',
-    fr: '/projets',
+    fr: '/portfolio',
   },
   '/news': {
     en: '/news',

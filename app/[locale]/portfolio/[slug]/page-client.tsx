@@ -134,7 +134,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                     </div>
 
                     {/* Second Row: Estimated Cost, Role */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    <div className={`grid grid-cols-1 ${portfolioItem.estimatedCost ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-6 lg:gap-8`}>
                       {portfolioItem.estimatedCost && (
                         <div>
                           <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
@@ -146,7 +146,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                         </div>
                       )}
 
-                      <div>
+                      <div className={portfolioItem.estimatedCost ? '' : 'md:col-span-1'}>
                         <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
                           {t('detail.role')}
                         </h3>
@@ -180,7 +180,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                       <h3 className="font-medium text-xl lg:text-2xl text-foreground mb-6 pb-4 border-b border-gray-200">
                         {t('detail.gallery')}
                       </h3>
-                      <div className="space-y-4">
+                      <div className={allImages.length > 7 ? "grid grid-cols-2 gap-4" : "space-y-4"}>
                         {allImages.map((image: any, index: number) => {
                           if (!image || !image.asset) return null;
                           const imageUrl = urlFor(image).width(800).height(600).url();
@@ -188,7 +188,9 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                             <div
                               key={index}
                               onClick={() => openLightbox(index)}
-                              className="relative h-56 lg:h-72 overflow-hidden group cursor-pointer rounded-lg border border-gray-200 hover:border-foreground/30 transition-all duration-300"
+                              className={`relative overflow-hidden group cursor-pointer rounded-lg border border-gray-200 hover:border-foreground/30 transition-all duration-300 ${
+                                allImages.length > 7 ? 'h-40 lg:h-48' : 'h-56 lg:h-72'
+                              }`}
                             >
                               <Image
                                 src={imageUrl}
@@ -197,8 +199,8 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3">
-                                <p className="text-white text-sm font-light">
+                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2">
+                                <p className="text-white text-xs font-light">
                                   {index + 1} / {allImages.length}
                                 </p>
                               </div>

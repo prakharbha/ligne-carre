@@ -18,7 +18,7 @@ export const routing = defineRouting({
     },
     '/portfolio': {
       en: '/portfolio',
-      fr: '/projets',
+      fr: '/portfolio',
     },
     '/news': {
       en: '/news',
