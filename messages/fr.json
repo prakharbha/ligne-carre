@@ -28,7 +28,7 @@
     "portfolio": {
       "featuredProject": "Projet en vedette {number}",
       "description": "Excellence architecturale en design moderne",
-      "viewAll": "Voir tous les projets"
+      "viewAll": "Voir tout le portfolio"
     },
     "news": {
       "date": "Novembre 2025",
