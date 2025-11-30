@@ -91,59 +91,68 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Main Content - Left Side */}
-            <div className="lg:col-span-2">
-              {/* Project Info */}
+            <div className="lg:col-span-2 space-y-12">
+              {/* Project Info - Card Style */}
               <AnimatedSection>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-gray-200">
-                  <div>
-                    <h3 className="font-medium text-lg text-gray-600 mb-2">
-                      {t('detail.type')}
-                    </h3>
-                    <p className="text-base text-foreground font-light capitalize mb-6">
-                      {portfolioItem.projectType || portfolioItem.category}
-                    </p>
-
-                    <h3 className="font-medium text-lg text-gray-600 mb-2">
-                      {t('detail.role')}
-                    </h3>
-                    <p className="text-base text-foreground font-light mb-6">
-                      {role}
-                    </p>
-                  </div>
-
-                  <div>
-                    {portfolioItem.client && (
-                      <>
-                        <h3 className="font-medium text-lg text-gray-600 mb-2">
-                          {t('detail.client')}
+                <div className="bg-white p-8 lg:p-10 rounded-lg shadow-sm border border-gray-100">
+                  <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-8 pb-6 border-b border-gray-200">
+                    {t('detail.projectInfo') || 'Project Information'}
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                          {t('detail.type')}
                         </h3>
-                        <p className="text-base text-foreground font-light mb-6">
-                          {portfolioItem.client}
+                        <p className="text-lg text-foreground font-light capitalize">
+                          {portfolioItem.projectType || portfolioItem.category}
                         </p>
-                      </>
-                    )}
+                      </div>
 
-                    {portfolioItem.area && (
-                      <>
-                        <h3 className="font-medium text-lg text-gray-600 mb-2">
-                          {t('detail.area')}
+                      <div>
+                        <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                          {t('detail.role')}
                         </h3>
-                        <p className="text-base text-foreground font-light mb-6">
-                          {portfolioItem.area}
+                        <p className="text-lg text-foreground font-light">
+                          {role}
                         </p>
-                      </>
-                    )}
+                      </div>
+                    </div>
 
-                    {portfolioItem.estimatedCost && (
-                      <>
-                        <h3 className="font-medium text-lg text-gray-600 mb-2">
-                          {t('detail.cost')}
-                        </h3>
-                        <p className="text-base text-foreground font-light mb-6">
-                          {portfolioItem.estimatedCost}
-                        </p>
-                      </>
-                    )}
+                    <div className="space-y-6">
+                      {portfolioItem.client && (
+                        <div>
+                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.client')}
+                          </h3>
+                          <p className="text-lg text-foreground font-light">
+                            {portfolioItem.client}
+                          </p>
+                        </div>
+                      )}
+
+                      {portfolioItem.area && (
+                        <div>
+                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.area')}
+                          </h3>
+                          <p className="text-lg text-foreground font-light">
+                            {portfolioItem.area}
+                          </p>
+                        </div>
+                      )}
+
+                      {portfolioItem.estimatedCost && (
+                        <div>
+                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.cost')}
+                          </h3>
+                          <p className="text-lg text-foreground font-light">
+                            {portfolioItem.estimatedCost}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -151,8 +160,10 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
               {/* Description */}
               {description && description.length > 0 && (
                 <AnimatedSection delay={0.2}>
-                  <div className="prose prose-lg max-w-none">
-                    <PortableText value={description} components={portableTextComponents} />
+                  <div className="bg-white p-8 lg:p-10 rounded-lg shadow-sm border border-gray-100">
+                    <div className="prose prose-lg max-w-none">
+                      <PortableText value={description} components={portableTextComponents} />
+                    </div>
                   </div>
                 </AnimatedSection>
               )}
@@ -162,36 +173,43 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
             <div className="lg:col-span-1">
               {allImages.length > 0 ? (
                 <AnimatedSection delay={0.1}>
-                  <div className="sticky top-24 space-y-6">
-                    <h3 className="font-medium text-xl text-foreground mb-4">
-                      {t('detail.gallery')}
-                    </h3>
-                    <div className="space-y-6">
-                      {allImages.map((image: any, index: number) => {
-                        if (!image || !image.asset) return null;
-                        const imageUrl = urlFor(image).width(800).height(600).url();
-                        return (
-                          <div
-                            key={index}
-                            onClick={() => openLightbox(index)}
-                            className="relative h-48 lg:h-64 overflow-hidden group cursor-pointer"
-                          >
-                            <Image
-                              src={imageUrl}
-                              alt={`${title} - ${index + 1}`}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                          </div>
-                        );
-                      })}
+                  <div className="sticky top-24">
+                    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                      <h3 className="font-medium text-xl lg:text-2xl text-foreground mb-6 pb-4 border-b border-gray-200">
+                        {t('detail.gallery')}
+                      </h3>
+                      <div className="space-y-4">
+                        {allImages.map((image: any, index: number) => {
+                          if (!image || !image.asset) return null;
+                          const imageUrl = urlFor(image).width(800).height(600).url();
+                          return (
+                            <div
+                              key={index}
+                              onClick={() => openLightbox(index)}
+                              className="relative h-56 lg:h-72 overflow-hidden group cursor-pointer rounded-lg border border-gray-200 hover:border-foreground/30 transition-all duration-300"
+                            >
+                              <Image
+                                src={imageUrl}
+                                alt={`${title} - ${index + 1}`}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3">
+                                <p className="text-white text-sm font-light">
+                                  {index + 1} / {allImages.length}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </AnimatedSection>
               ) : (
                 <AnimatedSection delay={0.1}>
-                  <div className="text-center py-12 text-gray-500">
+                  <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center text-gray-500">
                     <p>No images available for this project.</p>
                   </div>
                 </AnimatedSection>

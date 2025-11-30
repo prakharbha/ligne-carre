@@ -104,6 +104,7 @@
       "masonry": "Vue Maçonnerie"
     },
     "detail": {
+      "projectInfo": "Informations du Projet",
       "type": "Type",
       "role": "Rôle",
       "client": "Client",
