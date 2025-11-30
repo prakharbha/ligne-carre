@@ -26,7 +26,7 @@ export function NewsletterCTA() {
             <h2 className="font-medium text-3xl lg:text-4xl mb-4">
               {t('title')}
             </h2>
-            <p className="text-lg text-gray-300 font-light">
+            <p className="text-lg text-gray-300 font-light text-center">
               {t('description')}
             </p>
           </div>
