@@ -146,17 +146,21 @@ export function ImageLightbox({ images, currentIndex: initialIndex, isOpen, onCl
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full h-full max-w-7xl max-h-[90vh] mx-4"
+          className="relative w-full h-full flex items-center justify-center px-4"
           onClick={(e) => e.stopPropagation()}
+          style={{ maxWidth: '95vw', maxHeight: '95vh' }}
         >
-          <Image
-            src={images[currentIndex]}
-            alt={`Image ${currentIndex + 1}`}
-            fill
-            className="object-contain"
-            priority
-            sizes="90vw"
-          />
+          <div className="relative w-full h-full" style={{ maxWidth: '100%', maxHeight: '100%' }}>
+            <Image
+              src={images[currentIndex]}
+              alt={`Image ${currentIndex + 1}`}
+              width={1920}
+              height={1080}
+              className="w-auto h-auto max-w-full max-h-[95vh] object-contain"
+              priority
+              unoptimized={false}
+            />
+          </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>

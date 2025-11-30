@@ -27,11 +27,12 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
 
   // Combine main image and gallery images into one array
   const allImages = [];
-  if (portfolioItem.image) {
+  if (portfolioItem.image && portfolioItem.image.asset) {
     allImages.push(portfolioItem.image);
   }
   if (portfolioItem.gallery && Array.isArray(portfolioItem.gallery)) {
-    allImages.push(...portfolioItem.gallery);
+    const validGalleryImages = portfolioItem.gallery.filter((img: any) => img && img.asset);
+    allImages.push(...validGalleryImages);
   }
 
   // Generate image URLs for lightbox
@@ -145,10 +146,11 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
           </AnimatedSection>
 
           {/* Image Grid - All images in 3-column grid */}
-          {allImages.length > 0 && (
+          {allImages.length > 0 ? (
             <AnimatedSection delay={0.1}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {allImages.map((image: any, index: number) => {
+                  if (!image || !image.asset) return null;
                   const imageUrl = urlFor(image).width(800).height(600).url();
                   return (
                     <div
@@ -166,6 +168,12 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                     </div>
                   );
                 })}
+              </div>
+            </AnimatedSection>
+          ) : (
+            <AnimatedSection delay={0.1}>
+              <div className="text-center py-12 text-gray-500">
+                <p>No images available for this project.</p>
               </div>
             </AnimatedSection>
           )}
