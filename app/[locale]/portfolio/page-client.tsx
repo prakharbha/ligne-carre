@@ -15,6 +15,7 @@ interface PortfolioItem {
   title_en: string;
   title_fr: string;
   image: any;
+  gallery?: any[];
   category: string;
   slug_en?: { current: string };
   slug_fr?: { current: string };
@@ -33,13 +34,28 @@ export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
   const categories: Category[] = ['all', 'sports', 'health', 'education', 'residential'];
 
   // Transform Sanity items to match component interface
-  const portfolioItems = items.map((item) => ({
-    id: item._id,
-    title: locale === 'fr' ? item.title_fr : item.title_en,
-    category: item.category,
-    image: item.image,
-    slug: locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current,
-  }));
+  const portfolioItems = items.map((item) => {
+    // For FMC01, use main image (after picture)
+    // For others, use first gallery image if available, otherwise main image
+    let thumbnailImage = item.image;
+    const slug = locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current;
+    
+    if (slug !== 'fmc01-residential-commercial-solidere-lot-671' && 
+        slug !== 'fmc01-residentiel-commercial-solidere-lot-671' &&
+        item.gallery && 
+        Array.isArray(item.gallery) && 
+        item.gallery.length > 0) {
+      thumbnailImage = item.gallery[0];
+    }
+    
+    return {
+      id: item._id,
+      title: locale === 'fr' ? item.title_fr : item.title_en,
+      category: item.category,
+      image: thumbnailImage,
+      slug: slug,
+    };
+  });
 
   return (
     <div>

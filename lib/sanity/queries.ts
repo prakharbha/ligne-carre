@@ -30,6 +30,7 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   slug_en,
   slug_fr,
   image,
+  gallery,
   category,
   order
 }`;

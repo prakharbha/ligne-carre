@@ -3,21 +3,24 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import LinkNext from 'next/link';
 import { motion } from 'framer-motion';
 import { CTASection } from '@/components/CTASection';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { NewsletterCTA } from '@/components/NewsletterCTA';
 import { BannerSlider } from '@/components/BannerSlider';
 import { getLocalizedField } from '@/lib/sanity/utils';
+import { urlFor } from '@/sanity/lib/image';
 
 interface HomePageProps {
   bannerImages: any[];
   siteSettings: any;
   services: any[];
+  portfolioItems: any[];
   locale: 'en' | 'fr';
 }
 
-export default function HomePage({ bannerImages, siteSettings, services, locale }: HomePageProps) {
+export default function HomePage({ bannerImages, siteSettings, services, portfolioItems, locale }: HomePageProps) {
   const t = useTranslations('home');
   const tNav = useTranslations('nav');
 
@@ -125,32 +128,52 @@ export default function HomePage({ bannerImages, siteSettings, services, locale 
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {[1, 2, 3].map((item, index) => (
-              <AnimatedSection key={item} delay={index * 0.1}>
-                <Link href="/portfolio">
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.3 }}
-                    className="group cursor-pointer"
-                  >
-                    <div className="relative h-64 lg:h-80 mb-4 overflow-hidden">
-                      <Image
-                        src="/images/home-banner.jpg"
-                        alt={`Featured Project ${item}`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <h3 className="font-medium text-xl text-foreground mb-2">
-                      {t('portfolio.featuredProject', { number: item })}
-                    </h3>
-                    <p className="text-base text-gray-600 font-light">
-                      {t('portfolio.description')}
-                    </p>
-                  </motion.div>
-                </Link>
-              </AnimatedSection>
-            ))}
+            {portfolioItems.slice(0, 3).map((item, index) => {
+              // For FMC01, use main image (after picture)
+              // For others, use first gallery image if available, otherwise main image
+              let thumbnailImage = item.image;
+              const slug = locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current;
+              const title = locale === 'fr' ? item.title_fr : item.title_en;
+              
+              if (slug !== 'fmc01-residential-commercial-solidere-lot-671' && 
+                  slug !== 'fmc01-residentiel-commercial-solidere-lot-671' &&
+                  item.gallery && 
+                  Array.isArray(item.gallery) && 
+                  item.gallery.length > 0) {
+                thumbnailImage = item.gallery[0];
+              }
+              
+              const imageUrl = thumbnailImage
+                ? urlFor(thumbnailImage).width(800).height(600).url()
+                : '/images/home-banner.jpg';
+              
+              return (
+                <AnimatedSection key={item._id} delay={index * 0.1}>
+                  <LinkNext href={`/${locale}/portfolio/${slug}`}>
+                    <motion.div
+                      whileHover={{ y: -8 }}
+                      transition={{ duration: 0.3 }}
+                      className="group cursor-pointer"
+                    >
+                      <div className="relative h-64 lg:h-80 mb-4 overflow-hidden">
+                        <Image
+                          src={imageUrl}
+                          alt={title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <h3 className="font-medium text-xl text-foreground mb-2">
+                        {title}
+                      </h3>
+                      <p className="text-base text-gray-600 font-light">
+                        {t('portfolio.description')}
+                      </p>
+                    </motion.div>
+                  </LinkNext>
+                </AnimatedSection>
+              );
+            })}
           </div>
 
           <div className="text-center mt-12">
