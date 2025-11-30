@@ -95,22 +95,28 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
               
               return (
                 <AnimatedSection key={service._id} delay={index * 0.1}>
-                  <div className="text-center">
-                    <div className="relative h-48 mb-6 overflow-hidden">
-                      <Image
-                        src={imagePath}
-                        alt={serviceName}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <h3 className="font-medium text-xl text-foreground mb-2">
-                      {serviceName}
-                    </h3>
-                    <p className="text-base text-gray-600 font-light line-clamp-3">
-                      {serviceDescription?.split('\n')[0] || t('services.description', { service: serviceName })}
-                    </p>
-                  </div>
+                  <Link href="/services">
+                    <motion.div
+                      whileHover={{ y: -8 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-center group cursor-pointer"
+                    >
+                      <div className="relative h-48 mb-6 overflow-hidden">
+                        <Image
+                          src={imagePath}
+                          alt={serviceName}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <h3 className="font-medium text-xl text-foreground mb-2">
+                        {serviceName}
+                      </h3>
+                      <p className="text-base text-gray-600 font-light line-clamp-3">
+                        {serviceDescription?.split('\n')[0] || t('services.description', { service: serviceName })}
+                      </p>
+                    </motion.div>
+                  </Link>
                 </AnimatedSection>
               );
             })}
