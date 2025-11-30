@@ -1,6 +1,6 @@
 /**
- * Script to optimize and upload portfolio images to Sanity
- * Run with: npx tsx scripts/upload-portfolio-images.ts
+ * Script to optimize and upload FMC01 portfolio images to Sanity
+ * Run with: npx tsx scripts/upload-fmc01-images.ts
  */
 
 import { createClient } from '@sanity/client';
@@ -55,8 +55,8 @@ async function uploadImage(buffer: Buffer, filename: string) {
   return asset;
 }
 
-async function uploadPortfolioImages() {
-  console.log('🌱 Starting portfolio image upload to Sanity...\n');
+async function uploadFMC01Images() {
+  console.log('🌱 Starting FMC01 portfolio image upload to Sanity...\n');
 
   try {
     // Find the FMC01 portfolio item
@@ -70,7 +70,7 @@ async function uploadPortfolioImages() {
     }
 
     const portfolioItem = portfolioItems[0];
-    console.log(`✅ Found portfolio item: ${portfolioItem.title_en}\n`);
+    console.log(`✅ Found portfolio item: ${portfolioItem.title_en || portfolioItem.title_fr}\n`);
 
     // Check if images exist
     const afterImagePath = '671-After.jpg';
@@ -86,8 +86,8 @@ async function uploadPortfolioImages() {
       process.exit(1);
     }
 
-    // Optimize and upload "After" image as main image
-    console.log('📸 Optimizing and uploading "After" image (main image)...');
+    // Optimize and upload "After" image as main image (for thumbnail)
+    console.log('📸 Optimizing and uploading "After" image (main image for thumbnail)...');
     const afterOptimized = await optimizeImage(afterImagePath);
     const afterAsset = await uploadImage(afterOptimized, 'fmc01-after.webp');
     console.log(`✅ Uploaded main image: ${afterAsset._id}\n`);
@@ -124,11 +124,16 @@ async function uploadPortfolioImages() {
 
     console.log('✅ Portfolio item updated successfully!\n');
     console.log('🎉 All images uploaded and linked to FMC01 portfolio item!');
+    console.log('   - Main image (thumbnail): 671-After.jpg');
+    console.log('   - Gallery image: 671-Before.jpg');
   } catch (error: any) {
     console.error('❌ Error:', error.message);
+    if (error.stack) {
+      console.error(error.stack);
+    }
     process.exit(1);
   }
 }
 
-uploadPortfolioImages();
+uploadFMC01Images();
 
