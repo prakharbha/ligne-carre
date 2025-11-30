@@ -102,7 +102,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                     {/* First Row: Type, Client, Area */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       <div>
-                        <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">
+                        <h3 className="font-bold text-sm uppercase tracking-wide text-black mb-2">
                           {t('detail.type')}
                         </h3>
                         <p className="text-lg text-gray-900 font-light capitalize text-left">
@@ -112,7 +112,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
 
                       {portfolioItem.client && (
                         <div>
-                          <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">
+                          <h3 className="font-bold text-sm uppercase tracking-wide text-black mb-2">
                             {t('detail.client')}
                           </h3>
                           <p className="text-lg text-gray-900 font-light text-left">
@@ -149,7 +149,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                       )}
 
                       <div>
-                        <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">
+                        <h3 className="font-bold text-sm uppercase tracking-wide text-black mb-2">
                           {t('detail.role')}
                         </h3>
                         <p className="text-lg text-gray-900 font-light text-left">
