@@ -148,14 +148,21 @@ export function ImageLightbox({ images, currentIndex: initialIndex, isOpen, onCl
           transition={{ duration: 0.3 }}
           className="relative flex items-center justify-center px-4 py-4"
           onClick={(e) => e.stopPropagation()}
-          style={{ width: '100%', height: '100%', maxWidth: '95vw', maxHeight: '95vh' }}
+          style={{ width: '100%', height: '100%' }}
         >
-          <div className="relative" style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}>
+          <div className="relative" style={{ maxWidth: '95vw', maxHeight: '95vh', width: 'auto', height: 'auto' }}>
             <img
               src={images[currentIndex]}
               alt={`Image ${currentIndex + 1}`}
-              className="max-w-full max-h-[95vh] w-auto h-auto object-contain"
-              style={{ display: 'block', margin: '0 auto' }}
+              style={{ 
+                maxWidth: '95vw', 
+                maxHeight: '95vh', 
+                width: 'auto', 
+                height: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+                margin: '0 auto'
+              }}
             />
           </div>
         </motion.div>

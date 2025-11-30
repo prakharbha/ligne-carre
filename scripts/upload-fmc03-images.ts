@@ -40,9 +40,9 @@ async function optimizeImage(inputPath: string): Promise<Buffer> {
     sharpInstance = sharpInstance.flatten({ background: { r: 255, g: 255, b: 255 } });
   }
 
-  // Optimize and convert to WebP
+  // Convert to WebP without resizing or cropping - maintain original dimensions
   const optimized = await sharpInstance
-    .webp({ quality: 90 })
+    .webp({ quality: 90, effort: 6 })
     .toBuffer();
   
   return optimized;

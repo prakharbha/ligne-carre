@@ -35,8 +35,8 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
     allImages.push(...validGalleryImages);
   }
 
-  // Generate image URLs for lightbox
-  const imageUrls = allImages.map((img: any) => urlFor(img).width(1920).height(1080).url());
+  // Generate image URLs for lightbox - use full resolution without cropping
+  const imageUrls = allImages.map((img: any) => urlFor(img).url());
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
