@@ -99,7 +99,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                     {t('detail.projectInfo') || 'Project Information'}
                   </h2>
                   <div className="space-y-6">
-                    {/* First Row: Type, Role, Area */}
+                    {/* First Row: Type, Client, Area */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       <div>
                         <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
@@ -110,14 +110,16 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                         </p>
                       </div>
 
-                      <div>
-                        <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
-                          {t('detail.role')}
-                        </h3>
-                        <p className="text-lg text-foreground font-light">
-                          {role}
-                        </p>
-                      </div>
+                      {portfolioItem.client && (
+                        <div>
+                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.client')}
+                          </h3>
+                          <p className="text-lg text-foreground font-light">
+                            {portfolioItem.client}
+                          </p>
+                        </div>
+                      )}
 
                       {portfolioItem.area && (
                         <div>
@@ -131,19 +133,8 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                       )}
                     </div>
 
-                    {/* Second Row: Client, Estimated Cost */}
+                    {/* Second Row: Estimated Cost, Role */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                      {portfolioItem.client && (
-                        <div>
-                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
-                            {t('detail.client')}
-                          </h3>
-                          <p className="text-lg text-foreground font-light">
-                            {portfolioItem.client}
-                          </p>
-                        </div>
-                      )}
-
                       {portfolioItem.estimatedCost && (
                         <div>
                           <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
@@ -154,6 +145,15 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                           </p>
                         </div>
                       )}
+
+                      <div>
+                        <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                          {t('detail.role')}
+                        </h3>
+                        <p className="text-lg text-foreground font-light">
+                          {role}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
