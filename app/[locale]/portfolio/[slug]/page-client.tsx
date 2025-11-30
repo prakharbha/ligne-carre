@@ -98,8 +98,9 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                   <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-8 pb-6 border-b border-gray-200">
                     {t('detail.projectInfo') || 'Project Information'}
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                    <div className="space-y-6">
+                  <div className="space-y-6">
+                    {/* First Row: Type, Role, Area */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       <div>
                         <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
                           {t('detail.type')}
@@ -117,19 +118,6 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                           {role}
                         </p>
                       </div>
-                    </div>
-
-                    <div className="space-y-6">
-                      {portfolioItem.client && (
-                        <div>
-                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
-                            {t('detail.client')}
-                          </h3>
-                          <p className="text-lg text-foreground font-light">
-                            {portfolioItem.client}
-                          </p>
-                        </div>
-                      )}
 
                       {portfolioItem.area && (
                         <div>
@@ -138,6 +126,20 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                           </h3>
                           <p className="text-lg text-foreground font-light">
                             {portfolioItem.area}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Second Row: Client, Estimated Cost */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                      {portfolioItem.client && (
+                        <div>
+                          <h3 className="font-medium text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.client')}
+                          </h3>
+                          <p className="text-lg text-foreground font-light">
+                            {portfolioItem.client}
                           </p>
                         </div>
                       )}
