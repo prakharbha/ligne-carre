@@ -152,73 +152,232 @@ async function seedData() {
     const portfolioItems = [
       {
         _type: 'portfolioItem',
-        title_en: 'Sports Complex Dubai',
-        title_fr: 'Complexe Sportif Dubaï',
-        category: 'sports',
+        title_en: 'FMC01 - Residential and Commercial Project in SOLIDERE – Lot 671 Downtown Beirut – Lebanon (SOLIDERE)',
+        title_fr: 'FMC01 - Projet résidentiel et commercial à SOLIDERE– Lot 671 Centre-ville de Beyrouth – Liban (SOLIDERE)',
+        slug_en: { current: 'fmc01-residential-commercial-solidere-lot-671' },
+        slug_fr: { current: 'fmc01-residentiel-commercial-solidere-lot-671' },
+        location_en: 'Downtown Beirut – Lebanon (SOLIDERE)',
+        location_fr: 'Centre-ville de Beyrouth – Liban (SOLIDERE)',
+        year: '1998–2001',
+        projectType: 'mixed-use',
+        category: 'residential',
+        role_en: 'Senior Architect at F.M. Consultants',
+        role_fr: 'Architecte Senior chez F.M. Consultants',
+        client: 'SOLIDERE',
+        area: '3,000 m²',
+        estimatedCost: '6,000,000 USD',
+        description_en: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Project Overview' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'This mixed-use residential and commercial building was developed within the strategic redevelopment framework of SOLIDERE, the company overseeing the reconstruction of downtown Beirut. As Senior Architect at F.M. Consultants, I led the complete architectural development of Lot 671, ensuring full compliance with SOLIDERE\'s master planning guidelines, urban constraints, and regulatory requirements.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'The project encompasses 3,000 m² of built-up area and integrates high-performance materials, optimized massing, and contextual architectural language suitable for a dense, historic urban environment.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Key Responsibilities' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Architectural Programming & Planning Compliance' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Interpretation and application of SOLIDERE\'s urban guidelines, zoning restrictions, height controls, and authorized building envelope.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Detailed analysis of land-use ratios and functions to define optimal residential and commercial allocations.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Urban & Site Analysis' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Study of urban grids, pedestrian circulation patterns, and visual corridors.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Integration of the project into the architectural character of Beirut\'s traditional city blocks.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Concept to Detailed Design' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Development of volumetric massing and façade concepts.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Optimization of commercial frontage, residential access points, and service distribution.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Production of detailed architectural plans, sections, elevations, and technical details for execution.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Detailed Design & Construction Documents' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Production of complete architectural drawings: plans, sections, elevations, technical sheets, and execution details.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Material selection including natural stone, wood finishes, laminated glazing, and insulated façade assemblies.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Regulatory & Technical Coordination' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Compliance with Lebanese building codes related to structural integrity, fire safety, accessibility, HVAC distribution, and environmental performance.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Coordination with structural, MEP, acoustic, and civil engineers to align architectural decisions with technical requirements.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Envelope & Performance Integration' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Thermal insulation strategies suitable for Beirut\'s climate.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Sunlight management, shading studies, and façade depth optimization.' }],
+          },
+        ], 'fmc01-en-'),
+        description_fr: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Aperçu du projet' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Ce bâtiment résidentiel et commercial à usages mixtes s\'inscrit dans le cadre stratégique de la reconstruction du centre-ville de Beyrouth menée par SOLIDERE. En tant qu\'architecte senior chez F.M. Consultants, j\'ai dirigé l\'ensemble du développement architectural du Lot 671, en assurant une conformité totale aux directives du plan directeur, aux contraintes urbaines et aux exigences réglementaires propres au secteur SOLIDERE.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Le projet couvre une superficie construite de 3 000 m² et intègre des matériaux performants, une volumétrie optimisée et un langage architectural contextualisé adapté à un tissu urbain dense et patrimonial.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsabilités clés' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Programmation architecturale et conformité au plan d\'urbanisme' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Interprétation et application des directives urbaines de SOLIDERE, incluant zonage, gabarits, hauteurs permises et enveloppe bâtie autorisée.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Analyse détaillée des ratios d\'occupation et des fonctions afin d\'optimiser la répartition résidentielle et commerciale.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Analyse urbaine et étude de site' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Étude des trames urbaines, des parcours piétonniers et des corridors visuels.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Intégration du projet au caractère architectural des îlots traditionnels du centre-ville de Beyrouth.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Du concept aux détails techniques' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Développement de la volumétrie, des façades et des principes d\'implantation.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Optimisation des vitrines commerciales, des accès résidentiels et des zones de services.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Élaboration de plans architecturaux détaillés : plans, coupes, élévations et détails techniques pour l\'exécution.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Documents d\'exécution et choix des matériaux' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Production complète des dessins d\'exécution et des dossiers techniques.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Sélection de matériaux adaptés : pierre naturelle, bois, vitrages feuilletés et enveloppe isolée.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Coordination technique et réglementaire' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Conformité aux normes libanaises concernant la structure, la sécurité incendie, l\'accessibilité, la ventilation et la performance environnementale.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Coordination étroite avec les équipes structure, CVAC, MEP, acoustique et génie civil pour assurer la cohérence entre décisions architecturales et exigences techniques.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Enveloppe et performance du bâtiment' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Stratégies d\'isolation thermique adaptées au climat de Beyrouth.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Études d\'ensoleillement, gestion de l\'ombre et optimisation de la profondeur des façades.' }],
+          },
+        ], 'fmc01-fr-'),
         order: 0,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Medical Center Montreal',
-        title_fr: 'Centre Médical Montréal',
-        category: 'health',
-        order: 1,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'University Campus Qatar',
-        title_fr: 'Campus Universitaire Qatar',
-        category: 'education',
-        order: 2,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Luxury Residence KSA',
-        title_fr: 'Résidence de Luxe Arabie Saoudite',
-        category: 'residential',
-        order: 3,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Stadium Project Vision 2030',
-        title_fr: 'Projet de Stade Vision 2030',
-        category: 'sports',
-        order: 4,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Hospital Expansion',
-        title_fr: "Extension d'Hôpital",
-        category: 'health',
-        order: 5,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'School Complex',
-        title_fr: 'Complexe Scolaire',
-        category: 'education',
-        order: 6,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Modern Villa',
-        title_fr: 'Villa Moderne',
-        category: 'residential',
-        order: 7,
-      },
-      {
-        _type: 'portfolioItem',
-        title_en: 'Athletic Center',
-        title_fr: 'Centre Athlétique',
-        category: 'sports',
-        order: 8,
       },
     ];
 
     for (const item of portfolioItems) {
       await client.create(item);
     }
-    console.log(`✅ Created ${portfolioItems.length} portfolio items\n`);
+    console.log(`✅ Created ${portfolioItems.length} portfolio item(s)\n`);
     console.log('⚠️  Note: Portfolio items need images to be uploaded manually in Sanity Studio\n');
 
     // 4. Create News Articles

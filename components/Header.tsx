@@ -91,33 +91,21 @@ export function Header() {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => switchLanguage('en')}
-                  className={`w-8 h-8 rounded-full overflow-hidden border-2 transition-all ${
-                    locale === 'en' ? 'border-foreground' : 'border-transparent opacity-60 hover:opacity-100'
+                  className={`px-3 py-1 text-sm font-light border transition-all ${
+                    locale === 'en' ? 'border-foreground text-foreground bg-foreground/5' : 'border-gray-300 text-gray-600 hover:border-foreground hover:text-foreground'
                   }`}
                   aria-label="Switch to English"
                 >
-                  <Image
-                    src="https://flagcdn.com/w40/us.png"
-                    alt="English"
-                    width={32}
-                    height={32}
-                    className="object-cover"
-                  />
+                  EN
                 </button>
                 <button
                   onClick={() => switchLanguage('fr')}
-                  className={`w-8 h-8 rounded-full overflow-hidden border-2 transition-all ${
-                    locale === 'fr' ? 'border-foreground' : 'border-transparent opacity-60 hover:opacity-100'
+                  className={`px-3 py-1 text-sm font-light border transition-all ${
+                    locale === 'fr' ? 'border-foreground text-foreground bg-foreground/5' : 'border-gray-300 text-gray-600 hover:border-foreground hover:text-foreground'
                   }`}
                   aria-label="Switch to French"
                 >
-                  <Image
-                    src="https://flagcdn.com/w40/fr.png"
-                    alt="Français"
-                    width={32}
-                    height={32}
-                    className="object-cover"
-                  />
+                  FR
                 </button>
               </div>
 

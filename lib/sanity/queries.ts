@@ -27,9 +27,33 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   _id,
   title_en,
   title_fr,
+  slug_en,
+  slug_fr,
   image,
   category,
   order
+}`;
+
+// Single Portfolio Item by slug
+export const portfolioItemBySlugQuery = `*[_type == "portfolioItem" && (slug_en.current == $slug || slug_fr.current == $slug)][0] {
+  _id,
+  title_en,
+  title_fr,
+  slug_en,
+  slug_fr,
+  location_en,
+  location_fr,
+  year,
+  projectType,
+  role_en,
+  role_fr,
+  client,
+  area,
+  estimatedCost,
+  description_en,
+  description_fr,
+  image,
+  gallery
 }`;
 
 // News Articles

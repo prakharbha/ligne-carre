@@ -16,6 +16,8 @@ interface PortfolioItem {
   title_fr: string;
   image: any;
   category: string;
+  slug_en?: { current: string };
+  slug_fr?: { current: string };
 }
 
 interface PortfolioPageProps {
@@ -36,6 +38,7 @@ export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
     title: locale === 'fr' ? item.title_fr : item.title_en,
     category: item.category,
     image: item.image,
+    slug: locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current,
   }));
 
   return (

@@ -102,6 +102,14 @@
     "view": {
       "grid": "Vue Grille",
       "masonry": "Vue Maçonnerie"
+    },
+    "detail": {
+      "type": "Type",
+      "role": "Rôle",
+      "client": "Client",
+      "area": "Superficie",
+      "cost": "Coût Estimé",
+      "gallery": "Galerie d'Images"
     }
   },
   "news": {

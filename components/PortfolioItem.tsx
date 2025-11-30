@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { urlFor } from '@/sanity/lib/image';
 
 interface PortfolioItemProps {
@@ -10,6 +11,7 @@ interface PortfolioItemProps {
     title: string;
     category: string;
     image: any; // Sanity image object
+    slug?: string; // Optional slug for linking
   };
 }
 
@@ -19,7 +21,7 @@ export function PortfolioItem({ item }: PortfolioItemProps) {
     ? urlFor(item.image).width(800).height(600).url()
     : '/images/home-banner.jpg';
 
-  return (
+  const content = (
     <motion.div
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
@@ -42,5 +44,16 @@ export function PortfolioItem({ item }: PortfolioItemProps) {
       </p>
     </motion.div>
   );
+
+  // If slug is provided, wrap in Link
+  if (item.slug) {
+    return (
+      <Link href={`/portfolio/${item.slug}`}>
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
 }
 

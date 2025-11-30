@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { Link } from '@/i18n/routing';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface MobileMenuProps {
@@ -81,36 +80,24 @@ export function MobileMenu({ isOpen, onClose, navItems, locale, onLanguageSwitch
                   onLanguageSwitch('en');
                   onClose();
                 }}
-                className={`w-10 h-10 rounded-full overflow-hidden border-2 transition-all ${
-                  locale === 'en' ? 'border-foreground' : 'border-transparent opacity-60 hover:opacity-100'
+                className={`px-4 py-2 text-base font-light border transition-all ${
+                  locale === 'en' ? 'border-foreground text-foreground bg-foreground/5' : 'border-gray-300 text-gray-600 hover:border-foreground hover:text-foreground'
                 }`}
                 aria-label="Switch to English"
               >
-                <Image
-                  src="https://flagcdn.com/w40/us.png"
-                  alt="English"
-                  width={40}
-                  height={40}
-                  className="object-cover"
-                />
+                EN
               </button>
               <button
                 onClick={() => {
                   onLanguageSwitch('fr');
                   onClose();
                 }}
-                className={`w-10 h-10 rounded-full overflow-hidden border-2 transition-all ${
-                  locale === 'fr' ? 'border-foreground' : 'border-transparent opacity-60 hover:opacity-100'
+                className={`px-4 py-2 text-base font-light border transition-all ${
+                  locale === 'fr' ? 'border-foreground text-foreground bg-foreground/5' : 'border-gray-300 text-gray-600 hover:border-foreground hover:text-foreground'
                 }`}
                 aria-label="Switch to French"
               >
-                <Image
-                  src="https://flagcdn.com/w40/fr.png"
-                  alt="Français"
-                  width={40}
-                  height={40}
-                  className="object-cover"
-                />
+                FR
               </button>
             </div>
           </div>

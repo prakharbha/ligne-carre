@@ -3,6 +3,7 @@ import {
   bannerImagesQuery,
   servicesQuery,
   portfolioItemsQuery,
+  portfolioItemBySlugQuery,
   newsArticlesQuery,
   newsArticleBySlugQuery,
   pageContentQuery,
@@ -19,6 +20,10 @@ export async function getServices() {
 
 export async function getPortfolioItems() {
   return await client.fetch(portfolioItemsQuery);
+}
+
+export async function getPortfolioItemBySlug(slug: string, locale: 'en' | 'fr') {
+  return await client.fetch(portfolioItemBySlugQuery, { slug });
 }
 
 export async function getNewsArticles() {
