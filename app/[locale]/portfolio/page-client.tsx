@@ -17,6 +17,12 @@ interface PortfolioItem {
   image: any;
   gallery?: any[];
   category: string;
+  projectType?: string;
+  client?: string;
+  role_en?: string;
+  role_fr?: string;
+  area?: string;
+  estimatedCost?: string;
   slug_en?: { current: string };
   slug_fr?: { current: string };
 }
@@ -54,6 +60,11 @@ export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
       category: item.category,
       image: thumbnailImage,
       slug: slug,
+      projectType: item.projectType || item.category,
+      client: item.client,
+      role: locale === 'fr' ? item.role_fr : item.role_en,
+      area: item.area,
+      estimatedCost: item.estimatedCost,
     };
   });
 

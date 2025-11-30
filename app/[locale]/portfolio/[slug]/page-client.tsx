@@ -89,103 +89,115 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
 
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Project Info */}
-          <AnimatedSection>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-gray-200">
-              <div>
-                <h3 className="font-medium text-lg text-gray-600 mb-2">
-                  {t('detail.type')}
-                </h3>
-                <p className="text-base text-foreground font-light capitalize mb-6">
-                  {portfolioItem.projectType || portfolioItem.category}
-                </p>
-
-                <h3 className="font-medium text-lg text-gray-600 mb-2">
-                  {t('detail.role')}
-                </h3>
-                <p className="text-base text-foreground font-light mb-6">
-                  {role}
-                </p>
-              </div>
-
-              <div>
-                {portfolioItem.client && (
-                  <>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Main Content - Left Side */}
+            <div className="lg:col-span-2">
+              {/* Project Info */}
+              <AnimatedSection>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 pb-12 border-b border-gray-200">
+                  <div>
                     <h3 className="font-medium text-lg text-gray-600 mb-2">
-                      {t('detail.client')}
+                      {t('detail.type')}
+                    </h3>
+                    <p className="text-base text-foreground font-light capitalize mb-6">
+                      {portfolioItem.projectType || portfolioItem.category}
+                    </p>
+
+                    <h3 className="font-medium text-lg text-gray-600 mb-2">
+                      {t('detail.role')}
                     </h3>
                     <p className="text-base text-foreground font-light mb-6">
-                      {portfolioItem.client}
+                      {role}
                     </p>
-                  </>
-                )}
+                  </div>
 
-                {portfolioItem.area && (
-                  <>
-                    <h3 className="font-medium text-lg text-gray-600 mb-2">
-                      {t('detail.area')}
-                    </h3>
-                    <p className="text-base text-foreground font-light mb-6">
-                      {portfolioItem.area}
-                    </p>
-                  </>
-                )}
+                  <div>
+                    {portfolioItem.client && (
+                      <>
+                        <h3 className="font-medium text-lg text-gray-600 mb-2">
+                          {t('detail.client')}
+                        </h3>
+                        <p className="text-base text-foreground font-light mb-6">
+                          {portfolioItem.client}
+                        </p>
+                      </>
+                    )}
 
-                {portfolioItem.estimatedCost && (
-                  <>
-                    <h3 className="font-medium text-lg text-gray-600 mb-2">
-                      {t('detail.cost')}
-                    </h3>
-                    <p className="text-base text-foreground font-light mb-6">
-                      {portfolioItem.estimatedCost}
-                    </p>
-                  </>
-                )}
-              </div>
+                    {portfolioItem.area && (
+                      <>
+                        <h3 className="font-medium text-lg text-gray-600 mb-2">
+                          {t('detail.area')}
+                        </h3>
+                        <p className="text-base text-foreground font-light mb-6">
+                          {portfolioItem.area}
+                        </p>
+                      </>
+                    )}
+
+                    {portfolioItem.estimatedCost && (
+                      <>
+                        <h3 className="font-medium text-lg text-gray-600 mb-2">
+                          {t('detail.cost')}
+                        </h3>
+                        <p className="text-base text-foreground font-light mb-6">
+                          {portfolioItem.estimatedCost}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Description */}
+              {description && description.length > 0 && (
+                <AnimatedSection delay={0.2}>
+                  <div className="prose prose-lg max-w-none">
+                    <PortableText value={description} components={portableTextComponents} />
+                  </div>
+                </AnimatedSection>
+              )}
             </div>
-          </AnimatedSection>
 
-          {/* Image Grid - All images in 3-column grid */}
-          {allImages.length > 0 ? (
-            <AnimatedSection delay={0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {allImages.map((image: any, index: number) => {
-                  if (!image || !image.asset) return null;
-                  const imageUrl = urlFor(image).width(800).height(600).url();
-                  return (
-                    <div
-                      key={index}
-                      onClick={() => openLightbox(index)}
-                      className="relative h-64 lg:h-80 overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={imageUrl}
-                        alt={`${title} - ${index + 1}`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+            {/* Image Sidebar - Right Side */}
+            <div className="lg:col-span-1">
+              {allImages.length > 0 ? (
+                <AnimatedSection delay={0.1}>
+                  <div className="sticky top-24 space-y-6">
+                    <h3 className="font-medium text-xl text-foreground mb-4">
+                      {t('detail.gallery')}
+                    </h3>
+                    <div className="space-y-6">
+                      {allImages.map((image: any, index: number) => {
+                        if (!image || !image.asset) return null;
+                        const imageUrl = urlFor(image).width(800).height(600).url();
+                        return (
+                          <div
+                            key={index}
+                            onClick={() => openLightbox(index)}
+                            className="relative h-48 lg:h-64 overflow-hidden group cursor-pointer"
+                          >
+                            <Image
+                              src={imageUrl}
+                              alt={`${title} - ${index + 1}`}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                          </div>
+                        );
+                      })}
                     </div>
-                  );
-                })}
-              </div>
-            </AnimatedSection>
-          ) : (
-            <AnimatedSection delay={0.1}>
-              <div className="text-center py-12 text-gray-500">
-                <p>No images available for this project.</p>
-              </div>
-            </AnimatedSection>
-          )}
-
-          {/* Description */}
-          {description && description.length > 0 && (
-            <AnimatedSection delay={0.2}>
-              <div className="prose prose-lg max-w-none">
-                <PortableText value={description} components={portableTextComponents} />
-              </div>
-            </AnimatedSection>
-          )}
+                  </div>
+                </AnimatedSection>
+              ) : (
+                <AnimatedSection delay={0.1}>
+                  <div className="text-center py-12 text-gray-500">
+                    <p>No images available for this project.</p>
+                  </div>
+                </AnimatedSection>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 

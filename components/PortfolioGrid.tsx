@@ -9,6 +9,12 @@ interface PortfolioGridProps {
     title: string;
     category: string;
     image: any;
+    slug?: string;
+    projectType?: string;
+    client?: string;
+    role?: string;
+    area?: string;
+    estimatedCost?: string;
   }>;
   selectedCategory: string;
 }

@@ -400,7 +400,7 @@ async function seedData() {
           },
           {
             _type: 'block',
-            children: [{ _type: 'span', text: 'The mission was to preserve authentic Lebanese identity—stone masonry, vaults, arcades—while integrating modern standards of comfort, safety, and energy performance. The result: a refined balance of architectural authenticity and modern living.' }],
+            children: [{ _type: 'span', text: 'The mission was to preserve authentic Lebanese identity (stone masonry, vaults, arcades) while integrating modern standards of comfort, safety, and energy performance. The result: a refined balance of architectural authenticity and modern living.' }],
           },
           {
             _type: 'block',
@@ -813,7 +813,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: 'Creativity – thoughtful design that improves functionality, aesthetics, and user experience.',
+              text: 'Creativity: thoughtful design that improves functionality, aesthetics, and user experience.',
             },
           ],
           style: 'normal',
@@ -823,7 +823,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: 'Technical Expertise – precise drawings, efficient coordination, and rigorous quality control.',
+              text: 'Technical Expertise: precise drawings, efficient coordination, and rigorous quality control.',
             },
           ],
           style: 'normal',
@@ -873,7 +873,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: 'Architect OAQ – Project Manager | MGPA',
+              text: 'Architect OAQ - Project Manager | MGPA',
             },
           ],
           style: 'normal',
@@ -955,7 +955,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: "Ligne Carré Inc. se positionne comme votre partenaire de confiance en architecture et en gestion de projet au Québec. Nous offrons des services complets, flexibles et sur mesure pour transformer vos idées en projets concrets — qu'il s'agisse de bâtiments résidentiels, commerciaux ou institutionnels.",
+              text: "Ligne Carré Inc. se positionne comme votre partenaire de confiance en architecture et en gestion de projet au Québec. Nous offrons des services complets, flexibles et sur mesure pour transformer vos idées en projets concrets, qu'il s'agisse de bâtiments résidentiels, commerciaux ou institutionnels.",
             },
           ],
           style: 'normal',
@@ -995,7 +995,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: 'Architecte OAQ – Gestionnaire de Projets | MGPA',
+              text: 'Architecte OAQ - Gestionnaire de Projets | MGPA',
             },
           ],
           style: 'normal',
@@ -1015,7 +1015,7 @@ async function seedData() {
           children: [
             {
               _type: 'span',
-              text: "Diplômé de l'Académie Libanaise des Beaux-Arts et titulaire d'une maîtrise en montage et gestion de projet de l'Université de Montréal, il a dirigé des projets résidentiels, institutionnels et sportifs, alliant architecture innovante et gestion rigoureuse. Fondateur de Ligne Carré Inc., il accompagne ses clients du premier croquis à la livraison finale, avec une approche humaine, accessible, et orientée vers la précision — parce que chaque ligne compte.",
+              text: "Diplômé de l'Académie Libanaise des Beaux-Arts et titulaire d'une maîtrise en montage et gestion de projet de l'Université de Montréal, il a dirigé des projets résidentiels, institutionnels et sportifs, alliant architecture innovante et gestion rigoureuse. Fondateur de Ligne Carré Inc., il accompagne ses clients du premier croquis à la livraison finale, avec une approche humaine, accessible, et orientée vers la précision, parce que chaque ligne compte.",
             },
           ],
           style: 'normal',

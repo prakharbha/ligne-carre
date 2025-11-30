@@ -32,6 +32,12 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   image,
   gallery,
   category,
+  projectType,
+  client,
+  role_en,
+  role_fr,
+  area,
+  estimatedCost,
   order
 }`;
 
