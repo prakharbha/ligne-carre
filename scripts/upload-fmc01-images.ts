@@ -6,7 +6,7 @@
 import { createClient } from '@sanity/client';
 import { config } from 'dotenv';
 import { resolve } from 'path';
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'fs';
 import sharp from 'sharp';
 
 // Load environment variables from .env.local
@@ -29,7 +29,7 @@ const client = createClient({
   token,
 });
 
-async function optimizeImage(inputPath: string): Promise<Buffer> {
+async function optimizeImage(inputPath: string, backupPath?: string): Promise<Buffer> {
   const imageBuffer = readFileSync(inputPath);
   const metadata = await sharp(imageBuffer).metadata();
   
@@ -44,6 +44,16 @@ async function optimizeImage(inputPath: string): Promise<Buffer> {
   const optimized = await sharpInstance
     .webp({ quality: 90, effort: 6 })
     .toBuffer();
+  
+  // Save to backup if backup path is provided
+  if (backupPath) {
+    const backupDir = resolve(process.cwd(), 'backups/optimized-images/fmc01');
+    if (!existsSync(backupDir)) {
+      mkdirSync(backupDir, { recursive: true });
+    }
+    writeFileSync(backupPath, optimized);
+    console.log(`   💾 Saved backup: ${backupPath}`);
+  }
   
   return optimized;
 }
@@ -88,14 +98,16 @@ async function uploadFMC01Images() {
 
     // Optimize and upload "After" image as main image (for thumbnail)
     console.log('📸 Optimizing and uploading "After" image (main image for thumbnail)...');
-    const afterOptimized = await optimizeImage(afterImagePath);
-    const afterAsset = await uploadImage(afterOptimized, 'fmc01-after.webp');
+    const afterBackupPath = resolve(process.cwd(), 'backups/optimized-images/fmc01', 'main-671-After.webp');
+    const afterOptimized = await optimizeImage(afterImagePath, afterBackupPath);
+    const afterAsset = await uploadImage(afterOptimized, 'fmc01-main-671-After.webp');
     console.log(`✅ Uploaded main image: ${afterAsset._id}\n`);
 
     // Optimize and upload "Before" image for gallery
     console.log('📸 Optimizing and uploading "Before" image (gallery)...');
-    const beforeOptimized = await optimizeImage(beforeImagePath);
-    const beforeAsset = await uploadImage(beforeOptimized, 'fmc01-before.webp');
+    const beforeBackupPath = resolve(process.cwd(), 'backups/optimized-images/fmc01', 'gallery-1-671-Before.webp');
+    const beforeOptimized = await optimizeImage(beforeImagePath, beforeBackupPath);
+    const beforeAsset = await uploadImage(beforeOptimized, 'fmc01-gallery-1-671-Before.webp');
     console.log(`✅ Uploaded gallery image: ${beforeAsset._id}\n`);
 
     // Update portfolio item with images
