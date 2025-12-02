@@ -374,6 +374,230 @@ async function seedData() {
       },
       {
         _type: 'portfolioItem',
+        title_en: 'FMC02 - Residential Project in SOLIDERE – Lot 995 Downtown Beirut – Lebanon (SOLIDERE)',
+        title_fr: 'FMC02 - Projet résidentiel à SOLIDERE– Lot 995 Centre-ville de Beyrouth – Liban (SOLIDERE)',
+        slug_en: { current: 'fmc02-residential-project-solidere-lot-995' },
+        slug_fr: { current: 'fmc02-projet-residentiel-solidere-lot-995' },
+        location_en: 'Downtown Beirut – Lebanon (SOLIDERE)',
+        location_fr: 'Centre-ville de Beyrouth – Liban (SOLIDERE)',
+        year: '2001–2004',
+        projectType: 'residential',
+        category: 'residential',
+        role_en: 'Senior Architect at F.M. Consultants',
+        role_fr: 'Architecte senior chez F.M. Consultants',
+        client: 'SOLIDERE',
+        area: '4,500 m²',
+        estimatedCost: '9,000,000 USD',
+        description_en: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Project Overview' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'This residential development in the heart of SOLIDERE, Downtown Beirut, was part of the city\'s major urban revitalization program. The project required strict compliance with heritage preservation standards, architectural guidelines, and the technical specifications established for this historical district.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'As Senior Architect, I played a key role in producing the final architectural drawings, ensuring that the building\'s design respected the area\'s cultural identity while meeting contemporary residential needs.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Key Responsibilities and Expertise' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Urban & Site Analysis' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Conducted a detailed assessment of the heritage context and surrounding urban fabric.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Analyzed Beirut\'s traditional architectural typologies, building heights, street alignments, and visual corridors.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Heritage-Driven Architectural Integration' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Integrated Ottoman-Mandate–inspired façade elements in line with SOLIDERE guidelines.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Ensured full compatibility with the district\'s historical identity while maintaining modern functionality.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Architectural Design & Final Drawings' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Developed comprehensive execution drawings, elevation studies, façade details, and construction documentation.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Designed traditional openings, stone elements, cornices, balcony details, and architectural proportions.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Functional & Spatial Planning' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Designed residential units organized around a central vertical circulation core.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Introduced interior courtyards to improve natural ventilation, daylighting, and overall comfort.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Regulatory & Technical Compliance' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Ensured strict adherence to SOLIDERE regulations, urban restrictions, safety standards, and accessibility requirements.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Interdisciplinary Coordination' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Collaborated closely with structural, mechanical, and electrical engineers to optimize building systems and ensure seamless integration.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Materiality & Aesthetic Treatment' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Selected and coordinated the use of local natural stone, shutters, and wooden joinery.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Achieved a balance between traditional Lebanese architecture and contemporary residential design.' }],
+          },
+        ], 'fmc02-en-'),
+        description_fr: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Présentation du Projet' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Ce projet résidentiel, situé au cœur de SOLIDERE dans le centre-ville de Beyrouth, s\'inscrit dans le vaste programme de revitalisation urbaine du quartier historique. Le développement devait répondre à des exigences strictes en matière de préservation du patrimoine, de lignes directrices architecturales et de normes techniques propres à cette zone protégée.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'En tant qu\'architecte principal, j\'ai contribué à la production des plans finaux d\'exécution, en veillant à ce que le bâtiment respecte l\'identité architecturale traditionnelle tout en répondant aux besoins contemporains de l\'habitat.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsabilités et expertise' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Analyse urbaine et étude du site' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Analyse approfondie du contexte patrimonial et du tissu urbain environnant.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Étude des typologies architecturales traditionnelles beyrouthines, des hauteurs bâties, des alignements et des percées visuelles.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Intégration architecturale patrimoniale' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Intégration d\'éléments de façade inspirés du style ottomano-mandataire, conformément aux directives de SOLIDERE.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Harmonisation avec l\'identité historique du quartier tout en assurant une fonctionnalité moderne.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Conception architecturale et plans finaux' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Élaboration des plans d\'exécution, élévations détaillées, plans de façade et documents techniques.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Conception d\'ouvertures traditionnelles, éléments en pierre, corniches, balcons et proportions architecturales.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Organisation fonctionnelle et aménagement' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Distribution des unités résidentielles autour d\'un noyau vertical de circulation.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Création de cours intérieures pour améliorer la ventilation naturelle, l\'ensoleillement et le confort des occupants.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Conformité réglementaire et technique' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Respect strict des normes SOLIDERE, des contraintes urbaines, des règles de sécurité et des exigences d\'accessibilité.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Coordination technique multidisciplinaire' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Collaboration étroite avec les ingénieurs en structure, mécanique et électricité pour assurer une intégration optimale des systèmes.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Matériaux et traitement esthétique' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Sélection et coordination de matériaux authentiques : pierre locale, persiennes et menuiseries en bois.' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Équilibre réussi entre architecture traditionnelle libanaise et exigences d\'un habitat contemporain.' }],
+          },
+        ], 'fmc02-fr-'),
+        order: 1,
+      },
+      {
+        _type: 'portfolioItem',
         title_en: 'FMC03 - Heritage Private Residence – Lot 669 Beirut – Lebanon',
         title_fr: 'FMC03 - Résidence privée patrimoniale – Lot 669 Beyrouth – Liban',
         slug_en: { current: 'fmc03-heritage-private-residence-lot-669' },
@@ -586,7 +810,7 @@ async function seedData() {
             children: [{ _type: 'span', text: 'Contrôle qualité, suivi des délais et conformité aux réglementations de préservation du patrimoine.' }],
           },
         ], 'fmc03-fr-'),
-        order: 1,
+        order: 2,
       },
     ];
 
