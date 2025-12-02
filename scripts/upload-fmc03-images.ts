@@ -6,7 +6,7 @@
 import { createClient } from '@sanity/client';
 import { config } from 'dotenv';
 import { resolve } from 'path';
-import { readFileSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync } from 'fs';
 import sharp from 'sharp';
 
 // Load environment variables from .env.local
@@ -29,7 +29,7 @@ const client = createClient({
   token,
 });
 
-async function optimizeImage(inputPath: string): Promise<Buffer> {
+async function optimizeImage(inputPath: string, backupPath?: string): Promise<Buffer> {
   const imageBuffer = readFileSync(inputPath);
   const metadata = await sharp(imageBuffer).metadata();
   
@@ -44,6 +44,16 @@ async function optimizeImage(inputPath: string): Promise<Buffer> {
   const optimized = await sharpInstance
     .webp({ quality: 90, effort: 6 })
     .toBuffer();
+  
+  // Save to backup if backup path is provided
+  if (backupPath) {
+    const backupDir = resolve(process.cwd(), 'backups/optimized-images/fmc03');
+    if (!existsSync(backupDir)) {
+      mkdirSync(backupDir, { recursive: true });
+    }
+    writeFileSync(backupPath, optimized);
+    console.log(`   💾 Saved backup: ${backupPath}`);
+  }
   
   return optimized;
 }
@@ -98,17 +108,22 @@ async function uploadFMC03Images() {
     // Upload main image
     console.log(`📸 Optimizing and uploading main image: ${mainImageFile}...`);
     const mainImagePath = `${imageFolder}/${mainImageFile}`;
-    const mainOptimized = await optimizeImage(mainImagePath);
-    const mainAsset = await uploadImage(mainOptimized, `fmc03-main-${mainImageFile.replace(/\.(jpg|jpeg|JPG|JPEG|png|PNG)$/i, '.webp')}`);
+    const mainBackupName = `main-${mainImageFile.replace(/\.(jpg|jpeg|JPG|JPEG|png|PNG)$/i, '.webp')}`;
+    const mainBackupPath = resolve(process.cwd(), 'backups/optimized-images/fmc03', mainBackupName);
+    const mainOptimized = await optimizeImage(mainImagePath, mainBackupPath);
+    const mainAsset = await uploadImage(mainOptimized, `fmc03-${mainBackupName}`);
     console.log(`✅ Uploaded main image: ${mainAsset._id}\n`);
 
     // Upload gallery images
     const galleryAssets = [];
-    for (const galleryFile of galleryImageFiles) {
+    for (let i = 0; i < galleryImageFiles.length; i++) {
+      const galleryFile = galleryImageFiles[i];
       console.log(`📸 Optimizing and uploading gallery image: ${galleryFile}...`);
       const galleryImagePath = `${imageFolder}/${galleryFile}`;
-      const galleryOptimized = await optimizeImage(galleryImagePath);
-      const galleryAsset = await uploadImage(galleryOptimized, `fmc03-gallery-${galleryFile.replace(/\.(jpg|jpeg|JPG|JPEG|png|PNG)$/i, '.webp')}`);
+      const galleryBackupName = `gallery-${i + 1}-${galleryFile.replace(/\.(jpg|jpeg|JPG|JPEG|png|PNG)$/i, '.webp')}`;
+      const galleryBackupPath = resolve(process.cwd(), 'backups/optimized-images/fmc03', galleryBackupName);
+      const galleryOptimized = await optimizeImage(galleryImagePath, galleryBackupPath);
+      const galleryAsset = await uploadImage(galleryOptimized, `fmc03-${galleryBackupName}`);
       galleryAssets.push(galleryAsset);
       console.log(`✅ Uploaded gallery image: ${galleryAsset._id}`);
     }
