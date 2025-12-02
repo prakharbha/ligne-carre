@@ -598,6 +598,213 @@ async function seedData() {
       },
       {
         _type: 'portfolioItem',
+        title_en: 'DAR02 - EK Engineering & Line Maintenance Hangars Dubai International Airport – United Arab Emirates',
+        title_fr: 'DAR02 - EK Engineering & Line Maintenance Hangars Dubai International Airport – Émirats Arabes Unis',
+        slug_en: { current: 'dar02-ek-engineering-line-maintenance-hangars' },
+        slug_fr: { current: 'dar02-ek-engineering-line-maintenance-hangars' },
+        location_en: 'Dubai International Airport – United Arab Emirates',
+        location_fr: 'Dubai International Airport – Émirats Arabes Unis',
+        year: '2016',
+        projectType: 'institutional',
+        category: 'commercial',
+        role_en: 'Senior Architect',
+        role_fr: 'Architecte Senior',
+        client: 'DAEP',
+        area: '46,000 m²',
+        estimatedCost: '',
+        description_en: addKeysToPortableText([
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'This project concept was developed to meet the aircraft maintenance needs of Emirates Airlines at one of the busiest airports in the world. Carried out as the lead architect responsible for design and technical coordination at Dar Al Handasah, the project includes four technical hangars spread across two sites. It combines strict functional requirements, spatial efficiency, and compliance with international aviation standards.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsibilities and Technical' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Programming and Site Analysis' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Functional study of the layout across two parcels at the terminal\'s edge, including Ground Support Equipment (GSE) networks and controlled access points.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Project Sketch Design' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Development of a technical architectural concept based on complex airport constraints (aircraft size, clear heights, safety).' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Code and Standards Compliance' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Strict adherence to civil aviation regulations, DAEP (Dubai Aviation Engineering Projects), and IBC codes (toilets, safety, circulation).' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Volumetric Strategy' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Clear separation between the steel structure of aircraft bays (105 m × 110 m) and concrete service volumes (offices, mechanical rooms).' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Architectural Envelope' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Façade of metal sandwich panels installed over a 6.5 m precast concrete base, standing seam roof, and radar-reflective-safe glazing.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'System Integration' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Coordination of electromechanical spaces (7,200 m²) with ground-floor workshops and upper-level technical offices.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Interior Layout' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Optimized distribution of workshops, technical rooms, locker rooms, meeting rooms, storage, restrooms, and maintenance zones.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Technical Constraints Management' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Clearance calculations for F+ aircraft (85 m × 85 m), maintenance planning, and efficient horizontal/vertical circulation flows.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Sustainable Approach' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Selection of materials to reduce glare and radar interference, in accordance with DAEP specifications.' }],
+          },
+        ], 'dar02-en-'),
+        description_fr: addKeysToPortableText([
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Aperçu du projet' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'Le concept de ce projet a été développé pour répondre aux besoins de maintenance des avions Emirates Airlines dans l\'un des aéroports les plus actifs au monde. Réalisé en tant qu\'Architecte responsable de la conception et de la coordination technique au sein de Dar Al Handasah, le projet comprend 4 hangars techniques regroupés sur deux sites. Il allie exigences fonctionnelles strictes, efficacité spatiale et conformité aéronautique internationale.' }],
+          },
+          {
+            _type: 'block',
+            style: 'h2',
+            children: [{ _type: 'span', text: 'Responsabilités et expertises' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Programmation et analyse de site' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'étude fonctionnelle de l\'implantation sur deux parcelles à l\'extrémité du terminal, avec réseaux GSE (Ground Support Equipment) et accès contrôlés' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Esquisse de projet' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'développement d\'un concept architectural technique à partir de contraintes aéroportuaires complexes (taille des avions, hauteurs libres, sécurité)' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Étude des codes et normes' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'conformité stricte avec les réglementations de l\'aviation civile, du DAEP (Dubai Aviation Engineering Projects) et de l\'IBC (toilettes, sécurité, circulation)' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Stratégie volumétrique' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'séparation claire entre la structure métallique des baies avions (105 m × 110 m) et les volumes en béton des services (bureaux, locaux mécaniques)' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Enveloppe architecturale' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'façade en panneaux sandwich métalliques posés sur base en béton préfabriqué de 6,5 m, toiture à joint debout et vitrages adaptés (sans réflexion radar)' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Intégration des systèmes' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'coordination des espaces électromécaniques (7 200 m²) avec les ateliers (RDC) et les bureaux techniques (étage)' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Aménagement intérieur' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'distribution optimisée des ateliers, locaux techniques, vestiaires, salles de réunion, stockage, sanitaires et zones de maintenance' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Gestion des contraintes techniques' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'calculs de dégagement autour des avions F+ (85 m × 85 m), planification de la maintenance et fluidité des flux horizontaux/verticaux' }],
+          },
+          {
+            _type: 'block',
+            style: 'h3',
+            children: [{ _type: 'span', text: 'Approche durable' }],
+          },
+          {
+            _type: 'block',
+            children: [{ _type: 'span', text: 'choix de matériaux limitant les éblouissements et les interférences radar, conformément aux spécifications du DAEP' }],
+          },
+        ], 'dar02-fr-'),
+        order: 3,
+      },
+      {
+        _type: 'portfolioItem',
         title_en: 'FMC03 - Heritage Private Residence – Lot 669 Beirut – Lebanon',
         title_fr: 'FMC03 - Résidence privée patrimoniale – Lot 669 Beyrouth – Liban',
         slug_en: { current: 'fmc03-heritage-private-residence-lot-669' },
