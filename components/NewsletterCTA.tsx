@@ -19,11 +19,11 @@ export function NewsletterCTA() {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-gray-900 text-white">
+    <section className="py-12 lg:py-16 bg-gray-900 text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-8">
-            <h2 className="font-medium text-3xl lg:text-4xl mb-4">
+            <h2 className="font-medium text-3xl lg:text-4xl mb-0">
               {t('title')}
             </h2>
             <p className="text-lg text-gray-300 font-light text-center">
