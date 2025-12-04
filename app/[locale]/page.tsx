@@ -1,4 +1,4 @@
-import { getBannerImages, getSiteSettings, getServices, getPortfolioItems } from '@/lib/sanity/fetch';
+import { getBannerImages, getSiteSettings, getServices, getFeaturedPortfolioItems } from '@/lib/sanity/fetch';
 import HomePage from './page-client';
 
 export default async function Page({
@@ -11,7 +11,7 @@ export default async function Page({
     getBannerImages(),
     getSiteSettings(),
     getServices(),
-    getPortfolioItems(),
+    getFeaturedPortfolioItems(),
   ]);
 
   return (

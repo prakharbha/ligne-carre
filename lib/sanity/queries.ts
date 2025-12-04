@@ -38,7 +38,28 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   role_fr,
   area,
   estimatedCost,
-  order
+  order,
+  featured
+}`;
+
+// Featured Portfolio Items (for homepage)
+export const featuredPortfolioItemsQuery = `*[_type == "portfolioItem" && featured == true] | order(order asc) {
+  _id,
+  title_en,
+  title_fr,
+  slug_en,
+  slug_fr,
+  image,
+  gallery,
+  category,
+  projectType,
+  client,
+  role_en,
+  role_fr,
+  area,
+  estimatedCost,
+  order,
+  featured
 }`;
 
 // Single Portfolio Item by slug

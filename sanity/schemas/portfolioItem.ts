@@ -173,6 +173,13 @@ export default defineType({
       description: 'Lower numbers appear first',
       validation: (Rule) => Rule.required().min(0),
     }),
+    defineField({
+      name: 'featured',
+      title: 'Featured Project',
+      type: 'boolean',
+      description: 'Display this project on the homepage',
+      initialValue: false,
+    }),
   ],
   preview: {
     select: {
@@ -180,11 +187,14 @@ export default defineType({
       media: 'image',
       category: 'category',
       order: 'order',
+      featured: 'featured',
     },
-    prepare({ title, media, category, order }) {
+    prepare({ title, media, category, order, featured }) {
+      const categoryLabel = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
+      const featuredLabel = featured ? ' ⭐ Featured' : '';
       return {
         title: `${order || '?'}. ${title || 'Untitled'}`,
-        subtitle: category ? category.charAt(0).toUpperCase() + category.slice(1) : '',
+        subtitle: `${categoryLabel}${featuredLabel}`,
         media,
       };
     },
