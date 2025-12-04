@@ -28,8 +28,14 @@ function PasswordForm() {
       const data = await response.json();
 
       if (data.success) {
-        // Redirect to the originally requested page or home
-        const redirectTo = searchParams.get('redirect') || '/';
+        // Get the target locale from URL params or default to 'en'
+        const targetLocale = searchParams.get('locale') || 'en';
+        // Get the redirect path or default to home
+        const redirectPath = searchParams.get('redirect') || '/';
+        // Construct the full path with locale
+        const redirectTo = redirectPath.startsWith('/') && !redirectPath.startsWith(`/${targetLocale}/`) && !redirectPath.startsWith('/en/') && !redirectPath.startsWith('/fr/')
+          ? `/${targetLocale}${redirectPath}`
+          : redirectPath;
         router.push(redirectTo);
         router.refresh();
       } else {

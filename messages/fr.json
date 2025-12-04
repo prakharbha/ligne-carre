@@ -180,7 +180,10 @@
         "other": "Autre"
       },
       "message": "Message",
-      "submit": "Envoyer le Message"
+      "submit": "Envoyer le Message",
+      "submitting": "Envoi en cours...",
+      "success": "Merci ! Votre message a été envoyé avec succès.",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
     }
   },
   "footer": {
@@ -231,6 +234,11 @@
     "success": "Merci de vous être abonné !",
     "error": "Une erreur s'est produite. Veuillez réessayer.",
     "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+  },
+  "cookieBanner": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience et mémoriser votre préférence linguistique.",
+    "agree": "Accepter",
+    "decline": "Refuser"
   }
 }
 

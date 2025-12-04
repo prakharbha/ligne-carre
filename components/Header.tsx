@@ -23,6 +23,16 @@ export function Header() {
   ];
 
   const switchLanguage = (newLocale: 'en' | 'fr') => {
+    // Check if user has consented to cookies before setting locale preference
+    const consent = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('cookie-consent='));
+    
+    if (consent?.split('=')[1] === 'accepted') {
+      // Set locale preference cookie only if user has consented
+      document.cookie = `locale-preference=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
+    }
+    
     const currentPath = window.location.pathname;
     // Extract the path after the locale
     const pathWithoutLocale = currentPath.replace(/^\/(en|fr)/, '') || '/';
