@@ -62,12 +62,15 @@ export function BannerSlider({ images, bannerContent }: BannerSliderProps) {
 
   const currentImage = bannerImages[currentIndex];
   const altText = locale === 'fr' ? currentImage.altText_fr : currentImage.altText_en;
+  
+  // Only use Sanity values if they exist and are not empty
+  // Don't use fallback translations - if fields are empty, don't show anything
   const heading = locale === 'fr' 
-    ? (bannerContent?.heading_fr || t('title')) 
-    : (bannerContent?.heading_en || t('title'));
+    ? (bannerContent?.heading_fr?.trim() || '') 
+    : (bannerContent?.heading_en?.trim() || '');
   const text = locale === 'fr' 
-    ? (bannerContent?.text_fr || t('slogan').replace(/Ligne Carré\s*:\s*/, '')) 
-    : (bannerContent?.text_en || t('slogan').replace(/Ligne Carré\s*:\s*/, ''));
+    ? (bannerContent?.text_fr?.trim() || '') 
+    : (bannerContent?.text_en?.trim() || '');
   
   if (!currentImage.image) {
     return null;
