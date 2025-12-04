@@ -34,7 +34,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
   return (
     <div className="pt-20 lg:pt-24">
       {/* Hero Section with Banner Slider */}
-      <BannerSlider images={bannerImages} />
+      <BannerSlider images={bannerImages} bannerContent={siteSettings?.bannerContent} />
 
       {/* About Section Preview */}
       <section className="py-24 lg:py-32 bg-white">

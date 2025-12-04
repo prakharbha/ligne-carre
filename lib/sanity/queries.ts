@@ -107,6 +107,7 @@ export const pageContentQuery = (pageType: string) => `*[_type == "pageContent" 
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   _id,
   footerContact,
-  homepageCopy
+  homepageCopy,
+  bannerContent
 }`;
 

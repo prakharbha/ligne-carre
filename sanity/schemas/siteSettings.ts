@@ -68,6 +68,38 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'bannerContent',
+      title: 'Banner Content',
+      type: 'object',
+      description: 'Heading and text displayed on all banner images',
+      fields: [
+        defineField({
+          name: 'heading_en',
+          title: 'Banner Heading (English)',
+          type: 'string',
+          description: 'Main heading text displayed on all banners',
+        }),
+        defineField({
+          name: 'heading_fr',
+          title: 'Banner Heading (French)',
+          type: 'string',
+          description: 'Main heading text displayed on all banners',
+        }),
+        defineField({
+          name: 'text_en',
+          title: 'Banner Text (English)',
+          type: 'string',
+          description: 'Subtitle or description text displayed on all banners',
+        }),
+        defineField({
+          name: 'text_fr',
+          title: 'Banner Text (French)',
+          type: 'string',
+          description: 'Subtitle or description text displayed on all banners',
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {

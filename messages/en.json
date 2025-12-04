@@ -94,10 +94,10 @@
     "subtitle": "Explore Our Architectural Excellence",
     "filter": {
       "all": "All",
-      "sports": "Sports",
-      "health": "Health",
-      "education": "Education",
-      "residential": "Residential"
+      "residential": "Residential",
+      "commercial": "Commercial",
+      "institutional": "Institutional",
+      "cultural-sports": "Cultural and Sports"
     },
     "view": {
       "grid": "Grid View",

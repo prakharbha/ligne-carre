@@ -146,7 +146,8 @@ async function uploadDAR04Images() {
             _ref: mainAsset._id,
           },
         },
-        gallery: galleryAssets.map(asset => ({
+        gallery: galleryAssets.map((asset, index) => ({
+          _key: `gallery-${index}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           _type: 'image',
           asset: {
             _type: 'reference',

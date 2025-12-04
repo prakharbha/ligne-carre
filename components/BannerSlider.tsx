@@ -13,11 +13,19 @@ interface BannerImage {
   altText_fr: string;
 }
 
-interface BannerSliderProps {
-  images: BannerImage[];
+interface BannerContent {
+  heading_en?: string;
+  heading_fr?: string;
+  text_en?: string;
+  text_fr?: string;
 }
 
-export function BannerSlider({ images }: BannerSliderProps) {
+interface BannerSliderProps {
+  images: BannerImage[];
+  bannerContent?: BannerContent;
+}
+
+export function BannerSlider({ images, bannerContent }: BannerSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = useTranslations('home');
   const locale = useLocale() as 'en' | 'fr';
@@ -54,6 +62,12 @@ export function BannerSlider({ images }: BannerSliderProps) {
 
   const currentImage = bannerImages[currentIndex];
   const altText = locale === 'fr' ? currentImage.altText_fr : currentImage.altText_en;
+  const heading = locale === 'fr' 
+    ? (bannerContent?.heading_fr || t('title')) 
+    : (bannerContent?.heading_en || t('title'));
+  const text = locale === 'fr' 
+    ? (bannerContent?.text_fr || t('slogan').replace(/Ligne Carré\s*:\s*/, '')) 
+    : (bannerContent?.text_en || t('slogan').replace(/Ligne Carré\s*:\s*/, ''));
   
   if (!currentImage.image) {
     return null;
@@ -95,22 +109,26 @@ export function BannerSlider({ images }: BannerSliderProps) {
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-medium text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
-          >
-            {t('slogan').replace(/Ligne Carré\s*:\s*/, '')}
-          </motion.p>
+          {heading && (
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="font-medium text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
+            >
+              {heading}
+            </motion.h1>
+          )}
+          {text && (
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
+            >
+              {text}
+            </motion.p>
+          )}
         </motion.div>
       </div>
 

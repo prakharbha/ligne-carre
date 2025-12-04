@@ -8,7 +8,7 @@ import { PortfolioGrid } from '@/components/PortfolioGrid';
 import { PortfolioMasonry } from '@/components/PortfolioMasonry';
 
 type ViewType = 'grid' | 'masonry';
-type Category = 'all' | 'sports' | 'health' | 'education' | 'residential';
+type Category = 'all' | 'residential' | 'commercial' | 'institutional' | 'cultural-sports';
 
 interface PortfolioItem {
   _id: string;
@@ -37,7 +37,7 @@ export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
   const [viewType, setViewType] = useState<ViewType>('grid');
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
 
-  const categories: Category[] = ['all', 'sports', 'health', 'education', 'residential'];
+  const categories: Category[] = ['all', 'residential', 'commercial', 'institutional', 'cultural-sports'];
 
   // Transform Sanity items to match component interface
   const portfolioItems = items.map((item) => {
