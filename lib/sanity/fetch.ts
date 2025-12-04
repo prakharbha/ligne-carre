@@ -1,4 +1,5 @@
 import { client } from '@/sanity/lib/client';
+import { createClient } from '@sanity/client';
 import {
   bannerImagesQuery,
   servicesQuery,
@@ -10,6 +11,15 @@ import {
   pageContentQuery,
   siteSettingsQuery,
 } from './queries';
+
+// Create a client without CDN for featured items to get fresh data
+const clientNoCdn = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '0zrzz3rh',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  useCdn: false, // Disable CDN to get fresh data
+  apiVersion: '2024-01-01',
+  token: process.env.SANITY_API_READ_TOKEN,
+});
 
 export async function getBannerImages() {
   return await client.fetch(bannerImagesQuery);
@@ -24,7 +34,9 @@ export async function getPortfolioItems() {
 }
 
 export async function getFeaturedPortfolioItems() {
-  return await client.fetch(featuredPortfolioItemsQuery);
+  // Use client without CDN to bypass cache and get fresh data
+  // This ensures featured items are always up to date
+  return await clientNoCdn.fetch(featuredPortfolioItemsQuery);
 }
 
 export async function getPortfolioItemBySlug(slug: string, locale: 'en' | 'fr') {

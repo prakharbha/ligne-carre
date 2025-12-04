@@ -1,6 +1,9 @@
 import { getBannerImages, getSiteSettings, getServices, getFeaturedPortfolioItems } from '@/lib/sanity/fetch';
 import HomePage from './page-client';
 
+// Revalidate every 60 seconds to ensure fresh data
+export const revalidate = 60;
+
 export default async function Page({
   params,
 }: {
