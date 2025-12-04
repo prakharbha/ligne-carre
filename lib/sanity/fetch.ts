@@ -30,7 +30,8 @@ export async function getServices() {
 }
 
 export async function getPortfolioItems() {
-  return await client.fetch(portfolioItemsQuery);
+  // Use client without CDN to bypass cache and get fresh data including images
+  return await clientNoCdn.fetch(portfolioItemsQuery);
 }
 
 export async function getFeaturedPortfolioItems() {
@@ -40,7 +41,8 @@ export async function getFeaturedPortfolioItems() {
 }
 
 export async function getPortfolioItemBySlug(slug: string, locale: 'en' | 'fr') {
-  return await client.fetch(portfolioItemBySlugQuery, { slug });
+  // Use client without CDN to bypass cache and get fresh data including images
+  return await clientNoCdn.fetch(portfolioItemBySlugQuery, { slug });
 }
 
 export async function getNewsArticles() {

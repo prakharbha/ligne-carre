@@ -39,7 +39,8 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   area,
   estimatedCost,
   order,
-  featured
+  featured,
+  _updatedAt
 }`;
 
 // Featured Portfolio Items (for homepage)
@@ -59,7 +60,8 @@ export const featuredPortfolioItemsQuery = `*[_type == "portfolioItem" && featur
   area,
   estimatedCost,
   order,
-  featured
+  featured,
+  _updatedAt
 }`;
 
 // Single Portfolio Item by slug
@@ -81,7 +83,8 @@ export const portfolioItemBySlugQuery = `*[_type == "portfolioItem" && (slug_en.
   description_en,
   description_fr,
   image,
-  gallery
+  gallery,
+  _updatedAt
 }`;
 
 // News Articles
