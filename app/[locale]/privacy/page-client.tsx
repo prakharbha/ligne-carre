@@ -50,22 +50,26 @@ export default function PrivacyPage({ pageContent, pageBanner, locale }: Privacy
                       </p>
                     ),
                     bullet: ({ children }: any) => (
-                      <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                      <ul className="list-disc list-outside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light pl-6">
                         {children}
                       </ul>
                     ),
                     number: ({ children }: any) => (
-                      <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                      <ol className="list-decimal list-outside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light pl-6">
                         {children}
                       </ol>
                     ),
                   },
                   listItem: {
                     bullet: ({ children }: any) => (
-                      <li className="ml-4">{children}</li>
+                      <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+                        {children}
+                      </li>
                     ),
                     number: ({ children }: any) => (
-                      <li className="ml-4">{children}</li>
+                      <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+                        {children}
+                      </li>
                     ),
                   },
                 }}

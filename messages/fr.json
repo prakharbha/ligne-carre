@@ -110,6 +110,7 @@
       "client": "Client",
       "area": "Superficie",
       "cost": "Coût Estimé",
+      "year": "Année",
       "gallery": "Galerie d'Images"
     }
   },

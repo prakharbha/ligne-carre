@@ -61,22 +61,26 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
         </p>
       ),
       bullet: ({ children }: any) => (
-        <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+        <ul className="list-disc list-outside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light pl-6">
           {children}
         </ul>
       ),
       number: ({ children }: any) => (
-        <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+        <ol className="list-decimal list-outside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light pl-6">
           {children}
         </ol>
       ),
     },
     listItem: {
       bullet: ({ children }: any) => (
-        <li className="ml-4">{children}</li>
+        <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+          {children}
+        </li>
       ),
       number: ({ children }: any) => (
-        <li className="ml-4">{children}</li>
+        <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+          {children}
+        </li>
       ),
     },
     types: {
@@ -113,6 +117,8 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
       <PageBanner
         title={title}
         subtitle={subtitle}
+        bannerImage={portfolioItem.image}
+        altText={title}
       />
 
       <section className="py-16 lg:py-24 bg-gray-50">
@@ -161,7 +167,7 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                       )}
                     </div>
 
-                    {/* Second Row: Estimated Cost, Role (aligned below Client), empty */}
+                    {/* Second Row: Estimated Cost, Role (aligned below Client), Year */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       {portfolioItem.estimatedCost ? (
                         <div>
@@ -185,7 +191,16 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
                         </p>
                       </div>
 
-                      <div></div>
+                      {portfolioItem.year && (
+                        <div>
+                          <h3 className="font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">
+                            {t('detail.year')}
+                          </h3>
+                          <p className="text-lg text-gray-900 font-light text-left">
+                            {portfolioItem.year}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

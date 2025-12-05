@@ -110,6 +110,7 @@
       "client": "Client",
       "area": "Area",
       "cost": "Estimated Cost",
+      "year": "Year",
       "gallery": "Image Gallery"
     }
   },
