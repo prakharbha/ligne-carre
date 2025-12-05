@@ -33,7 +33,20 @@ export function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        console.error('Failed to parse response:', parseError);
+        setSubmitStatus({
+          type: 'error',
+          message: 'Failed to send message. Please try again.',
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      console.log('API Response:', { status: response.status, data });
 
       if (response.ok && data.success) {
         setSubmitStatus({
@@ -55,6 +68,7 @@ export function ContactForm() {
         });
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
         message: 'An error occurred. Please try again later.',
@@ -161,15 +175,24 @@ export function ContactForm() {
       </div>
 
       {submitStatus.type && (
-        <div
-          className={`p-4 rounded-md ${
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          className={`p-4 rounded-md text-sm font-medium mb-4 ${
             submitStatus.type === 'success'
-              ? 'bg-green-50 text-green-800 border border-green-200'
-              : 'bg-red-50 text-red-800 border border-red-200'
+              ? 'bg-green-50 text-green-800 border-2 border-green-300'
+              : 'bg-red-50 text-red-800 border-2 border-red-300'
           }`}
+          role="alert"
         >
-          {submitStatus.message}
-        </div>
+          <div className="flex items-start">
+            <span className="mr-2">
+              {submitStatus.type === 'success' ? '✓' : '✕'}
+            </span>
+            <span>{submitStatus.message}</span>
+          </div>
+        </motion.div>
       )}
 
       <button

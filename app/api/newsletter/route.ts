@@ -6,7 +6,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 export async function POST(request: NextRequest) {
   try {
     if (!resend) {
-      console.error('RESEND_API_KEY is not set');
+      console.error('❌ RESEND_API_KEY is not set');
       return NextResponse.json(
         { success: false, error: 'Email service is not configured' },
         { status: 500 }
@@ -14,12 +14,13 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, phone, inquiryType, message } = body;
+    const { email } = body;
 
     // Validate required fields
-    if (!name || !email || !inquiryType || !message) {
+    if (!email) {
+      console.error('❌ Newsletter subscription failed: Missing email field');
       return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
+        { success: false, error: 'Email is required' },
         { status: 400 }
       );
     }
@@ -27,60 +28,38 @@ export async function POST(request: NextRequest) {
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      console.error('❌ Newsletter subscription failed: Invalid email format', { email });
       return NextResponse.json(
         { success: false, error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // Map inquiry types to readable labels
-    const inquiryTypeLabels: Record<string, string> = {
-      general: 'General Inquiry',
-      newProject: 'New Project',
-      existingProject: 'Existing Project',
-      consultation: 'Consultation',
-      quote: 'Quote/Estimate',
-      other: 'Other',
-    };
-
-    const inquiryTypeLabel = inquiryTypeLabels[inquiryType] || inquiryType;
-
     // Create email content
     const emailHtml = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
+      <h2>New Newsletter Subscription</h2>
       <p><strong>Email:</strong> ${email}</p>
-      ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-      <p><strong>Inquiry Type:</strong> ${inquiryTypeLabel}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
+      <p><strong>Subscribed at:</strong> ${new Date().toLocaleString()}</p>
     `;
 
     // Send email
-    console.log('📧 Attempting to send contact form email...');
+    console.log('📧 Attempting to send newsletter subscription email...');
     console.log('📧 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
-    console.log('📧 Contact form details:', {
-      name,
-      email,
-      phone: phone || 'Not provided',
-      inquiryType: inquiryTypeLabel,
-      messageLength: message.length,
-    });
     console.log('📧 Email details:', {
       to: 'fadi.abousader@lignecarre.com',
-      subject: `New Contact Form: ${inquiryTypeLabel} - ${name}`,
+      subscriberEmail: email,
+      subject: 'New Newsletter Subscription',
     });
     
     try {
       // Use verified email address (fadi.abousader@lignecarre.com) as recipient
-      // To send to other addresses, verify a domain at resend.com/domains
       const recipientEmail = 'fadi.abousader@lignecarre.com';
       
       const { data, error } = await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: [recipientEmail],
-        replyTo: email, // User's email as reply-to so you can reply directly
-        subject: `New Contact Form: ${inquiryTypeLabel} - ${name}`,
+        replyTo: email, // Subscriber's email as reply-to
+        subject: `New Newsletter Subscription: ${email}`,
         html: emailHtml,
       });
 
@@ -88,10 +67,7 @@ export async function POST(request: NextRequest) {
 
       if (error) {
         console.error('❌ Resend error details:', JSON.stringify(error, null, 2));
-        console.error('❌ Contact form email FAILED to send');
-        console.error('❌ Error status code:', error.statusCode);
-        console.error('❌ Error name:', error.name);
-        console.error('❌ Error message:', error.message);
+        console.error('❌ Newsletter subscription email FAILED to send');
         return NextResponse.json(
           { 
             success: false, 
@@ -103,21 +79,20 @@ export async function POST(request: NextRequest) {
 
       if (!data || !data.id) {
         console.error('❌ Resend returned no data or email ID. Response:', { data, error });
-        console.error('❌ Contact form email FAILED to send');
+        console.error('❌ Newsletter subscription email FAILED to send');
         return NextResponse.json(
           { success: false, error: 'Email service returned an unexpected response' },
           { status: 500 }
         );
       }
 
-      console.log('✅ Contact form email sent successfully!');
+      console.log('✅ Newsletter subscription email sent successfully!');
       console.log('✅ Email ID:', data.id);
-      console.log('✅ From:', email);
-      console.log('✅ To:', recipientEmail);
-      console.log('✅ Subject:', `New Contact Form: ${inquiryTypeLabel} - ${name}`);
+      console.log('✅ Subscriber email:', email);
+      console.log('✅ Sent to:', recipientEmail);
       return NextResponse.json({ success: true, data, emailId: data.id });
     } catch (resendError: any) {
-      console.error('❌ Exception while sending contact form email:', resendError);
+      console.error('❌ Exception while sending newsletter subscription email:', resendError);
       console.error('❌ Error message:', resendError.message);
       console.error('❌ Error stack:', resendError.stack);
       return NextResponse.json(
@@ -128,8 +103,10 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-  } catch (error) {
-    console.error('Contact form error:', error);
+  } catch (error: any) {
+    console.error('❌ Newsletter subscription error:', error);
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error stack:', error.stack);
     return NextResponse.json(
       { success: false, error: 'An error occurred while processing your request' },
       { status: 500 }

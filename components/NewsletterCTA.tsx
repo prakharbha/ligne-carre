@@ -9,13 +9,44 @@ export function NewsletterCTA() {
   const t = useTranslations('newsletter');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setStatus('success');
-    setEmail('');
-    setTimeout(() => setStatus('idle'), 3000);
+    setIsSubmitting(true);
+    setStatus('idle');
+
+    try {
+      console.log('📧 Newsletter subscription attempt:', { email });
+      
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      console.log('📧 Newsletter API response:', { status: response.status, data });
+
+      if (response.ok && data.success) {
+        console.log('✅ Newsletter subscription successful');
+        console.log('✅ Email ID:', data.emailId);
+        setStatus('success');
+        setEmail('');
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        console.error('❌ Newsletter subscription failed:', data.error);
+        setStatus('error');
+      }
+    } catch (error: any) {
+      console.error('❌ Newsletter subscription error:', error);
+      console.error('❌ Error message:', error.message);
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -45,9 +76,10 @@ export function NewsletterCTA() {
               />
               <button
                 type="submit"
-                className="px-8 py-3 bg-white text-gray-900 font-normal uppercase tracking-wide hover:bg-gray-100 transition-colors duration-300"
+                disabled={isSubmitting}
+                className="px-8 py-3 bg-white text-gray-900 font-normal uppercase tracking-wide hover:bg-gray-100 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t('subscribe')}
+                {isSubmitting ? 'Subscribing...' : t('subscribe')}
               </button>
             </div>
             
