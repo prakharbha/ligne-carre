@@ -82,42 +82,42 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.slice(0, 4).map((service, index) => {
-              const serviceName = getLocalizedField(service, locale, 'title');
-              const serviceDescription = getLocalizedField(service, locale, 'description');
-              
-              // Only show if service has image
-              if (!service.image) return null;
-              
-              const imageUrl = urlFor(service.image).width(800).height(600).url();
-              
-              return (
-                <AnimatedSection key={service._id} delay={index * 0.1}>
-                  <Link href="/services">
-                    <motion.div
-                      whileHover={{ y: -8 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-center group cursor-pointer"
-                    >
-                      <div className="relative h-48 mb-6 overflow-hidden">
-                        <Image
-                          src={imageUrl}
-                          alt={serviceName}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <h3 className="font-medium text-xl text-foreground mb-2">
-                        {serviceName}
-                      </h3>
-                      <p className="text-base text-gray-600 font-light line-clamp-3">
-                        {serviceDescription?.split('\n')[0] || t('services.description', { service: serviceName })}
-                      </p>
-                    </motion.div>
-                  </Link>
-                </AnimatedSection>
-              );
-            })}
+            {services
+              .filter(service => service.image) // Filter services with images
+              .slice(0, 4)
+              .map((service, index) => {
+                const serviceName = getLocalizedField(service, locale, 'title');
+                const serviceDescription = getLocalizedField(service, locale, 'description');
+                
+                const imageUrl = urlFor(service.image).width(800).height(600).url();
+                
+                return (
+                  <AnimatedSection key={service._id} delay={index * 0.1}>
+                    <Link href="/services">
+                      <motion.div
+                        whileHover={{ y: -8 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-center group cursor-pointer"
+                      >
+                        <div className="relative h-48 mb-6 overflow-hidden">
+                          <Image
+                            src={imageUrl}
+                            alt={serviceName}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <h3 className="font-medium text-xl text-foreground mb-2">
+                          {serviceName}
+                        </h3>
+                        <p className="text-base text-gray-600 font-light line-clamp-3">
+                          {serviceDescription?.split('\n')[0] || t('services.description', { service: serviceName })}
+                        </p>
+                      </motion.div>
+                    </Link>
+                  </AnimatedSection>
+                );
+              })}
           </div>
         </div>
       </section>

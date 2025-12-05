@@ -122,6 +122,12 @@ export default function AboutPageClient({ pageContent, pageBanner, teamMembers =
                 {team.length > 0 && teamMembers.length > 0 && (
                   <AnimatedSection delay={0.3}>
                     <div className="pt-12 border-t border-gray-200">
+                      {/* Render Team heading from content */}
+                      {team[0] && team[0].style === 'h2' && (
+                        <div className="mb-8">
+                          <PortableText value={[team[0]]} components={portableTextComponents} />
+                        </div>
+                      )}
                       <div className="space-y-12">
                         {teamMembers.map((member, index) => {
                           const name = locale === 'fr' ? member.name_fr : member.name_en;

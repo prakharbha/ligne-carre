@@ -4,6 +4,7 @@ import {
   bannerImagesQuery,
   servicesQuery,
   portfolioItemsQuery,
+  featuredPortfolioItemsQuery,
   portfolioItemBySlugQuery,
   newsArticlesQuery,
   newsArticleBySlugQuery,
@@ -33,6 +34,11 @@ export async function getServices() {
 
 export async function getPortfolioItems() {
   return await client.fetch(portfolioItemsQuery);
+}
+
+export async function getFeaturedPortfolioItems() {
+  // Use no-CDN client to ensure fresh data
+  return await clientNoCdn.fetch(featuredPortfolioItemsQuery);
 }
 
 export async function getPortfolioItemBySlug(slug: string, locale: 'en' | 'fr') {
