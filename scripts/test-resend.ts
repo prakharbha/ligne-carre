@@ -10,7 +10,12 @@ import { resolve } from 'path';
 // Load environment variables from .env.local
 config({ path: resolve(process.cwd(), '.env.local') });
 
-const apiKey = process.env.RESEND_API_KEY || 're_5p4LQDS1_3CCofpDyeH6LfzZx1AbjAhwy';
+const apiKey = process.env.RESEND_API_KEY;
+
+if (!apiKey) {
+  console.error('❌ Error: RESEND_API_KEY must be set in .env.local');
+  process.exit(1);
+}
 
 console.log('Testing Resend API...');
 console.log('API Key:', apiKey.substring(0, 10) + '...' + apiKey.substring(apiKey.length - 5));
