@@ -19,7 +19,7 @@ export function PageBanner({ title, subtitle, bannerImage, altText }: PageBanner
   const imageAlt = altText || title;
 
   return (
-    <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
+    <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900 mt-20 lg:mt-24">
       {/* Background Image with Parallax Effect */}
       <motion.div
         initial={{ scale: 1.2 }}
