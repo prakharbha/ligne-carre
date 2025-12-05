@@ -17,10 +17,11 @@ interface HomePageProps {
   siteSettings: any;
   services: any[];
   portfolioItems: any[];
+  newsArticles: any[];
   locale: 'en' | 'fr';
 }
 
-export default function HomePage({ bannerImages, siteSettings, services, portfolioItems, locale }: HomePageProps) {
+export default function HomePage({ bannerImages, siteSettings, services, portfolioItems, newsArticles, locale }: HomePageProps) {
   const t = useTranslations('home');
   const tNav = useTranslations('nav');
 
@@ -185,37 +186,63 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
       </section>
 
       {/* News Section Preview */}
-      <section className="py-24 lg:py-32 bg-[#dddddd]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
-              {tNav('news')}
-            </h2>
-          </AnimatedSection>
+      {newsArticles && newsArticles.length > 0 && (
+        <section className="py-24 lg:py-32 bg-[#dddddd]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <AnimatedSection>
+              <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-16 text-center">
+                {tNav('news')}
+              </h2>
+            </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item, index) => (
-              <AnimatedSection key={item} delay={index * 0.1}>
-                <div className="bg-gray-50 p-6">
-                  <div className="text-sm text-gray-500 mb-2">{t('news.date')}</div>
-                  <h3 className="font-medium text-xl text-foreground mb-3">
-                    {t('news.latestUpdate', { number: item })}
-                  </h3>
-                  <p className="text-sm text-gray-600 font-light mb-4">
-                    {t('news.description')}
-                  </p>
-                  <Link
-                    href="/news"
-                    className="text-sm text-foreground hover:text-gray-600 transition-colors"
-                  >
-                    {t('news.readMore')} →
-                  </Link>
-                </div>
-              </AnimatedSection>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {newsArticles.map((article, index) => {
+                const title = getLocalizedField(article, locale, 'title');
+                const excerpt = getLocalizedField(article, locale, 'excerpt');
+                const slug = locale === 'en' ? article.slug_en?.current : article.slug_fr?.current;
+                const date = article.date 
+                  ? new Date(article.date).toLocaleDateString(
+                      locale === 'fr' ? 'fr-CA' : 'en-CA',
+                      { year: 'numeric', month: 'long', day: 'numeric' }
+                    )
+                  : null;
+
+                // Use the correct localized path for news articles
+                const articlePath = locale === 'fr' 
+                  ? `/${locale}/actualites/${slug}` 
+                  : `/${locale}/news/${slug}`;
+
+                return (
+                  <AnimatedSection key={article._id} delay={index * 0.1}>
+                    <LinkNext href={articlePath}>
+                      <motion.div
+                        whileHover={{ y: -8 }}
+                        transition={{ duration: 0.3 }}
+                        className="bg-gray-50 p-6 h-full cursor-pointer"
+                      >
+                        {date && (
+                          <div className="text-sm text-gray-500 mb-2">{date}</div>
+                        )}
+                        <h3 className="font-medium text-xl text-foreground mb-3">
+                          {title}
+                        </h3>
+                        {excerpt && (
+                          <p className="text-sm text-gray-600 font-light mb-4">
+                            {excerpt}
+                          </p>
+                        )}
+                        <div className="text-sm text-foreground hover:text-gray-600 transition-colors">
+                          {t('news.readMore')} →
+                        </div>
+                      </motion.div>
+                    </LinkNext>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Careers Section Preview */}
       <section className="py-24 lg:py-32 bg-white">

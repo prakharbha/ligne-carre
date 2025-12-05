@@ -47,7 +47,8 @@ export async function getPortfolioItemBySlug(slug: string, locale: 'en' | 'fr') 
 }
 
 export async function getNewsArticles() {
-  return await client.fetch(newsArticlesQuery);
+  // Use no-CDN client to ensure fresh data
+  return await clientNoCdn.fetch(newsArticlesQuery);
 }
 
 export async function getNewsArticleBySlug(slug: string, locale: 'en' | 'fr') {
