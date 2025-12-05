@@ -38,30 +38,7 @@ export const portfolioItemsQuery = `*[_type == "portfolioItem"] | order(order as
   role_fr,
   area,
   estimatedCost,
-  order,
-  featured,
-  _updatedAt
-}`;
-
-// Featured Portfolio Items (for homepage)
-export const featuredPortfolioItemsQuery = `*[_type == "portfolioItem" && featured == true] | order(order asc) {
-  _id,
-  title_en,
-  title_fr,
-  slug_en,
-  slug_fr,
-  image,
-  gallery,
-  category,
-  projectType,
-  client,
-  role_en,
-  role_fr,
-  area,
-  estimatedCost,
-  order,
-  featured,
-  _updatedAt
+  order
 }`;
 
 // Single Portfolio Item by slug
@@ -83,8 +60,7 @@ export const portfolioItemBySlugQuery = `*[_type == "portfolioItem" && (slug_en.
   description_en,
   description_fr,
   image,
-  gallery,
-  _updatedAt
+  gallery
 }`;
 
 // News Articles
@@ -131,7 +107,6 @@ export const pageContentQuery = (pageType: string) => `*[_type == "pageContent" 
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   _id,
   footerContact,
-  homepageCopy,
-  bannerContent
+  homepageCopy
 }`;
 

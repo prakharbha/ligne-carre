@@ -3,7 +3,6 @@ import { getMessages } from 'next-intl/server';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { FloatingContactButton } from '@/components/FloatingContactButton';
-import { CookieBanner } from '@/components/CookieBanner';
 import { getSiteSettings } from '@/lib/sanity/fetch';
 
 export { generateMetadata } from './metadata';
@@ -28,7 +27,6 @@ export default async function LocaleLayout({
         <main className="flex-grow">{children}</main>
         <Footer siteSettings={siteSettings} />
         <FloatingContactButton />
-        <CookieBanner />
       </div>
     </NextIntlClientProvider>
   );

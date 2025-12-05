@@ -94,10 +94,10 @@
     "subtitle": "Explore Our Architectural Excellence",
     "filter": {
       "all": "All",
-      "residential": "Residential",
-      "commercial": "Commercial",
-      "institutional": "Institutional",
-      "cultural-sports": "Cultural and Sports"
+      "sports": "Sports",
+      "health": "Health",
+      "education": "Education",
+      "residential": "Residential"
     },
     "view": {
       "grid": "Grid View",
@@ -180,10 +180,7 @@
         "other": "Other"
       },
       "message": "Message",
-      "submit": "Send Message",
-      "submitting": "Sending...",
-      "success": "Thank you! Your message has been sent successfully.",
-      "error": "Something went wrong. Please try again."
+      "submit": "Send Message"
     }
   },
   "footer": {
@@ -234,11 +231,6 @@
     "success": "Thank you for subscribing!",
     "error": "Something went wrong. Please try again.",
     "privacy": "We respect your privacy. Unsubscribe at any time."
-  },
-  "cookieBanner": {
-    "message": "We use cookies to enhance your experience and remember your language preference.",
-    "agree": "Agree",
-    "decline": "Decline"
   }
 }
 

@@ -157,10 +157,10 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Residential / Résidentiel', value: 'residential' },
-          { title: 'Commercial / Commercial', value: 'commercial' },
-          { title: 'Institutional / Institutionnel', value: 'institutional' },
-          { title: 'Cultural and Sports / Culturel et Sport', value: 'cultural-sports' },
+          { title: 'Sports', value: 'sports' },
+          { title: 'Health', value: 'health' },
+          { title: 'Education', value: 'education' },
+          { title: 'Residential', value: 'residential' },
         ],
         layout: 'radio',
       },
@@ -173,13 +173,6 @@ export default defineType({
       description: 'Lower numbers appear first',
       validation: (Rule) => Rule.required().min(0),
     }),
-    defineField({
-      name: 'featured',
-      title: 'Featured Project',
-      type: 'boolean',
-      description: 'Display this project on the homepage',
-      initialValue: false,
-    }),
   ],
   preview: {
     select: {
@@ -187,14 +180,11 @@ export default defineType({
       media: 'image',
       category: 'category',
       order: 'order',
-      featured: 'featured',
     },
-    prepare({ title, media, category, order, featured }) {
-      const categoryLabel = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
-      const featuredLabel = featured ? ' ⭐ Featured' : '';
+    prepare({ title, media, category, order }) {
       return {
         title: `${order || '?'}. ${title || 'Untitled'}`,
-        subtitle: `${categoryLabel}${featuredLabel}`,
+        subtitle: category ? category.charAt(0).toUpperCase() + category.slice(1) : '',
         media,
       };
     },

@@ -34,7 +34,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
   return (
     <div className="pt-20 lg:pt-24">
       {/* Hero Section with Banner Slider */}
-      <BannerSlider images={bannerImages} bannerContent={siteSettings?.bannerContent} />
+      <BannerSlider images={bannerImages} />
 
       {/* About Section Preview */}
       <section className="py-24 lg:py-32 bg-white">
@@ -134,7 +134,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {portfolioItems.map((item, index) => {
+            {portfolioItems.slice(0, 3).map((item, index) => {
               // For FMC01, use main image (after picture)
               // For others, use first gallery image if available, otherwise main image
               let thumbnailImage = item.image;

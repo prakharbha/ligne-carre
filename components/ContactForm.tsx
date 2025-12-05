@@ -13,49 +13,11 @@ export function ContactForm() {
     inquiryType: '',
     message: '',
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-      setStatus('success');
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        inquiryType: '',
-        message: '',
-      });
-      
-      // Reset status after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'An error occurred');
-      setTimeout(() => {
-        setStatus('idle');
-        setErrorMessage('');
-      }, 5000);
-    }
+    // Form submission logic would go here
+    console.log('Form submitted:', formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -156,31 +118,10 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={status === 'loading'}
-        className="w-full md:w-auto px-8 py-3 border-2 border-foreground text-foreground font-light hover:bg-foreground hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full md:w-auto px-8 py-3 border-2 border-foreground text-foreground font-light hover:bg-foreground hover:text-white transition-all duration-300"
       >
-        {status === 'loading' ? t('submitting') || 'Submitting...' : t('submit')}
+        {t('submit')}
       </button>
-
-      {status === 'success' && (
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-green-600 text-sm mt-4"
-        >
-          {t('success') || 'Thank you! Your message has been sent successfully.'}
-        </motion.p>
-      )}
-
-      {status === 'error' && (
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-red-600 text-sm mt-4"
-        >
-          {errorMessage || t('error') || 'Something went wrong. Please try again.'}
-        </motion.p>
-      )}
     </motion.form>
   );
 }

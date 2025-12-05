@@ -1,9 +1,6 @@
 import { getPortfolioItems } from '@/lib/sanity/fetch';
 import PortfolioPage from './page-client';
 
-// Revalidate every 60 seconds to ensure fresh data and images
-export const revalidate = 60;
-
 export default async function Page({
   params,
 }: {

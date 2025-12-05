@@ -124,7 +124,6 @@ async function uploadFMC01Images() {
         },
         gallery: [
           {
-            _key: `gallery-0-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
             _type: 'image',
             asset: {
               _type: 'reference',

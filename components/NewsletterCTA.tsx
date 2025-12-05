@@ -10,42 +10,20 @@ export function NewsletterCTA() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('idle');
-    
-    if (!email) return;
-
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to subscribe');
-      }
-
-      setStatus('success');
-      setEmail('');
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch (error) {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
+    // Simulate form submission
+    setStatus('success');
+    setEmail('');
+    setTimeout(() => setStatus('idle'), 3000);
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-gray-900 text-white">
+    <section className="py-20 lg:py-24 bg-gray-900 text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-8">
-            <h2 className="font-medium text-3xl lg:text-4xl mb-0">
+            <h2 className="font-medium text-3xl lg:text-4xl mb-4">
               {t('title')}
             </h2>
             <p className="text-lg text-gray-300 font-light text-center">
