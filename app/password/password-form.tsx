@@ -26,8 +26,20 @@ export default function PasswordForm() {
 
       if (response.ok) {
         // Get the redirect path from query params or default to home
-        const redirect = searchParams.get('redirect') || '/';
-        router.push(redirect);
+        let redirect = searchParams.get('redirect') || '/';
+        
+        // Don't redirect to password page itself
+        if (redirect === '/password' || redirect.includes('/password')) {
+          redirect = '/';
+        }
+        
+        // Ensure redirect starts with / and is a valid path
+        if (!redirect.startsWith('/')) {
+          redirect = '/';
+        }
+        
+        // Use window.location for a full page reload to ensure cookie is set
+        window.location.href = redirect;
       } else {
         setError('Incorrect password. Please try again.');
         setPassword('');

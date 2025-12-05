@@ -9,6 +9,11 @@ export default function middleware(request: NextRequest) {
 
   // Check if this is the password page (exact match, no locale)
   const isPasswordPage = pathname === '/password';
+  
+  // If someone tries to access password page with locale, redirect to /password
+  if (pathname === '/en/password' || pathname === '/fr/password') {
+    return NextResponse.redirect(new URL('/password', request.url));
+  }
 
   // Bypass password protection and i18n routing for:
   // - API routes
@@ -40,7 +45,10 @@ export default function middleware(request: NextRequest) {
   // If not authenticated, redirect to password page (without locale)
   if (!isAuthenticated) {
     const passwordUrl = new URL('/password', request.url);
-    passwordUrl.searchParams.set('redirect', pathname);
+    // Only set redirect if it's not the password page itself
+    if (pathname !== '/password' && !pathname.includes('/password')) {
+      passwordUrl.searchParams.set('redirect', pathname);
+    }
     return NextResponse.redirect(passwordUrl);
   }
 
