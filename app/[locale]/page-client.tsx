@@ -37,10 +37,10 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
       <BannerSlider images={bannerImages} />
 
       {/* About Section Preview */}
-      {siteSettings?.homepageCopy?.aboutImage && (
-        <section className="py-24 lg:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {siteSettings?.homepageCopy?.aboutImage && (
               <AnimatedSection>
                 <div className="relative h-96 overflow-hidden">
                   <Image
@@ -51,6 +51,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
                   />
                 </div>
               </AnimatedSection>
+            )}
             <AnimatedSection delay={0.2}>
               <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-6">
                 {tNav('about')}
@@ -70,7 +71,6 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
           </div>
         </div>
       </section>
-      )}
 
       {/* Services Section Preview */}
       <section className="py-24 lg:py-32 bg-[#dddddd]">
