@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { roboto } from './fonts';
 import './globals.css';
 
@@ -27,6 +28,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={roboto.variable}>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-S9KG3Z02T3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-S9KG3Z02T3');
+          `}
+        </Script>
+      </head>
       <body className="font-roboto font-light antialiased">{children}</body>
     </html>
   );
