@@ -14,6 +14,7 @@ interface Service {
   title_fr: string;
   description_en: string;
   description_fr: string;
+  image?: any;
   order: number;
   slug: { current: string };
 }
