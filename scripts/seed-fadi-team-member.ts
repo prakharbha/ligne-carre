@@ -95,7 +95,7 @@ async function seedFadiTeamMember() {
     } else {
       console.log('➕ Creating new Fadi team member...');
       
-      const teamMember = {
+      const teamMember: any = {
         _type: 'teamMember',
         name_en: 'Fadi Abou-Sader',
         name_fr: 'Fadi Abou-Sader',
