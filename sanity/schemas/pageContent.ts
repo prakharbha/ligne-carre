@@ -72,6 +72,39 @@ export default defineType({
       ],
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'metaTitle_en',
+          title: 'Meta Title (English)',
+          type: 'string',
+          description: 'SEO title for search engines (50-60 characters recommended)',
+        }),
+        defineField({
+          name: 'metaTitle_fr',
+          title: 'Meta Title (French)',
+          type: 'string',
+          description: 'SEO title for search engines (50-60 characters recommended)',
+        }),
+        defineField({
+          name: 'metaDescription_en',
+          title: 'Meta Description (English)',
+          type: 'text',
+          rows: 3,
+          description: 'SEO description for search engines (150-160 characters recommended)',
+        }),
+        defineField({
+          name: 'metaDescription_fr',
+          title: 'Meta Description (French)',
+          type: 'text',
+          rows: 3,
+          description: 'SEO description for search engines (150-160 characters recommended)',
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

@@ -5,9 +5,70 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { getLocalizedField } from '@/lib/sanity/utils';
 import { PageBanner } from '@/components/PageBanner';
+import { Metadata } from 'next';
 
 interface NewsArticlePageProps {
   params: Promise<{ locale: string; slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const article = await getNewsArticleBySlug(slug, locale as 'en' | 'fr');
+
+  if (!article) {
+    return {
+      title: 'News Article Not Found',
+    };
+  }
+
+  const title = getLocalizedField(article, locale as 'en' | 'fr', 'title');
+  const excerpt = getLocalizedField(article, locale as 'en' | 'fr', 'excerpt');
+  const seo = article.seo;
+  
+  // Use SEO fields if available, otherwise use excerpt
+  const metaTitle = seo 
+    ? (getLocalizedField(seo, locale as 'en' | 'fr', 'metaTitle') || `${title} | Ligne Carré`)
+    : `${title} | Ligne Carré`;
+  
+  const description = seo
+    ? (getLocalizedField(seo, locale as 'en' | 'fr', 'metaDescription') || excerpt)
+    : excerpt;
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lignecarre.com';
+  const newsPath = locale === 'fr' ? 'actualites' : 'news';
+  const currentSlug = locale === 'fr' ? article.slug_fr?.current : article.slug_en?.current;
+  const currentUrl = `${baseUrl}/${locale}/${newsPath}/${currentSlug}`;
+  const imageUrl = article.featuredImage ? urlFor(article.featuredImage).width(1200).height(630).url() : `${baseUrl}/images/logo_ligne.png`;
+
+  return {
+    title: metaTitle,
+    description: description || `${title} - News from Ligne Carré`,
+    openGraph: {
+      title: metaTitle,
+      description: description || `${title} - News from Ligne Carré`,
+      url: currentUrl,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+      type: 'article',
+      publishedTime: article.date,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: description || `${title} - News from Ligne Carré`,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        en: article.slug_en?.current ? `${baseUrl}/en/news/${article.slug_en.current}` : undefined,
+        fr: article.slug_fr?.current ? `${baseUrl}/fr/actualites/${article.slug_fr.current}` : undefined,
+      },
+    },
+  };
 }
 
 export default async function NewsArticlePage({ params }: NewsArticlePageProps) {

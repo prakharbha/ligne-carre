@@ -82,7 +82,13 @@ export const portfolioItemBySlugQuery = `*[_type == "portfolioItem" && (slug_en.
   description_en,
   description_fr,
   image,
-  gallery
+  gallery,
+  seo {
+    metaTitle_en,
+    metaTitle_fr,
+    metaDescription_en,
+    metaDescription_fr
+  }
 }`;
 
 // Page Banners
@@ -119,7 +125,13 @@ export const newsArticleBySlugQuery = `*[_type == "newsArticle" && (slug_en.curr
   excerpt_fr,
   content_en,
   content_fr,
-  featuredImage
+  featuredImage,
+  seo {
+    metaTitle_en,
+    metaTitle_fr,
+    metaDescription_en,
+    metaDescription_fr
+  }
 }`;
 
 // Page Content
@@ -131,7 +143,13 @@ export const pageContentQuery = (pageType: string) => `*[_type == "pageContent" 
   subtitle_en,
   subtitle_fr,
   content_en,
-  content_fr
+  content_fr,
+  seo {
+    metaTitle_en,
+    metaTitle_fr,
+    metaDescription_en,
+    metaDescription_fr
+  }
 }`;
 
 // Team Members
@@ -164,6 +182,12 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
     aboutDescription_fr,
     careersDescription_en,
     careersDescription_fr
+  },
+  seo {
+    metaTitle_en,
+    metaTitle_fr,
+    metaDescription_en,
+    metaDescription_fr
   }
 }`;
 

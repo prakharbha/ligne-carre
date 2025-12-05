@@ -26,3 +26,22 @@ export function getLocalizedValue<T>(
   return obj[key];
 }
 
+/**
+ * Extract plain text from PortableText blocks (for meta descriptions)
+ */
+export function extractTextFromPortableText(blocks: any[] | undefined): string {
+  if (!blocks || !Array.isArray(blocks)) return '';
+  
+  return blocks
+    .filter((block) => block._type === 'block' && block.children)
+    .map((block) => {
+      return block.children
+        .filter((child: any) => child._type === 'span')
+        .map((child: any) => child.text)
+        .join('');
+    })
+    .join(' ')
+    .trim()
+    .substring(0, 160); // Limit to 160 characters for meta description
+}
+

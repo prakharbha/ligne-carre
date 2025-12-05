@@ -103,6 +103,39 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings (Homepage)',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'metaTitle_en',
+          title: 'Meta Title (English)',
+          type: 'string',
+          description: 'SEO title for homepage (50-60 characters recommended)',
+        }),
+        defineField({
+          name: 'metaTitle_fr',
+          title: 'Meta Title (French)',
+          type: 'string',
+          description: 'SEO title for homepage (50-60 characters recommended)',
+        }),
+        defineField({
+          name: 'metaDescription_en',
+          title: 'Meta Description (English)',
+          type: 'text',
+          rows: 3,
+          description: 'SEO description for homepage (150-160 characters recommended)',
+        }),
+        defineField({
+          name: 'metaDescription_fr',
+          title: 'Meta Description (French)',
+          type: 'text',
+          rows: 3,
+          description: 'SEO description for homepage (150-160 characters recommended)',
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {

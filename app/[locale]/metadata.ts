@@ -1,5 +1,7 @@
 import { getMessages } from 'next-intl/server';
 import { Metadata } from 'next';
+import { getSiteSettings } from '@/lib/sanity/fetch';
+import { getLocalizedField } from '@/lib/sanity/utils';
 
 export async function generateMetadata({
   params,
@@ -9,13 +11,22 @@ export async function generateMetadata({
   const { locale } = await params;
   const messages = await getMessages({ locale });
   
-  // Get SEO data from messages
-  const homeSeo = (messages as any).home?.seo;
-  const title = homeSeo?.title || 'Ligne Carré - Architecture and Project Management';
-  const description = homeSeo?.description || 'Ligne Carré: where precision begins with every line.';
+  // Get SEO data from Sanity
+  const siteSettings = await getSiteSettings();
+  const seo = siteSettings?.seo;
   
-  // Get the base URL (you may want to set this as an environment variable)
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ligne-carre.vercel.app';
+  // Use Sanity SEO fields if available, otherwise fallback to messages
+  const homeSeo = (messages as any).home?.seo;
+  const title = seo 
+    ? (getLocalizedField(seo, locale as 'en' | 'fr', 'metaTitle') || getLocalizedField(siteSettings?.homepageCopy?.bannerContent || {}, locale as 'en' | 'fr', 'heading') || homeSeo?.title || 'Ligne Carré - Architecture and Project Management')
+    : (homeSeo?.title || 'Ligne Carré - Architecture and Project Management');
+  
+  const description = seo
+    ? (getLocalizedField(seo, locale as 'en' | 'fr', 'metaDescription') || getLocalizedField(siteSettings?.homepageCopy?.bannerContent || {}, locale as 'en' | 'fr', 'text') || homeSeo?.description || 'Ligne Carré: where precision begins with every line.')
+    : (homeSeo?.description || 'Ligne Carré: where precision begins with every line.');
+  
+  // Get the base URL
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lignecarre.com';
   const currentUrl = `${baseUrl}/${locale}`;
   
   const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_CA';
