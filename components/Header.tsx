@@ -23,6 +23,9 @@ export function Header() {
   ];
 
   const switchLanguage = (newLocale: 'en' | 'fr') => {
+    // Set locale preference cookie to override geolocation
+    document.cookie = `locale-preference=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    
     const currentPath = window.location.pathname;
     // Extract the path after the locale
     const pathWithoutLocale = currentPath.replace(/^\/(en|fr)/, '') || '/';

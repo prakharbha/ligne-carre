@@ -1,58 +1,58 @@
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing.config';
+import { detectLocaleFromHeaders } from './lib/geolocation';
 
 const intlMiddleware = createIntlMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Check if this is the password page (exact match, no locale)
-  const isPasswordPage = pathname === '/password';
-  
-  // If someone tries to access password page with locale, redirect to /password
-  if (pathname === '/en/password' || pathname === '/fr/password') {
-    return NextResponse.redirect(new URL('/password', request.url));
-  }
-
-  // Bypass password protection and i18n routing for:
-  // - API routes
-  // - Next.js internals
-  // - Sanity Studio
-  // - Static files (files with extensions)
-  // - Password page itself (let it through without i18n)
-  // - Well-known paths (for SSL certificates)
-  if (
+  // Skip geolocation detection if:
+  // - URL already has a locale prefix
+  // - User has a locale preference cookie
+  // - It's an API route, static file, or special path
+  const hasLocalePrefix = pathname.startsWith('/en/') || pathname.startsWith('/fr/');
+  const localePreference = request.cookies.get('locale-preference');
+  const isSpecialPath =
     pathname.startsWith('/api') ||
     pathname.startsWith('/_next') ||
     pathname.startsWith('/_vercel') ||
     pathname.startsWith('/studio') ||
     pathname.startsWith('/.well-known') ||
-    pathname.includes('.')
-  ) {
+    pathname.includes('.');
+
+  // If user has a locale preference, use it
+  if (localePreference && (localePreference.value === 'en' || localePreference.value === 'fr')) {
     return intlMiddleware(request);
   }
 
-  // Password page should bypass i18n routing entirely
-  if (isPasswordPage) {
-    return NextResponse.next();
+  // If URL already has locale, proceed with i18n middleware
+  if (hasLocalePrefix) {
+    return intlMiddleware(request);
   }
 
-  // Check for authentication cookie
-  const authCookie = request.cookies.get('site-auth');
-  const isAuthenticated = authCookie?.value === 'authenticated';
+  // Skip geolocation for special paths
+  if (isSpecialPath) {
+    return intlMiddleware(request);
+  }
 
-  // If not authenticated, redirect to password page (without locale)
-  if (!isAuthenticated) {
-    const passwordUrl = new URL('/password', request.url);
-    // Only set redirect if it's not the password page itself
-    if (pathname !== '/password' && !pathname.includes('/password')) {
-      passwordUrl.searchParams.set('redirect', pathname);
+  // Detect locale from geolocation (only on root path or paths without locale)
+  if (pathname === '/' || (!hasLocalePrefix && !isSpecialPath)) {
+    const country = request.headers.get('x-vercel-ip-country');
+    const region = request.headers.get('x-vercel-ip-country-region');
+    
+    const detectedLocale = detectLocaleFromHeaders(country, region);
+    
+    if (detectedLocale === 'fr') {
+      // Redirect to French version
+      const url = request.nextUrl.clone();
+      url.pathname = `/fr${pathname === '/' ? '' : pathname}`;
+      return NextResponse.redirect(url);
     }
-    return NextResponse.redirect(passwordUrl);
   }
 
-  // User is authenticated, proceed with i18n middleware
+  // Proceed with default i18n middleware
   return intlMiddleware(request);
 }
 
