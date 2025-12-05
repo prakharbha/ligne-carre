@@ -7,10 +7,11 @@ import { getLocalizedField } from '@/lib/sanity/utils';
 
 interface PrivacyPageProps {
   pageContent: any;
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function PrivacyPage({ pageContent, locale }: PrivacyPageProps) {
+export default function PrivacyPage({ pageContent, pageBanner, locale }: PrivacyPageProps) {
   if (!pageContent) {
     return null;
   }
@@ -18,10 +19,18 @@ export default function PrivacyPage({ pageContent, locale }: PrivacyPageProps) {
   const title = getLocalizedField(pageContent, locale, 'title');
   const subtitle = getLocalizedField(pageContent, locale, 'subtitle');
   const content = getLocalizedField(pageContent, locale, 'content');
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
   return (
     <div>
-      <PageBanner title={title} subtitle={subtitle || undefined} />
+      <PageBanner 
+        title={title} 
+        subtitle={subtitle || undefined}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
@@ -39,6 +48,24 @@ export default function PrivacyPage({ pageContent, locale }: PrivacyPageProps) {
                       <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-4">
                         {children}
                       </p>
+                    ),
+                    bullet: ({ children }: any) => (
+                      <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                        {children}
+                      </ul>
+                    ),
+                    number: ({ children }: any) => (
+                      <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                        {children}
+                      </ol>
+                    ),
+                  },
+                  listItem: {
+                    bullet: ({ children }: any) => (
+                      <li className="ml-4">{children}</li>
+                    ),
+                    number: ({ children }: any) => (
+                      <li className="ml-4">{children}</li>
                     ),
                   },
                 }}

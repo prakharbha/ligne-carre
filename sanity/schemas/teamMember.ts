@@ -1,10 +1,22 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'service',
-  title: 'Service',
+  name: 'teamMember',
+  title: 'Team Member',
   type: 'document',
   fields: [
+    defineField({
+      name: 'name_en',
+      title: 'Name (English)',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'name_fr',
+      title: 'Name (French)',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'title_en',
       title: 'Title (English)',
@@ -18,27 +30,32 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description_en',
-      title: 'Description (English)',
+      name: 'bio_en',
+      title: 'Bio (English)',
       type: 'text',
       rows: 4,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'description_fr',
-      title: 'Description (French)',
+      name: 'bio_fr',
+      title: 'Bio (French)',
       type: 'text',
       rows: 4,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
-      title: 'Service Image',
+      title: 'Photo',
       type: 'image',
       options: {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'linkedinUrl',
+      title: 'LinkedIn URL',
+      type: 'url',
     }),
     defineField({
       name: 'order',
@@ -47,25 +64,17 @@ export default defineType({
       description: 'Lower numbers appear first',
       validation: (Rule) => Rule.required().min(0),
     }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title_en',
-        maxLength: 96,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
-      title: 'title_en',
+      title: 'name_en',
+      media: 'image',
       order: 'order',
     },
-    prepare({ title, order }) {
+    prepare({ title, media, order }) {
       return {
         title: `${order || '?'}. ${title || 'Untitled'}`,
+        media,
       };
     },
   },

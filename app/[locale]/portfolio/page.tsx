@@ -1,4 +1,4 @@
-import { getPortfolioItems } from '@/lib/sanity/fetch';
+import { getPortfolioItems, getPageBanner } from '@/lib/sanity/fetch';
 import PortfolioPage from './page-client';
 
 export default async function Page({
@@ -8,6 +8,7 @@ export default async function Page({
 }) {
   const { locale } = await params;
   const items = await getPortfolioItems();
+  const pageBanner = await getPageBanner('portfolio');
 
-  return <PortfolioPage items={items || []} locale={locale as 'en' | 'fr'} />;
+  return <PortfolioPage items={items || []} pageBanner={pageBanner} locale={locale as 'en' | 'fr'} />;
 }

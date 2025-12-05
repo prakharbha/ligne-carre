@@ -1,4 +1,4 @@
-import { getPageContent } from '@/lib/sanity/fetch';
+import { getPageContent, getPageBanner, getTeamMembers } from '@/lib/sanity/fetch';
 import AboutPageClient from './page-client';
 
 export default async function Page({
@@ -7,7 +7,11 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const pageContent = await getPageContent('about');
+  const [pageContent, pageBanner, teamMembers] = await Promise.all([
+    getPageContent('about'),
+    getPageBanner('about'),
+    getTeamMembers(),
+  ]);
 
-  return <AboutPageClient pageContent={pageContent} locale={locale as 'en' | 'fr'} />;
+  return <AboutPageClient pageContent={pageContent} pageBanner={pageBanner} teamMembers={teamMembers || []} locale={locale as 'en' | 'fr'} />;
 }

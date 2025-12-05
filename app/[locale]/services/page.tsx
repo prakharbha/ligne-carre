@@ -1,4 +1,4 @@
-import { getServices } from '@/lib/sanity/fetch';
+import { getServices, getPageBanner } from '@/lib/sanity/fetch';
 import ServicesPage from './page-client';
 
 export default async function Page({
@@ -8,6 +8,7 @@ export default async function Page({
 }) {
   const { locale } = await params;
   const services = await getServices();
+  const pageBanner = await getPageBanner('services');
 
-  return <ServicesPage services={services || []} locale={locale as 'en' | 'fr'} />;
+  return <ServicesPage services={services || []} pageBanner={pageBanner} locale={locale as 'en' | 'fr'} />;
 }

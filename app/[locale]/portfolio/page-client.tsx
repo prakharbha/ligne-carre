@@ -6,9 +6,10 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageBanner } from '@/components/PageBanner';
 import { PortfolioGrid } from '@/components/PortfolioGrid';
 import { PortfolioMasonry } from '@/components/PortfolioMasonry';
+import { getLocalizedField } from '@/lib/sanity/utils';
 
 type ViewType = 'grid' | 'masonry';
-type Category = 'all' | 'sports' | 'health' | 'education' | 'residential';
+type Category = 'all' | 'residential' | 'commercial' | 'institutional' | 'cultural-sports';
 
 interface PortfolioItem {
   _id: string;
@@ -29,36 +30,30 @@ interface PortfolioItem {
 
 interface PortfolioPageProps {
   items: PortfolioItem[];
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
+export default function PortfolioPage({ items, pageBanner, locale }: PortfolioPageProps) {
   const t = useTranslations('portfolio');
   const [viewType, setViewType] = useState<ViewType>('grid');
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
 
-  const categories: Category[] = ['all', 'sports', 'health', 'education', 'residential'];
+  const categories: Category[] = ['all', 'residential', 'commercial', 'institutional', 'cultural-sports'];
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
   // Transform Sanity items to match component interface
   const portfolioItems = items.map((item) => {
-    // For FMC01, use main image (after picture)
-    // For others, use first gallery image if available, otherwise main image
-    let thumbnailImage = item.image;
+    // Always use the featured image (item.image) as thumbnail
     const slug = locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current;
-    
-    if (slug !== 'fmc01-residential-commercial-solidere-lot-671' && 
-        slug !== 'fmc01-residentiel-commercial-solidere-lot-671' &&
-        item.gallery && 
-        Array.isArray(item.gallery) && 
-        item.gallery.length > 0) {
-      thumbnailImage = item.gallery[0];
-    }
     
     return {
       id: item._id,
       title: locale === 'fr' ? item.title_fr : item.title_en,
       category: item.category,
-      image: thumbnailImage,
+      image: item.image, // Use featured image
       slug: slug,
       projectType: item.projectType || item.category,
       client: item.client,
@@ -70,7 +65,12 @@ export default function PortfolioPage({ items, locale }: PortfolioPageProps) {
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle={t('subtitle')} />
+      <PageBanner 
+        title={t('title')} 
+        subtitle={t('subtitle')}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

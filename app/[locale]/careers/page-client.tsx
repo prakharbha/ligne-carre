@@ -9,56 +9,18 @@ import { getLocalizedField } from '@/lib/sanity/utils';
 
 interface CareersPageProps {
   pageContent: any;
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function CareersPage({ pageContent, locale }: CareersPageProps) {
+export default function CareersPage({ pageContent, pageBanner, locale }: CareersPageProps) {
   const t = useTranslations('careers');
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
-  if (!pageContent) {
-    // Fallback to translations if no Sanity content
-    return (
-      <div>
-        <PageBanner title={t('title')} subtitle={t('subtitle')} />
-        <section className="py-16 lg:py-24 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <div className="space-y-8">
-              <AnimatedSection delay={0.1}>
-                <div className="space-y-6">
-                  <h2 className="font-medium text-3xl text-foreground">
-                    {t('whyJoin.title')}
-                  </h2>
-                  <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
-                    {t('whyJoin.description')}
-                  </p>
-                </div>
-              </AnimatedSection>
-              <AnimatedSection delay={0.2}>
-                <div className="space-y-6">
-                  <h2 className="font-medium text-3xl text-foreground">
-                    {t('openPositions.title')}
-                  </h2>
-                  <p className="text-base lg:text-lg text-foreground leading-relaxed font-light">
-                    {t('openPositions.description')}
-                  </p>
-                </div>
-              </AnimatedSection>
-              <AnimatedSection delay={0.3}>
-                <div className="pt-8">
-                  <Link
-                    href="/contact"
-                    className="inline-block px-8 py-4 border-2 border-foreground text-foreground font-light hover:bg-foreground hover:text-white transition-all duration-300"
-                  >
-                    {t('contactUs')}
-                  </Link>
-                </div>
-              </AnimatedSection>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
+  // Don't render if no content
+  if (!pageContent) return null;
 
   const title = getLocalizedField(pageContent, locale, 'title');
   const subtitle = getLocalizedField(pageContent, locale, 'subtitle');
@@ -66,7 +28,12 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
 
   return (
     <div>
-      <PageBanner title={title} subtitle={subtitle || undefined} />
+      <PageBanner 
+        title={title} 
+        subtitle={subtitle || undefined}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
@@ -85,6 +52,24 @@ export default function CareersPage({ pageContent, locale }: CareersPageProps) {
                         <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-4">
                           {children}
                         </p>
+                      ),
+                      bullet: ({ children }: any) => (
+                        <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                          {children}
+                        </ul>
+                      ),
+                      number: ({ children }: any) => (
+                        <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+                          {children}
+                        </ol>
+                      ),
+                    },
+                    listItem: {
+                      bullet: ({ children }: any) => (
+                        <li className="ml-4">{children}</li>
+                      ),
+                      number: ({ children }: any) => (
+                        <li className="ml-4">{children}</li>
                       ),
                     },
                   }}

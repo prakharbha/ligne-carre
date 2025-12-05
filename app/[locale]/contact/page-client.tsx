@@ -10,24 +10,36 @@ import { getLocalizedField } from '@/lib/sanity/utils';
 interface ContactPageProps {
   pageContent: any;
   siteSettings: any;
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function ContactPage({ pageContent, siteSettings, locale }: ContactPageProps) {
+export default function ContactPage({ pageContent, siteSettings, pageBanner, locale }: ContactPageProps) {
   const t = useTranslations('contact');
 
-  const title = pageContent ? getLocalizedField(pageContent, locale, 'title') : t('title');
-  const subtitle = pageContent ? getLocalizedField(pageContent, locale, 'subtitle') : t('subtitle');
+  const title = pageContent ? getLocalizedField(pageContent, locale, 'title') : null;
+  const subtitle = pageContent ? getLocalizedField(pageContent, locale, 'subtitle') : null;
   const content = pageContent ? getLocalizedField(pageContent, locale, 'content') : null;
 
   const footerContact = siteSettings?.footerContact;
-  const address = footerContact ? getLocalizedField(footerContact, locale, 'address') : t('office.value');
-  const email = footerContact?.email || t('email.value');
-  const phone = footerContact?.phone || t('phone.value');
+  const address = footerContact ? getLocalizedField(footerContact, locale, 'address') : null;
+  const email = footerContact?.email || null;
+  const phone = footerContact?.phone || null;
+  
+  // Don't render if no content
+  if (!pageContent || !title || !content) return null;
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
   return (
     <div>
-      <PageBanner title={title} subtitle={subtitle || undefined} />
+      <PageBanner 
+        title={title} 
+        subtitle={subtitle || undefined}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -49,6 +61,24 @@ export default function ContactPage({ pageContent, siteSettings, locale }: Conta
                             <p className="text-base text-foreground leading-relaxed font-light mb-4">
                               {children}
                             </p>
+                          ),
+                          bullet: ({ children }: any) => (
+                            <ul className="list-disc list-inside mb-4 space-y-2 text-base text-foreground leading-relaxed font-light ml-4">
+                              {children}
+                            </ul>
+                          ),
+                          number: ({ children }: any) => (
+                            <ol className="list-decimal list-inside mb-4 space-y-2 text-base text-foreground leading-relaxed font-light ml-4">
+                              {children}
+                            </ol>
+                          ),
+                        },
+                        listItem: {
+                          bullet: ({ children }: any) => (
+                            <li className="ml-4">{children}</li>
+                          ),
+                          number: ({ children }: any) => (
+                            <li className="ml-4">{children}</li>
                           ),
                         },
                       }}

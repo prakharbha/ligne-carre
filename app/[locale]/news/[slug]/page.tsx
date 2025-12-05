@@ -26,6 +26,41 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
   );
 
   const portableTextComponents = {
+    block: {
+      h2: ({ children }: any) => (
+        <h2 className="font-medium text-2xl lg:text-3xl text-foreground mb-4 mt-8 first:mt-0">
+          {children}
+        </h2>
+      ),
+      h3: ({ children }: any) => (
+        <h3 className="font-medium text-xl lg:text-2xl text-foreground mb-3 mt-6">
+          {children}
+        </h3>
+      ),
+      normal: ({ children }: any) => (
+        <p className="text-base lg:text-lg text-foreground leading-relaxed font-light mb-4">
+          {children}
+        </p>
+      ),
+      bullet: ({ children }: any) => (
+        <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+          {children}
+        </ul>
+      ),
+      number: ({ children }: any) => (
+        <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+          {children}
+        </ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }: any) => (
+        <li className="ml-4">{children}</li>
+      ),
+      number: ({ children }: any) => (
+        <li className="ml-4">{children}</li>
+      ),
+    },
     types: {
       image: ({ value }: any) => {
         if (!value?.asset) return null;

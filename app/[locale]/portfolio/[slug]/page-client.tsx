@@ -60,6 +60,24 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
           {children}
         </p>
       ),
+      bullet: ({ children }: any) => (
+        <ul className="list-disc list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+          {children}
+        </ul>
+      ),
+      number: ({ children }: any) => (
+        <ol className="list-decimal list-inside mb-4 space-y-2 text-base lg:text-lg text-foreground leading-relaxed font-light ml-4">
+          {children}
+        </ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }: any) => (
+        <li className="ml-4">{children}</li>
+      ),
+      number: ({ children }: any) => (
+        <li className="ml-4">{children}</li>
+      ),
     },
     types: {
       image: ({ value }: any) => {
@@ -80,11 +98,21 @@ export default function PortfolioItemPage({ portfolioItem, locale }: PortfolioIt
     },
   };
 
+  // Build subtitle with location and year
+  const subtitleParts = [];
+  if (location && location.trim()) subtitleParts.push(location.trim());
+  // Convert year to string and ensure it's not empty
+  const yearStr = portfolioItem.year 
+    ? String(portfolioItem.year).trim() 
+    : null;
+  if (yearStr) subtitleParts.push(yearStr);
+  const subtitle = subtitleParts.length > 0 ? subtitleParts.join(' – ') : undefined;
+
   return (
     <div>
       <PageBanner
         title={title}
-        subtitle={`${location} – ${portfolioItem.year || ''}`}
+        subtitle={subtitle}
       />
 
       <section className="py-16 lg:py-24 bg-gray-50">

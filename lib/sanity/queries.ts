@@ -18,6 +18,7 @@ export const servicesQuery = `*[_type == "service"] | order(order asc) {
   title_fr,
   description_en,
   description_fr,
+  image,
   order,
   slug
 }`;
@@ -63,6 +64,15 @@ export const portfolioItemBySlugQuery = `*[_type == "portfolioItem" && (slug_en.
   gallery
 }`;
 
+// Page Banners
+export const pageBannerQuery = `*[_type == "pageBanner" && pageType == $pageType][0] {
+  _id,
+  pageType,
+  image,
+  altText_en,
+  altText_fr
+}`;
+
 // News Articles
 export const newsArticlesQuery = `*[_type == "newsArticle"] | order(date desc) {
   _id,
@@ -103,10 +113,30 @@ export const pageContentQuery = (pageType: string) => `*[_type == "pageContent" 
   content_fr
 }`;
 
+// Team Members
+export const teamMembersQuery = `*[_type == "teamMember"] | order(order asc) {
+  _id,
+  name_en,
+  name_fr,
+  title_en,
+  title_fr,
+  bio_en,
+  bio_fr,
+  image,
+  linkedinUrl,
+  order
+}`;
+
 // Site Settings (Singleton)
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   _id,
   footerContact,
-  homepageCopy
+  homepageCopy {
+    aboutImage,
+    aboutDescription_en,
+    aboutDescription_fr,
+    careersDescription_en,
+    careersDescription_fr
+  }
 }`;
 

@@ -26,10 +26,10 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
 
   const aboutDescription = siteSettings?.homepageCopy
     ? getLocalizedField(siteSettings.homepageCopy, locale, 'aboutDescription')
-    : t('about.description');
+    : null;
   const careersDescription = siteSettings?.homepageCopy
     ? getLocalizedField(siteSettings.homepageCopy, locale, 'careersDescription')
-    : t('careers.description');
+    : null;
 
   return (
     <div className="pt-20 lg:pt-24">
@@ -37,26 +37,29 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
       <BannerSlider images={bannerImages} />
 
       {/* About Section Preview */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
-              <div className="relative h-96 overflow-hidden">
-                <Image
-                  src="/images/about-section.webp"
-                  alt="About Ligne Carré"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </AnimatedSection>
+      {siteSettings?.homepageCopy?.aboutImage && (
+        <section className="py-24 lg:py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <AnimatedSection>
+                <div className="relative h-96 overflow-hidden">
+                  <Image
+                    src={urlFor(siteSettings.homepageCopy.aboutImage).width(1200).height(800).url()}
+                    alt="About Ligne Carré"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </AnimatedSection>
             <AnimatedSection delay={0.2}>
               <h2 className="font-medium text-4xl lg:text-5xl text-foreground mb-6">
                 {tNav('about')}
               </h2>
-              <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
-                {aboutDescription}
-              </p>
+              {aboutDescription && (
+                <p className="text-lg text-gray-600 font-light mb-8 leading-relaxed">
+                  {aboutDescription}
+                </p>
+              )}
               <Link
                 href="/about"
                 className="inline-block px-8 py-3 bg-foreground text-white hover:bg-gray-700 transition-colors duration-300"
@@ -81,17 +84,11 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
             {services.slice(0, 4).map((service, index) => {
               const serviceName = getLocalizedField(service, locale, 'title');
               const serviceDescription = getLocalizedField(service, locale, 'description');
-              const slug = service.slug?.current || '';
               
-              // Map service slugs to image paths
-              const imageMap: Record<string, string> = {
-                'residential': '/images/service-residential.webp',
-                'commercial': '/images/service-commercial.webp',
-                'interior-design': '/images/service-interior-design.webp',
-                'project-management': '/images/service-project-management.webp',
-              };
+              // Only show if service has image
+              if (!service.image) return null;
               
-              const imagePath = imageMap[slug] || '/images/home-banner.jpg';
+              const imageUrl = urlFor(service.image).width(800).height(600).url();
               
               return (
                 <AnimatedSection key={service._id} delay={index * 0.1}>
@@ -103,7 +100,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
                     >
                       <div className="relative h-48 mb-6 overflow-hidden">
                         <Image
-                          src={imagePath}
+                          src={imageUrl}
                           alt={serviceName}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -134,24 +131,15 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {portfolioItems.slice(0, 3).map((item, index) => {
-              // For FMC01, use main image (after picture)
-              // For others, use first gallery image if available, otherwise main image
-              let thumbnailImage = item.image;
+            {portfolioItems.map((item, index) => {
+              // Always use the featured image (item.image) as thumbnail
               const slug = locale === 'fr' ? item.slug_fr?.current : item.slug_en?.current;
               const title = locale === 'fr' ? item.title_fr : item.title_en;
               
-              if (slug !== 'fmc01-residential-commercial-solidere-lot-671' && 
-                  slug !== 'fmc01-residentiel-commercial-solidere-lot-671' &&
-                  item.gallery && 
-                  Array.isArray(item.gallery) && 
-                  item.gallery.length > 0) {
-                thumbnailImage = item.gallery[0];
-              }
+              // Only show if portfolio item has image
+              if (!item.image) return null;
               
-              const imageUrl = thumbnailImage
-                ? urlFor(thumbnailImage).width(800).height(600).url()
-                : '/images/home-banner.jpg';
+              const imageUrl = urlFor(item.image).width(800).height(600).url();
               
               return (
                 <AnimatedSection key={item._id} delay={index * 0.1}>

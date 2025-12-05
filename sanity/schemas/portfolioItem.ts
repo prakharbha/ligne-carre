@@ -157,10 +157,10 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Sports', value: 'sports' },
-          { title: 'Health', value: 'health' },
-          { title: 'Education', value: 'education' },
-          { title: 'Residential', value: 'residential' },
+          { title: 'Résidentiel / Residential', value: 'residential' },
+          { title: 'Commercial / Commercial', value: 'commercial' },
+          { title: 'Institutionnel / Institutional', value: 'institutional' },
+          { title: 'Culturel et Sport / Cultural and Sports', value: 'cultural-sports' },
         ],
         layout: 'radio',
       },

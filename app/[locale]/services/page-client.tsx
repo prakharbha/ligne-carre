@@ -6,6 +6,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageBanner } from '@/components/PageBanner';
 import { motion } from 'framer-motion';
 import { getLocalizedField } from '@/lib/sanity/utils';
+import { urlFor } from '@/sanity/lib/image';
 
 interface Service {
   _id: string;
@@ -19,15 +20,24 @@ interface Service {
 
 interface ServicesPageProps {
   services: Service[];
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function ServicesPage({ services, locale }: ServicesPageProps) {
+export default function ServicesPage({ services, pageBanner, locale }: ServicesPageProps) {
   const t = useTranslations('services');
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle={t('subtitle')} />
+      <PageBanner 
+        title={t('title')} 
+        subtitle={t('subtitle')}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -35,17 +45,11 @@ export default function ServicesPage({ services, locale }: ServicesPageProps) {
             {services.map((service, index) => {
               const title = getLocalizedField(service, locale, 'title');
               const description = getLocalizedField(service, locale, 'description');
-              const slug = service.slug?.current || '';
               
-              // Map service slugs to image paths
-              const imageMap: Record<string, string> = {
-                'residential': '/images/service-residential.webp',
-                'commercial': '/images/service-commercial.webp',
-                'interior-design': '/images/service-interior-design.webp',
-                'project-management': '/images/service-project-management.webp',
-              };
+              // Only show if service has image
+              if (!service.image) return null;
               
-              const imagePath = imageMap[slug] || '/images/home-banner.jpg';
+              const imageUrl = urlFor(service.image).width(800).height(600).url();
               
               return (
                 <AnimatedSection key={service._id} delay={index * 0.1}>
@@ -56,7 +60,7 @@ export default function ServicesPage({ services, locale }: ServicesPageProps) {
                   >
                     <div className="relative h-64 lg:h-80 overflow-hidden">
                       <Image
-                        src={imagePath}
+                        src={imageUrl}
                         alt={title}
                         fill
                         className="object-cover"

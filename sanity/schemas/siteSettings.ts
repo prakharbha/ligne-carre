@@ -43,6 +43,14 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
+          name: 'aboutImage',
+          title: 'About Section Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
           name: 'aboutDescription_en',
           title: 'About Description (English)',
           type: 'text',

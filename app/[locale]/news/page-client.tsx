@@ -21,15 +21,24 @@ interface NewsArticle {
 
 interface NewsPageProps {
   articles: NewsArticle[];
+  pageBanner?: any;
   locale: 'en' | 'fr';
 }
 
-export default function NewsPage({ articles, locale }: NewsPageProps) {
+export default function NewsPage({ articles, pageBanner, locale }: NewsPageProps) {
   const t = useTranslations('news');
+  
+  const bannerImage = pageBanner?.image;
+  const bannerAltText = pageBanner ? getLocalizedField(pageBanner, locale, 'altText') : undefined;
 
   return (
     <div>
-      <PageBanner title={t('title')} subtitle={t('subtitle')} />
+      <PageBanner 
+        title={t('title')} 
+        subtitle={t('subtitle')}
+        bannerImage={bannerImage}
+        altText={bannerAltText}
+      />
       
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">

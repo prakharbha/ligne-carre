@@ -2,13 +2,22 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
 
 interface PageBannerProps {
   title: string;
   subtitle?: string;
+  bannerImage?: any; // Sanity image object
+  altText?: string;
 }
 
-export function PageBanner({ title, subtitle }: PageBannerProps) {
+export function PageBanner({ title, subtitle, bannerImage, altText }: PageBannerProps) {
+  // Only render if banner image is provided
+  if (!bannerImage) return null;
+  
+  const imageUrl = urlFor(bannerImage).width(1920).height(1080).url();
+  const imageAlt = altText || title;
+
   return (
     <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
       {/* Background Image with Parallax Effect */}
@@ -19,8 +28,8 @@ export function PageBanner({ title, subtitle }: PageBannerProps) {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="/images/home-banner.jpg"
-          alt={title}
+          src={imageUrl}
+          alt={imageAlt}
           fill
           priority
           className="object-cover"
