@@ -34,3 +34,33 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+/* Ensure list styles are visible */
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+}
+
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+}
+
+/* Nested lists */
+ul ul, ol ol, ul ol, ol ul {
+  list-style-type: inherit;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+}
+
+/* Nested ordered lists should use lower-alpha */
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+/* Nested unordered lists within ordered lists */
+ol ul {
+  list-style-type: disc;
+}
+

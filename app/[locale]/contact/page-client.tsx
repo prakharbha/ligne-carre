@@ -75,12 +75,12 @@ export default function ContactPage({ pageContent, siteSettings, pageBanner, loc
                         },
                         listItem: {
                           bullet: ({ children }: any) => (
-                            <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+                            <li className="[&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
                               {children}
                             </li>
                           ),
                           number: ({ children }: any) => (
-                            <li className="pl-2 [&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
+                            <li className="[&>ol]:list-[lower-alpha] [&>ol]:list-outside [&>ol]:pl-6 [&>ol]:mt-2 [&>ol]:mb-2 [&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-6 [&>ul]:mt-2 [&>ul]:mb-2">
                               {children}
                             </li>
                           ),
