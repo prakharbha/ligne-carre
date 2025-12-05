@@ -13,14 +13,30 @@ interface BannerImage {
   altText_fr: string;
 }
 
-interface BannerSliderProps {
-  images: BannerImage[];
+interface BannerContent {
+  heading_en?: string;
+  heading_fr?: string;
+  text_en?: string;
+  text_fr?: string;
 }
 
-export function BannerSlider({ images }: BannerSliderProps) {
+interface BannerSliderProps {
+  images: BannerImage[];
+  bannerContent?: BannerContent;
+}
+
+export function BannerSlider({ images, bannerContent }: BannerSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = useTranslations('home');
   const locale = useLocale() as 'en' | 'fr';
+  
+  // Get localized banner content
+  const heading = locale === 'fr' 
+    ? bannerContent?.heading_fr?.trim() 
+    : bannerContent?.heading_en?.trim();
+  const text = locale === 'fr' 
+    ? bannerContent?.text_fr?.trim() 
+    : bannerContent?.text_en?.trim();
 
   const bannerImages = images || [];
 
@@ -86,31 +102,33 @@ export function BannerSlider({ images }: BannerSliderProps) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Content */}
+      {/* Content - Same for all images */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <motion.div
-          key={`content-${currentIndex}`}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-medium text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
-          >
-            {t('slogan').replace(/Ligne Carré\s*:\s*/, '')}
-          </motion.p>
+          {heading && (
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="font-medium text-5xl lg:text-7xl xl:text-8xl text-white mb-8"
+            >
+              {heading}
+            </motion.h1>
+          )}
+          {text && (
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-2xl lg:text-4xl xl:text-5xl text-white/90 font-light"
+            >
+              {text}
+            </motion.p>
+          )}
         </motion.div>
       </div>
 

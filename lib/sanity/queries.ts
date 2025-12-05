@@ -153,6 +153,12 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   _id,
   footerContact,
   homepageCopy {
+    bannerContent {
+      heading_en,
+      heading_fr,
+      text_en,
+      text_fr
+    },
     aboutImage,
     aboutDescription_en,
     aboutDescription_fr,

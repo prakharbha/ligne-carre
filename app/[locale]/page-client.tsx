@@ -31,10 +31,12 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
     ? getLocalizedField(siteSettings.homepageCopy, locale, 'careersDescription')
     : null;
 
+  const bannerContent = siteSettings?.homepageCopy?.bannerContent;
+
   return (
     <div className="pt-20 lg:pt-24">
       {/* Hero Section with Banner Slider */}
-      <BannerSlider images={bannerImages} />
+      <BannerSlider images={bannerImages} bannerContent={bannerContent} />
 
       {/* About Section Preview */}
       <section className="py-24 lg:py-32 bg-white">

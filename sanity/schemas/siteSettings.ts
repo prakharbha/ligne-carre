@@ -43,6 +43,33 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
+          name: 'bannerContent',
+          title: 'Banner Content',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'heading_en',
+              title: 'Banner Heading (English)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'heading_fr',
+              title: 'Banner Heading (French)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'text_en',
+              title: 'Banner Text (English)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'text_fr',
+              title: 'Banner Text (French)',
+              type: 'string',
+            }),
+          ],
+        }),
+        defineField({
           name: 'aboutImage',
           title: 'About Section Image',
           type: 'image',
