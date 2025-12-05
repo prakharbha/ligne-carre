@@ -7,12 +7,15 @@ const intlMiddleware = createIntlMiddleware(routing);
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Bypass password protection for:
+  // Check if this is the password page (exact match, no locale)
+  const isPasswordPage = pathname === '/password';
+
+  // Bypass password protection and i18n routing for:
   // - API routes
   // - Next.js internals
   // - Sanity Studio
   // - Static files (files with extensions)
-  // - Password page itself
+  // - Password page itself (let it through without i18n)
   // - Well-known paths (for SSL certificates)
   if (
     pathname.startsWith('/api') ||
@@ -20,17 +23,21 @@ export default function middleware(request: NextRequest) {
     pathname.startsWith('/_vercel') ||
     pathname.startsWith('/studio') ||
     pathname.startsWith('/.well-known') ||
-    pathname.startsWith('/password') ||
     pathname.includes('.')
   ) {
     return intlMiddleware(request);
+  }
+
+  // Password page should bypass i18n routing entirely
+  if (isPasswordPage) {
+    return NextResponse.next();
   }
 
   // Check for authentication cookie
   const authCookie = request.cookies.get('site-auth');
   const isAuthenticated = authCookie?.value === 'authenticated';
 
-  // If not authenticated, redirect to password page
+  // If not authenticated, redirect to password page (without locale)
   if (!isAuthenticated) {
     const passwordUrl = new URL('/password', request.url);
     passwordUrl.searchParams.set('redirect', pathname);
