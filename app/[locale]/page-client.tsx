@@ -70,6 +70,7 @@ export default function HomePage({ bannerImages, siteSettings, services, portfol
           </div>
         </div>
       </section>
+      )}
 
       {/* Services Section Preview */}
       <section className="py-24 lg:py-32 bg-[#dddddd]">
