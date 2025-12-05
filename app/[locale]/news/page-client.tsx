@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageBanner } from '@/components/PageBanner';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { getLocalizedField } from '@/lib/sanity/utils';
 
 interface NewsArticle {
@@ -43,9 +43,14 @@ export default function NewsPage({ articles, locale }: NewsPageProps) {
                 { year: 'numeric', month: 'long', day: 'numeric' }
               );
 
+              // Use the correct localized path for news articles
+              const articlePath = locale === 'fr' 
+                ? `/actualites/${slug}` 
+                : `/news/${slug}`;
+
               return (
                 <AnimatedSection key={article._id} delay={index * 0.1}>
-                  <Link href={`/${locale}/news/${slug}`}>
+                  <Link href={articlePath}>
                     <motion.article
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.3 }}
