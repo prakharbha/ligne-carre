@@ -12,7 +12,7 @@ export default function middleware(request: NextRequest) {
   // - URL already has a locale prefix
   // - User has a locale preference cookie
   // - It's an API route, static file, or special path
-  const hasLocalePrefix = pathname.startsWith('/en/') || pathname.startsWith('/fr/');
+  const hasLocalePrefix = pathname === '/en' || pathname === '/fr' || pathname.startsWith('/en/') || pathname.startsWith('/fr/');
   const localePreference = request.cookies.get('locale-preference');
   const isSpecialPath =
     pathname.startsWith('/api') ||
@@ -37,18 +37,19 @@ export default function middleware(request: NextRequest) {
     return intlMiddleware(request);
   }
 
-  // Detect locale from geolocation (only on root path or paths without locale)
-  if (pathname === '/' || (!hasLocalePrefix && !isSpecialPath)) {
+  // Detect locale from geolocation (only on root path)
+  if (pathname === '/') {
     const country = request.headers.get('x-vercel-ip-country');
     const region = request.headers.get('x-vercel-ip-country-region');
     
     const detectedLocale = detectLocaleFromHeaders(country, region);
     
     if (detectedLocale === 'fr') {
-      // Redirect to French version
+      // Redirect to French version - exactly /fr (no trailing slash)
       const url = request.nextUrl.clone();
-      url.pathname = `/fr${pathname === '/' ? '' : pathname}`;
-      return NextResponse.redirect(url);
+      url.pathname = '/fr';
+      // Use 307 redirect - when browser requests /fr, it will be caught by hasLocalePrefix check above
+      return NextResponse.redirect(url, 307);
     }
   }
 
