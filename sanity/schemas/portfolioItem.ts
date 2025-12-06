@@ -174,6 +174,13 @@ export default defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured Project',
+      type: 'boolean',
+      description: 'Check this to display this project on the homepage',
+      initialValue: false,
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO Settings',
       type: 'object',
@@ -213,10 +220,11 @@ export default defineType({
       media: 'image',
       category: 'category',
       order: 'order',
+      featured: 'featured',
     },
-    prepare({ title, media, category, order }) {
+    prepare({ title, media, category, order, featured }) {
       return {
-        title: `${order || '?'}. ${title || 'Untitled'}`,
+        title: `${order || '?'}. ${title || 'Untitled'}${featured ? ' ⭐ Featured' : ''}`,
         subtitle: category ? category.charAt(0).toUpperCase() + category.slice(1) : '',
         media,
       };
